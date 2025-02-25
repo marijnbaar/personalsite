@@ -35,6 +35,7 @@
           0.8s
           forwards;
       }
+
       @keyframes float {
         0% {
           transform: translateY(
@@ -67,6 +68,73 @@
           ease-in-out
           infinite;
       }
+
+      /* New: Wiggle animation for the logo */
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: rotate(
+            0deg
+          );
+        }
+        25% {
+          transform: rotate(
+            3deg
+          );
+        }
+        75% {
+          transform: rotate(
+            -3deg
+          );
+        }
+      }
+      .hover\:animate-wiggle:hover {
+        animation: wiggle
+          0.5s
+          ease-in-out;
+      }
+
+      /* New: Fade in for nav items with stagger */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(
+            -10px
+          );
+        }
+        to {
+          opacity: 1;
+          transform: translateY(
+            0
+          );
+        }
+      }
+      .nav-item {
+        opacity: 0;
+        animation: fadeIn
+          0.6s
+          forwards;
+      }
+      .nav-item:nth-child(
+          1
+        ) {
+        animation-delay: 0.2s;
+      }
+      .nav-item:nth-child(
+          2
+        ) {
+        animation-delay: 0.3s;
+      }
+      .nav-item:nth-child(
+          3
+        ) {
+        animation-delay: 0.4s;
+      }
+      .nav-item:nth-child(
+          4
+        ) {
+        animation-delay: 0.5s;
+      }
     </style>
   </head>
   <body
@@ -80,9 +148,10 @@
       <div
         class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
       >
+        <!-- Logo with wiggle on hover -->
         <a
           href="#"
-          class="text-2xl font-serif font-bold text-gray-900"
+          class="text-2xl font-serif font-bold text-gray-900 hover:animate-wiggle"
         >
           Marijn
           <span
@@ -90,27 +159,28 @@
             >Baar</span
           >
         </a>
+        <!-- Navigation with fade in effect -->
         <nav
           class="hidden md:flex space-x-6 items-center"
         >
           <a
             href="#about"
-            class="hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-700 transition"
             >About</a
           >
           <a
             href="#portfolio"
-            class="hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-700 transition"
             >Portfolio</a
           >
           <a
             href="#blog"
-            class="hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-700 transition"
             >Blog</a
           >
           <a
             href="#contact"
-            class="hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-700 transition"
             >Contact</a
           >
         </nav>
@@ -273,18 +343,17 @@
             applications
             powered
             by
-            cutting-edge
+            cutting‑edge
             AI.
             Currently,
             I'm
             developing
             a
-            RAG-based
+            RAG‑based
             LLM for
             Amsterdam's
             municipal
-            services,
-            leveraging
+            services—leveraging
             advanced
             embedding
             models
@@ -354,7 +423,7 @@
             I'm
             Marijn
             Baar – a
-            full-stack
+            full‑stack
             developer
             and
             consultant
@@ -390,7 +459,7 @@
               I’m
               developing
               a
-              RAG-based
+              RAG‑based
               LLM
               using
               advanced
@@ -408,11 +477,10 @@
             <p>
               My
               extensive
-              experience
-              with
               Azure
               Cloud
-              (including
+              expertise
+              includes
               Serverless,
               Entra
               ID,
@@ -420,19 +488,23 @@
               Machine
               Learning,
               and
-              PostgresSQL)
-              combined
+              PostgresSQL.
+              Combined
               with
-              my
+              proven
+              team
               leadership
-              skills
-              have
-              enabled
-              me to
-              manage
-              cross-functional
+              skills,
+              I
+              guide
+              technical
               teams
-              effectively.
+              with a
+              focus
+              on
+              safety
+              and
+              innovation.
             </p>
             <p>
               With a
@@ -444,14 +516,13 @@
               Agile
               methodologies,
               I
-              focus
-              on
-              process
-              improvement
+              continuously
+              improve
+              processes
               and
-              creating
-              safe,
-              high-performing
+              foster
+              high‑performing,
+              creative
               teams.
             </p>
           </div>
@@ -1708,7 +1779,6 @@
           );
       }
 
-      // Initialize all functionality on DOMContentLoaded
       function init() {
         updateAuthButtons();
         document
@@ -1719,14 +1789,13 @@
             "submit",
             submitBlogPost,
           );
-        // (Optional: Attach other event listeners here)
       }
+
       window.addEventListener(
         "DOMContentLoaded",
         init,
       );
 
-      // Close login modal if clicking outside of it
       window.onclick =
         function (
           event,
