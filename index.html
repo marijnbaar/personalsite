@@ -1,199 +1,722 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marijn Baar | Programmer • Consultant • Innovator</title>
+    <meta
+      charset="UTF-8"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Marijn Baar |
+      Programmer •
+      Consultant •
+      Innovator
+    </title>
     <!-- Tailwind CSS (via CDN for prototyping) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
       /* Custom Keyframes for Animations */
       @keyframes slideUp {
         to {
-          transform: translateY(0);
+          transform: translateY(
+            0
+          );
         }
       }
       .animate-slideUp {
-        animation: slideUp 0.8s forwards;
+        animation: slideUp
+          0.8s
+          forwards;
       }
       @keyframes float {
         0% {
-          transform: translateY(0) rotate(0deg);
+          transform: translateY(
+              0
+            )
+            rotate(
+              0deg
+            );
         }
         50% {
-          transform: translateY(-15px) rotate(5deg);
+          transform: translateY(
+              -15px
+            )
+            rotate(
+              5deg
+            );
         }
         100% {
-          transform: translateY(0) rotate(0deg);
+          transform: translateY(
+              0
+            )
+            rotate(
+              0deg
+            );
         }
       }
       .animate-float {
-        animation: float 6s ease-in-out infinite;
+        animation: float
+          6s
+          ease-in-out
+          infinite;
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-gray-800">
+  <body
+    class="bg-gray-50 text-gray-800"
+  >
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50 transition-all">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#" class="text-2xl font-serif font-bold text-gray-900">
-          Marijn <span class="text-blue-700">Baar</span>
+    <header
+      class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50 transition-all"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="text-2xl font-serif font-bold text-gray-900"
+        >
+          Marijn
+          <span
+            class="text-blue-700"
+            >Baar</span
+          >
         </a>
-        <nav class="hidden md:flex space-x-6 items-center">
-          <a href="#about" class="hover:text-blue-700 transition">About</a>
-          <a href="#portfolio" class="hover:text-blue-700 transition">Portfolio</a>
-          <a href="#blog" class="hover:text-blue-700 transition">Blog</a>
-          <a href="#contact" class="hover:text-blue-700 transition">Contact</a>
+        <nav
+          class="hidden md:flex space-x-6 items-center"
+        >
+          <a
+            href="#about"
+            class="hover:text-blue-700 transition"
+            >About</a
+          >
+          <a
+            href="#portfolio"
+            class="hover:text-blue-700 transition"
+            >Portfolio</a
+          >
+          <a
+            href="#blog"
+            class="hover:text-blue-700 transition"
+            >Blog</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-blue-700 transition"
+            >Contact</a
+          >
         </nav>
-        <div class="flex items-center space-x-4">
-          <div id="auth-buttons" class="flex items-center"></div>
-          <!-- New Post button appears when logged in -->
-          <button id="new-blog-btn" class="hidden bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition" onclick="showNewBlogForm(event)">New Post</button>
+        <div
+          class="flex items-center space-x-4"
+        >
+          <div
+            id="auth-buttons"
+            class="flex items-center"
+          ></div>
+          <!-- New Post button (visible only when logged in) -->
+          <button
+            id="new-blog-btn"
+            class="hidden bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            onclick="showNewBlogForm(event)"
+          >
+            New Post
+          </button>
         </div>
-        <button id="menuBtn" class="md:hidden text-2xl text-gray-700 focus:outline-none ml-4">
-          <i class="fas fa-bars"></i>
+        <button
+          id="menuBtn"
+          class="md:hidden text-2xl text-gray-700 focus:outline-none ml-4"
+        >
+          <i
+            class="fas fa-bars"
+          ></i>
         </button>
       </div>
       <!-- Mobile Nav -->
-      <nav id="mobileNav" class="hidden md:hidden bg-white shadow-md">
-        <ul class="flex flex-col space-y-4 p-4">
-          <li><a href="#about" class="hover:text-blue-700">About</a></li>
-          <li><a href="#portfolio" class="hover:text-blue-700">Portfolio</a></li>
-          <li><a href="#blog" class="hover:text-blue-700">Blog</a></li>
-          <li><a href="#contact" class="hover:text-blue-700">Contact</a></li>
+      <nav
+        id="mobileNav"
+        class="hidden md:hidden bg-white shadow-md"
+      >
+        <ul
+          class="flex flex-col space-y-4 p-4"
+        >
+          <li>
+            <a
+              href="#about"
+              class="hover:text-blue-700"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#portfolio"
+              class="hover:text-blue-700"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#blog"
+              class="hover:text-blue-700"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="hover:text-blue-700"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
     <!-- Login Modal -->
-    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center z-50">
-      <div class="bg-white rounded-lg p-6 w-11/12 max-w-sm relative">
-        <button class="absolute top-2 right-2 text-gray-600 text-2xl" onclick="closeLoginModal()">&times;</button>
-        <h2 class="text-2xl font-bold mb-4">Login</h2>
-        <input type="text" id="loginUsername" placeholder="Username" class="w-full p-3 border border-gray-300 rounded mb-3" />
-        <input type="password" id="loginPassword" placeholder="Password" class="w-full p-3 border border-gray-300 rounded mb-4" />
-        <button class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-600 transition" onclick="loginUser()">Login</button>
-        <p class="text-sm text-gray-500 mt-2">(Use your credentials)</p>
+    <div
+      id="login-modal"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center z-50"
+    >
+      <div
+        class="bg-white rounded-lg p-6 w-11/12 max-w-sm relative"
+      >
+        <button
+          class="absolute top-2 right-2 text-gray-600 text-2xl"
+          onclick="closeLoginModal()"
+        >
+          &times;
+        </button>
+        <h2
+          class="text-2xl font-bold mb-4"
+        >
+          Login
+        </h2>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Username"
+          class="w-full p-3 border border-gray-300 rounded mb-3"
+        />
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Password"
+          class="w-full p-3 border border-gray-300 rounded mb-4"
+        />
+        <button
+          class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-600 transition"
+          onclick="loginUser()"
+        >
+          Login
+        </button>
+        <p
+          class="text-sm text-gray-500 mt-2"
+        >
+          (Use your
+          credentials)
+        </p>
       </div>
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" class="pt-24">
+    <div
+      id="main-content"
+      class="pt-24"
+    >
       <!-- Hero Section -->
-      <section class="min-h-screen flex flex-col md:flex-row items-center px-4 md:px-8 py-20 relative overflow-hidden">
+      <section
+        class="min-h-screen flex flex-col md:flex-row items-center px-4 md:px-8 py-20 relative overflow-hidden"
+      >
         <!-- Floating circles -->
-        <div class="absolute top-[-150px] right-[-100px] w-96 h-96 rounded-full bg-yellow-400 opacity-20 z-[-1]"></div>
-        <div class="absolute bottom-[-100px] left-10 w-72 h-72 rounded-full bg-blue-700 opacity-10 z-[-1]"></div>
-        <div class="flex-1 space-y-6">
-          <h1 class="text-5xl md:text-6xl font-serif font-bold leading-tight">
-            <span class="block animate-slideUp" style="animation-delay: 0.1s;">Programmer.</span>
-            <span class="block animate-slideUp" style="animation-delay: 0.3s;">Consultant. Innovator.</span>
+        <div
+          class="absolute top-[-150px] right-[-100px] w-96 h-96 rounded-full bg-yellow-400 opacity-20 z-[-1]"
+        ></div>
+        <div
+          class="absolute bottom-[-100px] left-10 w-72 h-72 rounded-full bg-blue-700 opacity-10 z-[-1]"
+        ></div>
+        <div
+          class="flex-1 space-y-6"
+        >
+          <h1
+            class="text-5xl md:text-6xl font-serif font-bold leading-tight"
+          >
+            <span
+              class="block animate-slideUp"
+              style="
+                animation-delay: 0.1s;
+              "
+              >Programmer.</span
+            >
+            <span
+              class="block animate-slideUp"
+              style="
+                animation-delay: 0.3s;
+              "
+              >Consultant.
+              Innovator.</span
+            >
           </h1>
-          <p class="text-lg text-gray-600 max-w-lg">
-            I build modern, responsive, and user-friendly web applications that help businesses thrive in the digital age.
+          <p
+            class="text-lg text-gray-600 max-w-lg"
+          >
+            I build
+            modern,
+            responsive,
+            and
+            user-friendly
+            web
+            applications
+            that
+            help
+            businesses
+            thrive
+            in the
+            digital
+            age.
           </p>
-          <a href="#contact" class="bg-blue-700 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition inline-block">Get in Touch</a>
+          <a
+            href="#contact"
+            class="bg-blue-700 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition inline-block"
+            >Get in
+            Touch</a
+          >
         </div>
-        <div class="flex-1 flex justify-center mt-8 md:mt-0 relative">
-          <div class="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-            <img src="https://source.unsplash.com/500x500/?technology,developer" alt="Marijn Baar" class="w-full h-full object-cover" />
+        <div
+          class="flex-1 flex justify-center mt-8 md:mt-0 relative"
+        >
+          <div
+            class="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl"
+          >
+            <img
+              src="https://source.unsplash.com/500x500/?technology,developer"
+              alt="Marijn Baar"
+              class="w-full h-full object-cover"
+            />
           </div>
           <!-- Floating Tech Icons -->
-          <div class="hidden md:block absolute top-16 left-8 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center text-blue-600 text-2xl animate-float" style="animation-delay: 0.5s;">
-            <i class="fab fa-react"></i>
+          <div
+            class="hidden md:block absolute top-16 left-8 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center text-blue-600 text-2xl animate-float"
+            style="
+              animation-delay: 0.5s;
+            "
+          >
+            <i
+              class="fab fa-react"
+            ></i>
           </div>
-          <div class="hidden md:block absolute bottom-20 right-8 w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-green-500 text-3xl animate-float" style="animation-delay: 1.5s;">
-            <i class="fab fa-node-js"></i>
+          <div
+            class="hidden md:block absolute bottom-20 right-8 w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-green-500 text-3xl animate-float"
+            style="
+              animation-delay: 1.5s;
+            "
+          >
+            <i
+              class="fab fa-node-js"
+            ></i>
           </div>
         </div>
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
-          <p class="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-10">
-            I'm Marijn Baar – a full-stack developer and consultant with over 8 years of experience. I specialize in cloud, AI, and data-driven solutions, delivering elegant, efficient web applications that drive business success.
+      <section
+        id="about"
+        class="py-20 bg-white"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4"
+        >
+          <h2
+            class="text-4xl font-bold mb-6 text-center"
+          >
+            About Me
+          </h2>
+          <p
+            class="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-10"
+          >
+            I'm
+            Marijn
+            Baar – a
+            full-stack
+            developer
+            and
+            consultant
+            with
+            over 8
+            years of
+            experience.
+            I
+            specialize
+            in
+            cloud,
+            AI, and
+            data-driven
+            solutions,
+            delivering
+            elegant,
+            efficient
+            web
+            applications
+            that
+            drive
+            business
+            success.
           </p>
-          <div class="text-gray-700 space-y-4 max-w-3xl mx-auto">
-            <p>With a strong foundation in computer science and a passion for innovative technology, I combine technical expertise with strategic insights to craft solutions tailored to your needs.</p>
-            <p>My work spans from modern frontend development to robust backend architectures, and I’m continually expanding my skills in security, cloud computing, and networking.</p>
-            <ul class="list-disc ml-6 mt-4 space-y-2">
-              <li>Frontend: React, Vue.js, Angular, JavaScript/TypeScript</li>
-              <li>Backend: Node.js, Python, PHP, Ruby on Rails</li>
-              <li>Database: MongoDB, PostgreSQL, MySQL</li>
-              <li>DevOps: Docker, AWS, Google Cloud, CI/CD</li>
-              <li>Mobile: React Native, Flutter</li>
+          <div
+            class="text-gray-700 space-y-4 max-w-3xl mx-auto"
+          >
+            <p>
+              With a
+              strong
+              foundation
+              in
+              computer
+              science
+              and a
+              passion
+              for
+              innovative
+              technology,
+              I
+              combine
+              technical
+              expertise
+              with
+              strategic
+              insights
+              to
+              craft
+              solutions
+              tailored
+              to
+              your
+              needs.
+            </p>
+            <p>
+              My
+              work
+              spans
+              from
+              modern
+              frontend
+              development
+              to
+              robust
+              backend
+              architectures,
+              and
+              I’m
+              continually
+              expanding
+              my
+              skills
+              in
+              security,
+              cloud
+              computing,
+              and
+              networking.
+            </p>
+            <ul
+              class="list-disc ml-6 mt-4 space-y-2"
+            >
+              <li>
+                Frontend:
+                React,
+                Vue.js,
+                Angular,
+                JavaScript/TypeScript
+              </li>
+              <li>
+                Backend:
+                Node.js,
+                Python,
+                PHP,
+                Ruby
+                on
+                Rails
+              </li>
+              <li>
+                Database:
+                MongoDB,
+                PostgreSQL,
+                MySQL
+              </li>
+              <li>
+                DevOps:
+                Docker,
+                AWS,
+                Google
+                Cloud,
+                CI/CD
+              </li>
+              <li>
+                Mobile:
+                React
+                Native,
+                Flutter
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
       <!-- Portfolio Section -->
-      <section id="portfolio" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-6">My Recent Work</h2>
-          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10">
-            Explore a selection of projects that demonstrate my ability to tackle diverse challenges and deliver innovative solutions.
+      <section
+        id="portfolio"
+        class="py-20 bg-gray-50"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4"
+        >
+          <h2
+            class="text-4xl font-bold text-center mb-6"
+          >
+            My
+            Recent
+            Work
+          </h2>
+          <p
+            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
+          >
+            Explore
+            a
+            selection
+            of
+            projects
+            that
+            demonstrate
+            my
+            ability
+            to
+            tackle
+            diverse
+            challenges
+            and
+            deliver
+            innovative
+            solutions.
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             <!-- Portfolio Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://source.unsplash.com/600x400/?environment,cloud" alt="Eco-Hackathon" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
-                <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow">
-                  <i class="fas fa-leaf text-green-500"></i>
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <div
+                class="relative h-48 overflow-hidden"
+              >
+                <img
+                  src="https://source.unsplash.com/600x400/?environment,cloud"
+                  alt="Eco-Hackathon"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                >
+                  <i
+                    class="fas fa-leaf text-green-500"
+                  ></i>
                 </div>
               </div>
-              <div class="p-4">
-                <h3 class="text-xl font-bold mb-2">Amsterdam Eco-Hackathon Challenge</h3>
-                <p class="text-gray-600 text-sm mb-4">Leading a collaborative event to optimize cloud software for sustainability and drive environmental innovation.</p>
-                <div class="flex space-x-2 mb-4">
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Sustainability</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Cloud</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Hackathon</span>
+              <div
+                class="p-4"
+              >
+                <h3
+                  class="text-xl font-bold mb-2"
+                >
+                  Amsterdam
+                  Eco-Hackathon
+                  Challenge
+                </h3>
+                <p
+                  class="text-gray-600 text-sm mb-4"
+                >
+                  Leading
+                  a
+                  collaborative
+                  event
+                  to
+                  optimize
+                  cloud
+                  software
+                  for
+                  sustainability
+                  and
+                  drive
+                  environmental
+                  innovation.
+                </p>
+                <div
+                  class="flex space-x-2 mb-4"
+                >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Sustainability</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Cloud</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Hackathon</span
+                  >
                 </div>
-                <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition">View Details</a>
+                <a
+                  href="#"
+                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
+                  >View
+                  Details</a
+                >
               </div>
             </div>
             <!-- Portfolio Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://source.unsplash.com/600x400/?chat,ai" alt="ChatAmsterdam" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
-                <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow">
-                  <i class="fas fa-comments text-blue-600"></i>
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <div
+                class="relative h-48 overflow-hidden"
+              >
+                <img
+                  src="https://source.unsplash.com/600x400/?chat,ai"
+                  alt="ChatAmsterdam"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                >
+                  <i
+                    class="fas fa-comments text-blue-600"
+                  ></i>
                 </div>
               </div>
-              <div class="p-4">
-                <h3 class="text-xl font-bold mb-2">ChatAmsterdam</h3>
-                <p class="text-gray-600 text-sm mb-4">Developing a chatbot for municipal employees to streamline communication and enhance service delivery.</p>
-                <div class="flex space-x-2 mb-4">
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Chatbot</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">AI</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Municipal</span>
+              <div
+                class="p-4"
+              >
+                <h3
+                  class="text-xl font-bold mb-2"
+                >
+                  ChatAmsterdam
+                </h3>
+                <p
+                  class="text-gray-600 text-sm mb-4"
+                >
+                  Developing
+                  a
+                  chatbot
+                  for
+                  municipal
+                  employees
+                  to
+                  streamline
+                  communication
+                  and
+                  enhance
+                  service
+                  delivery.
+                </p>
+                <div
+                  class="flex space-x-2 mb-4"
+                >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Chatbot</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >AI</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Municipal</span
+                  >
                 </div>
-                <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition">View Details</a>
+                <a
+                  href="#"
+                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
+                  >View
+                  Details</a
+                >
               </div>
             </div>
             <!-- Portfolio Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="relative h-48 overflow-hidden">
-                <img src="https://source.unsplash.com/600x400/?openai,cloud" alt="Azure OpenAI" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
-                <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow">
-                  <i class="fas fa-brain text-yellow-500"></i>
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              <div
+                class="relative h-48 overflow-hidden"
+              >
+                <img
+                  src="https://source.unsplash.com/600x400/?openai,cloud"
+                  alt="Azure OpenAI"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                >
+                  <i
+                    class="fas fa-brain text-yellow-500"
+                  ></i>
                 </div>
               </div>
-              <div class="p-4">
-                <h3 class="text-xl font-bold mb-2">FBAI Azure OpenAI Deployment</h3>
-                <p class="text-gray-600 text-sm mb-4">Managing a secure and cost-optimized deployment for a functional administration chatbot using Azure OpenAI.</p>
-                <div class="flex space-x-2 mb-4">
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Azure</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">OpenAI</span>
-                  <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Deployment</span>
+              <div
+                class="p-4"
+              >
+                <h3
+                  class="text-xl font-bold mb-2"
+                >
+                  FBAI
+                  Azure
+                  OpenAI
+                  Deployment
+                </h3>
+                <p
+                  class="text-gray-600 text-sm mb-4"
+                >
+                  Managing
+                  a
+                  secure
+                  and
+                  cost-optimized
+                  deployment
+                  for
+                  a
+                  functional
+                  administration
+                  chatbot
+                  using
+                  Azure
+                  OpenAI.
+                </p>
+                <div
+                  class="flex space-x-2 mb-4"
+                >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Azure</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >OpenAI</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    >Deployment</span
+                  >
                 </div>
-                <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition">View Details</a>
+                <a
+                  href="#"
+                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
+                  >View
+                  Details</a
+                >
               </div>
             </div>
           </div>
@@ -201,159 +724,519 @@
       </section>
 
       <!-- Blog Section -->
-      <section id="blog" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-6">From My Blog</h2>
-          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10">
-            I share insights, tutorials, and reflections on web development, technology trends, and best practices.
+      <section
+        id="blog"
+        class="py-20 bg-white"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4"
+        >
+          <h2
+            class="text-4xl font-bold text-center mb-6"
+          >
+            From My
+            Blog
+          </h2>
+          <p
+            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
+          >
+            I share
+            insights,
+            tutorials,
+            and
+            reflections
+            on web
+            development,
+            technology
+            trends,
+            and best
+            practices.
           </p>
-          <div class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Blog posts will be rendered dynamically via JS -->
+          <div
+            class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Blog posts will be rendered dynamically via JavaScript -->
           </div>
         </div>
       </section>
 
-      <!-- Blog Post Detail Container (Full post) -->
-      <div id="blog-post-container" class="max-w-3xl mx-auto my-10 px-4 hidden">
-        <button class="bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 mb-4" onclick="hideBlogDetail()">&larr; Back to Blog</button>
-        <div class="bg-white shadow-md rounded-lg p-6">
-          <h1 id="detail-title" class="text-3xl font-bold mb-4"></h1>
-          <div id="detail-content" class="text-gray-700 leading-relaxed"></div>
+      <!-- Blog Post Detail Container (Full Post) -->
+      <div
+        id="blog-post-container"
+        class="max-w-3xl mx-auto my-10 px-4 hidden"
+      >
+        <button
+          class="bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 mb-4"
+          onclick="hideBlogDetail()"
+        >
+          &larr;
+          Back to
+          Blog
+        </button>
+        <div
+          class="bg-white shadow-md rounded-lg p-6"
+        >
+          <h1
+            id="detail-title"
+            class="text-3xl font-bold mb-4"
+          ></h1>
+          <div
+            id="detail-content"
+            class="text-gray-700 leading-relaxed"
+          ></div>
         </div>
       </div>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-6">Get In Touch</h2>
-          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10">
-            Have a project in mind? Let's connect and discuss how I can help turn your ideas into reality.
+      <section
+        id="contact"
+        class="py-20 bg-gray-50"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4"
+        >
+          <h2
+            class="text-4xl font-bold text-center mb-6"
+          >
+            Get In
+            Touch
+          </h2>
+          <p
+            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
+          >
+            Have a
+            project
+            in mind?
+            Let's
+            connect
+            and
+            discuss
+            how I
+            can help
+            turn
+            your
+            ideas
+            into
+            reality.
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
             <!-- Contact Info -->
-            <div class="space-y-6">
-              <div class="flex items-center space-x-4">
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                  <i class="fas fa-envelope text-blue-700 text-2xl"></i>
+            <div
+              class="space-y-6"
+            >
+              <div
+                class="flex items-center space-x-4"
+              >
+                <div
+                  class="p-4 bg-white rounded-lg shadow-md"
+                >
+                  <i
+                    class="fas fa-envelope text-blue-700 text-2xl"
+                  ></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold">Email</h3>
-                  <p class="text-gray-600">hello@marijnbaar.com</p>
+                  <h3
+                    class="text-xl font-bold"
+                  >
+                    Email
+                  </h3>
+                  <p
+                    class="text-gray-600"
+                  >
+                    hello@marijnbaar.com
+                  </p>
                 </div>
               </div>
-              <div class="flex items-center space-x-4">
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                  <i class="fas fa-phone text-blue-700 text-2xl"></i>
+              <div
+                class="flex items-center space-x-4"
+              >
+                <div
+                  class="p-4 bg-white rounded-lg shadow-md"
+                >
+                  <i
+                    class="fas fa-phone text-blue-700 text-2xl"
+                  ></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold">Phone</h3>
-                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                  <h3
+                    class="text-xl font-bold"
+                  >
+                    Phone
+                  </h3>
+                  <p
+                    class="text-gray-600"
+                  >
+                    +1
+                    (555)
+                    123-4567
+                  </p>
                 </div>
               </div>
-              <div class="flex items-center space-x-4">
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                  <i class="fas fa-map-marker-alt text-blue-700 text-2xl"></i>
+              <div
+                class="flex items-center space-x-4"
+              >
+                <div
+                  class="p-4 bg-white rounded-lg shadow-md"
+                >
+                  <i
+                    class="fas fa-map-marker-alt text-blue-700 text-2xl"
+                  ></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold">Location</h3>
-                  <p class="text-gray-600">San Francisco, CA</p>
+                  <h3
+                    class="text-xl font-bold"
+                  >
+                    Location
+                  </h3>
+                  <p
+                    class="text-gray-600"
+                  >
+                    San
+                    Francisco,
+                    CA
+                  </p>
                 </div>
               </div>
             </div>
             <!-- Contact Form -->
-            <form class="bg-white p-6 rounded-lg shadow-md space-y-4">
+            <form
+              class="bg-white p-6 rounded-lg shadow-md space-y-4"
+            >
               <div>
-                <label class="block text-gray-700 font-semibold mb-1" for="name">Your Name</label>
-                <input type="text" id="name" placeholder="John Doe" class="w-full p-3 border border-gray-300 rounded" />
+                <label
+                  class="block text-gray-700 font-semibold mb-1"
+                  for="name"
+                  >Your
+                  Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="John Doe"
+                  class="w-full p-3 border border-gray-300 rounded"
+                />
               </div>
               <div>
-                <label class="block text-gray-700 font-semibold mb-1" for="email">Email Address</label>
-                <input type="email" id="email" placeholder="john@example.com" class="w-full p-3 border border-gray-300 rounded" />
+                <label
+                  class="block text-gray-700 font-semibold mb-1"
+                  for="email"
+                  >Email
+                  Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="john@example.com"
+                  class="w-full p-3 border border-gray-300 rounded"
+                />
               </div>
               <div>
-                <label class="block text-gray-700 font-semibold mb-1" for="subject">Subject</label>
-                <input type="text" id="subject" placeholder="Project Inquiry" class="w-full p-3 border border-gray-300 rounded" />
+                <label
+                  class="block text-gray-700 font-semibold mb-1"
+                  for="subject"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  placeholder="Project Inquiry"
+                  class="w-full p-3 border border-gray-300 rounded"
+                />
               </div>
               <div>
-                <label class="block text-gray-700 font-semibold mb-1" for="message">Message</label>
-                <textarea id="message" placeholder="Tell me about your project..." class="w-full p-3 border border-gray-300 rounded"></textarea>
+                <label
+                  class="block text-gray-700 font-semibold mb-1"
+                  for="message"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  placeholder="Tell me about your project..."
+                  class="w-full p-3 border border-gray-300 rounded"
+                ></textarea>
               </div>
-              <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition w-full">Send Message</button>
+              <button
+                type="submit"
+                class="bg-blue-700 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition w-full"
+              >
+                Send
+                Message
+              </button>
             </form>
           </div>
         </div>
       </section>
 
       <!-- Footer -->
-      <footer class="bg-gray-900 text-white pt-12 pb-6 relative">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-700 to-green-500"></div>
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer
+        class="bg-gray-900 text-white pt-12 pb-6 relative"
+      >
+        <div
+          class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-700 to-green-500"
+        ></div>
+        <div
+          class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8"
+        >
           <div>
-            <h3 class="text-xl font-bold mb-4">Marijn Baar</h3>
-            <p class="text-gray-400">
-              Creating elegant, efficient, and effective web solutions to help businesses thrive in the digital landscape.
+            <h3
+              class="text-xl font-bold mb-4"
+            >
+              Marijn
+              Baar
+            </h3>
+            <p
+              class="text-gray-400"
+            >
+              Creating
+              elegant,
+              efficient,
+              and
+              effective
+              web
+              solutions
+              to
+              help
+              businesses
+              thrive
+              in the
+              digital
+              landscape.
             </p>
-            <div class="flex space-x-4 mt-4">
-              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
-                <i class="fab fa-github"></i>
+            <div
+              class="flex space-x-4 mt-4"
+            >
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
+              >
+                <i
+                  class="fab fa-github"
+                ></i>
               </a>
-              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
-                <i class="fab fa-twitter"></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
+              >
+                <i
+                  class="fab fa-twitter"
+                ></i>
               </a>
-              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
-                <i class="fab fa-linkedin-in"></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
+              >
+                <i
+                  class="fab fa-linkedin-in"
+                ></i>
               </a>
-              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
-                <i class="fab fa-dribbble"></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
+              >
+                <i
+                  class="fab fa-dribbble"
+                ></i>
               </a>
             </div>
           </div>
           <div>
-            <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
-            <ul class="space-y-2">
-              <li><a href="#about" class="hover:text-white">About Me</a></li>
-              <li><a href="#portfolio" class="hover:text-white">Portfolio</a></li>
-              <li><a href="#blog" class="hover:text-white">Blog</a></li>
-              <li><a href="#contact" class="hover:text-white">Contact</a></li>
+            <h4
+              class="text-lg font-semibold mb-3"
+            >
+              Quick
+              Links
+            </h4>
+            <ul
+              class="space-y-2"
+            >
+              <li>
+                <a
+                  href="#about"
+                  class="hover:text-white"
+                  >About
+                  Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="hover:text-white"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#blog"
+                  class="hover:text-white"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-white"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="text-lg font-semibold mb-3">Services</h4>
-            <ul class="space-y-2">
-              <li><a href="#" class="hover:text-white">Web Development</a></li>
-              <li><a href="#" class="hover:text-white">Mobile Apps</a></li>
-              <li><a href="#" class="hover:text-white">UX/UI Design</a></li>
-              <li><a href="#" class="hover:text-white">Consulting</a></li>
+            <h4
+              class="text-lg font-semibold mb-3"
+            >
+              Services
+            </h4>
+            <ul
+              class="space-y-2"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  >Web
+                  Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  >Mobile
+                  Apps</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  >UX/UI
+                  Design</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  >Consulting</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="text-lg font-semibold mb-3">Stay Updated</h4>
-            <p class="text-gray-400 mb-3">Subscribe to my newsletter for the latest articles, tutorials, and project updates.</p>
-            <form class="flex">
-              <input type="email" placeholder="Your email address" class="flex-grow p-2 rounded-l border-none text-white" />
-              <button type="submit" class="bg-yellow-400 text-dark px-4 py-2 rounded-r"><i class="fas fa-paper-plane"></i></button>
+            <h4
+              class="text-lg font-semibold mb-3"
+            >
+              Stay
+              Updated
+            </h4>
+            <p
+              class="text-gray-400 mb-3"
+            >
+              Subscribe
+              to my
+              newsletter
+              for
+              the
+              latest
+              articles,
+              tutorials,
+              and
+              project
+              updates.
+            </p>
+            <form
+              class="flex"
+            >
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="flex-grow p-2 rounded-l border-none text-white"
+              />
+              <button
+                type="submit"
+                class="bg-yellow-400 text-dark px-4 py-2 rounded-r"
+              >
+                <i
+                  class="fas fa-paper-plane"
+                ></i>
+              </button>
             </form>
           </div>
         </div>
-        <p class="text-center mt-8 text-gray-500 text-sm">&copy; 2025 Marijn Baar. All rights reserved.</p>
+        <p
+          class="text-center mt-8 text-gray-500 text-sm"
+        >
+          &copy;
+          2025
+          Marijn
+          Baar. All
+          rights
+          reserved.
+        </p>
       </footer>
     </div>
 
     <!-- New Blog Form (for Authenticated Users) -->
-    <div id="new-blog-form" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-      <div class="bg-white p-6 rounded-md w-11/12 max-w-xl relative">
-        <a href="#" class="text-blue-700 font-semibold mb-4 block" onclick="backToMain(event)">&larr; Back to Home</a>
-        <h1 class="text-3xl font-bold mb-6">Create New Blog Post</h1>
-        <form id="blog-form" class="space-y-4">
+    <div
+      id="new-blog-form"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50"
+    >
+      <div
+        class="bg-white p-6 rounded-md w-11/12 max-w-xl relative"
+      >
+        <a
+          href="#"
+          class="text-blue-700 font-semibold mb-4 block"
+          onclick="backToMain(event)"
+          >&larr;
+          Back to
+          Home</a
+        >
+        <h1
+          class="text-3xl font-bold mb-6"
+        >
+          Create New
+          Blog Post
+        </h1>
+        <form
+          id="blog-form"
+          class="space-y-4"
+        >
           <div>
-            <label class="block text-gray-700 font-medium mb-2" for="blog-title">Title</label>
-            <input type="text" id="blog-title" required class="w-full p-3 border border-gray-300 rounded" />
+            <label
+              class="block text-gray-700 font-medium mb-2"
+              for="blog-title"
+              >Title</label
+            >
+            <input
+              type="text"
+              id="blog-title"
+              required
+              class="w-full p-3 border border-gray-300 rounded"
+            />
           </div>
           <div>
-            <label class="block text-gray-700 font-medium mb-2" for="blog-content">Content</label>
-            <textarea id="blog-content" required class="w-full p-3 border border-gray-300 rounded" rows="6"></textarea>
+            <label
+              class="block text-gray-700 font-medium mb-2"
+              for="blog-content"
+              >Content</label
+            >
+            <textarea
+              id="blog-content"
+              required
+              class="w-full p-3 border border-gray-300 rounded"
+              rows="6"
+            ></textarea>
           </div>
-          <button type="submit" class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition">Publish Post</button>
+          <button
+            type="submit"
+            class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition"
+          >
+            Publish
+            Post
+          </button>
         </form>
       </div>
     </div>
@@ -361,201 +1244,526 @@
     <!-- JavaScript -->
     <script>
       // Mobile nav toggle
-      const menuBtn = document.getElementById('menuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      menuBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-      });
+      const menuBtn =
+        document.getElementById(
+          "menuBtn",
+        );
+      const mobileNav =
+        document.getElementById(
+          "mobileNav",
+        );
+      menuBtn.addEventListener(
+        "click",
+        () => {
+          mobileNav.classList.toggle(
+            "hidden",
+          );
+        },
+      );
 
       // ----- Authentication & Blog Management Functions -----
 
       async function updateAuthButtons() {
-        const authButtons = document.getElementById("auth-buttons");
-        const token = localStorage.getItem("token");
+        const authButtons =
+          document.getElementById(
+            "auth-buttons",
+          );
+        const token =
+          localStorage.getItem(
+            "token",
+          );
         if (token) {
-          authButtons.innerHTML = '<button class="btn" onclick="logoutUser()">Logout</button>';
-          document.getElementById("new-blog-btn").style.display = "inline-block";
+          authButtons.innerHTML =
+            '<button class="btn" onclick="logoutUser()">Logout</button>';
+          document.getElementById(
+            "new-blog-btn",
+          ).style.display =
+            "inline-block";
         } else {
-          authButtons.innerHTML = '<button class="btn" onclick="openLoginModal()">Login</button>';
-          document.getElementById("new-blog-btn").style.display = "none";
+          authButtons.innerHTML =
+            '<button class="btn" onclick="openLoginModal()">Login</button>';
+          document.getElementById(
+            "new-blog-btn",
+          ).style.display =
+            "none";
         }
         await loadBlogPosts();
       }
 
       function openLoginModal() {
-        document.getElementById("login-modal").classList.remove("hidden");
+        document
+          .getElementById(
+            "login-modal",
+          )
+          .classList.remove(
+            "hidden",
+          );
       }
 
       function closeLoginModal() {
-        document.getElementById("login-modal").classList.add("hidden");
+        document
+          .getElementById(
+            "login-modal",
+          )
+          .classList.add(
+            "hidden",
+          );
       }
 
       async function loginUser() {
-        const username = document.getElementById("loginUsername").value;
-        const password = document.getElementById("loginPassword").value;
+        const username =
+          document.getElementById(
+            "loginUsername",
+          ).value;
+        const password =
+          document.getElementById(
+            "loginPassword",
+          ).value;
         try {
-          const response = await fetch("https://personalsite-2xti.onrender.com/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
-          });
-          const data = await response.json();
-          if (data.token) {
-            localStorage.setItem("token", data.token);
-            alert("Logged in successfully!");
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/auth/login",
+              {
+                method:
+                  "POST",
+                headers:
+                  {
+                    "Content-Type":
+                      "application/json",
+                  },
+                body: JSON.stringify(
+                  {
+                    username,
+                    password,
+                  },
+                ),
+              },
+            );
+          const data =
+            await response.json();
+          if (
+            data.token
+          ) {
+            localStorage.setItem(
+              "token",
+              data.token,
+            );
+            alert(
+              "Logged in successfully!",
+            );
             closeLoginModal();
             updateAuthButtons();
           } else {
-            alert("Login failed: " + (data.error || "Unknown error"));
+            alert(
+              "Login failed: " +
+                (data.error ||
+                  "Unknown error"),
+            );
           }
         } catch (error) {
-          console.error("Login error:", error);
-          alert("An error occurred during login.");
+          console.error(
+            "Login error:",
+            error,
+          );
+          alert(
+            "An error occurred during login.",
+          );
         }
       }
 
       async function logoutUser() {
-        localStorage.removeItem("token");
-        alert("Logged out");
+        localStorage.removeItem(
+          "token",
+        );
+        alert(
+          "Logged out",
+        );
         updateAuthButtons();
       }
 
       async function loadBlogPosts() {
         try {
-          const response = await fetch("https://personalsite-2xti.onrender.com/api/blogposts");
-          const posts = await response.json();
-          renderBlogPosts(posts);
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/blogposts",
+            );
+          const posts =
+            await response.json();
+          renderBlogPosts(
+            posts,
+          );
         } catch (error) {
-          console.error("Error loading blog posts:", error);
+          console.error(
+            "Error loading blog posts:",
+            error,
+          );
         }
       }
 
-      function renderBlogPosts(posts) {
-        const blogGrid = document.querySelector(".blog-grid");
-        blogGrid.innerHTML = "";
-        posts.forEach(post => {
-          const blogCard = document.createElement("div");
-          blogCard.className = "blog-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col";
-          blogCard.setAttribute("data-id", post._id);
-          blogCard.innerHTML = `
+      function renderBlogPosts(
+        posts,
+      ) {
+        const blogGrid =
+          document.querySelector(
+            ".blog-grid",
+          );
+        blogGrid.innerHTML =
+          "";
+        posts.forEach(
+          (
+            post,
+          ) => {
+            const blogCard =
+              document.createElement(
+                "div",
+              );
+            blogCard.className =
+              "blog-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col";
+            blogCard.setAttribute(
+              "data-id",
+              post._id,
+            );
+            blogCard.innerHTML = `
             <div class="blog-image relative h-48 overflow-hidden">
               <div class="absolute inset-0 bg-blue-700 opacity-80"></div>
-              <div class="absolute inset-0 flex items-center justify-center text-white text-5xl z-10">${post.title.charAt(0)}</div>
+              <div class="absolute inset-0 flex items-center justify-center text-white text-5xl z-10">
+                ${post.title.charAt(
+                  0,
+                )}
+              </div>
             </div>
             <div class="blog-content p-4 flex-grow flex flex-col">
-              <span class="blog-date text-sm text-gray-500 mb-1">${post.date || "Unknown Date"}</span>
-              <h3 class="blog-title text-xl font-bold mb-2">${post.title}</h3>
-              <p class="blog-excerpt flex-grow text-gray-600">${post.content.substring(0, 100)}...</p>
-              <a href="#" class="btn btn-secondary text-sm" onclick="showBlogDetail('${post.title}', \`${post.content}\`)">Read More</a>
+              <span class="blog-date text-sm text-gray-500 mb-1">${
+                post.date ||
+                "Unknown Date"
+              }</span>
+              <h3 class="blog-title text-xl font-bold mb-2">${
+                post.title
+              }</h3>
+              <p class="blog-excerpt flex-grow text-gray-600">${post.content.substring(
+                0,
+                100,
+              )}...</p>
+              <a href="#" class="btn btn-secondary text-sm" onclick="showBlogDetail('${
+                post.title
+              }', \`${
+              post.content
+            }\`)">Read More</a>
             </div>
           `;
-          if (localStorage.getItem("token")) {
-            const delBtn = document.createElement("button");
-            delBtn.className = "btn btn-accent text-sm mt-2 self-start";
-            delBtn.innerText = "Delete";
-            delBtn.onclick = () => deletePost(post._id);
-            blogCard.querySelector(".blog-content").appendChild(delBtn);
-          }
-          blogGrid.appendChild(blogCard);
-        });
+            if (
+              localStorage.getItem(
+                "token",
+              )
+            ) {
+              const delBtn =
+                document.createElement(
+                  "button",
+                );
+              delBtn.className =
+                "btn btn-accent text-sm mt-2 self-start";
+              delBtn.innerText =
+                "Delete";
+              delBtn.onclick =
+                () =>
+                  deletePost(
+                    post._id,
+                  );
+              blogCard
+                .querySelector(
+                  ".blog-content",
+                )
+                .appendChild(
+                  delBtn,
+                );
+            }
+            blogGrid.appendChild(
+              blogCard,
+            );
+          },
+        );
       }
 
-      function showBlogDetail(title, content) {
-        document.getElementById("detail-title").textContent = title;
-        document.getElementById("detail-content").innerHTML = content;
-        document.querySelector(".blog-grid").classList.add("hidden");
-        document.getElementById("blog-post-container").classList.remove("hidden");
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      function showBlogDetail(
+        title,
+        content,
+      ) {
+        document.getElementById(
+          "detail-title",
+        ).textContent =
+          title;
+        document.getElementById(
+          "detail-content",
+        ).innerHTML =
+          content;
+        document
+          .querySelector(
+            ".blog-grid",
+          )
+          .classList.add(
+            "hidden",
+          );
+        document
+          .getElementById(
+            "blog-post-container",
+          )
+          .classList.remove(
+            "hidden",
+          );
+        window.scrollTo(
+          {
+            top: 0,
+            behavior:
+              "smooth",
+          },
+        );
       }
 
       function hideBlogDetail() {
-        document.getElementById("blog-post-container").classList.add("hidden");
-        document.querySelector(".blog-grid").classList.remove("hidden");
+        document
+          .querySelector(
+            ".blog-grid",
+          )
+          .classList.remove(
+            "hidden",
+          );
+        document
+          .getElementById(
+            "blog-post-container",
+          )
+          .classList.add(
+            "hidden",
+          );
       }
 
-      async function deletePost(id) {
-        if (!confirm("Are you sure you want to delete this post?")) return;
+      async function submitBlogPost(
+        event,
+      ) {
+        event.preventDefault();
+        const titleInput =
+          document.getElementById(
+            "blog-title",
+          );
+        const contentInput =
+          document.getElementById(
+            "blog-content",
+          );
+        const title =
+          titleInput.value.trim();
+        const content =
+          contentInput.value.trim();
+        const token =
+          localStorage.getItem(
+            "token",
+          );
+        if (
+          !token
+        ) {
+          alert(
+            "You must be logged in to create a post",
+          );
+          return;
+        }
         try {
-          const token = localStorage.getItem("token");
-          const response = await fetch(`https://personalsite-2xti.onrender.com/api/blogposts/${id}`, {
-            method: "DELETE",
-            headers: { "Authorization": "Bearer " + token }
-          });
-          const data = await response.json();
-          if (response.ok) {
-            alert("Post deleted successfully!");
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/blogposts",
+              {
+                method:
+                  "POST",
+                headers:
+                  {
+                    "Content-Type":
+                      "application/json",
+                    Authorization: `Bearer ${token}`,
+                  },
+                body: JSON.stringify(
+                  {
+                    title,
+                    content,
+                  },
+                ),
+              },
+            );
+          if (
+            response.ok
+          ) {
+            alert(
+              "Blog post created successfully!",
+            );
+            titleInput.value =
+              "";
+            contentInput.value =
+              "";
+            backToMain(
+              {
+                preventDefault:
+                  () => {},
+              },
+            );
             loadBlogPosts();
           } else {
-            alert("Error deleting post: " + (data.error || response.statusText));
+            const result =
+              await response.json();
+            alert(
+              "Error creating post: " +
+                (result.error ||
+                  "Unknown error"),
+            );
           }
         } catch (error) {
-          console.error("Error deleting post:", error);
-          alert("An error occurred while deleting the post.");
+          console.error(
+            "Error creating post:",
+            error,
+          );
+          alert(
+            "An error occurred while creating the post.",
+          );
         }
       }
 
-      async function addPost(e) {
-        e.preventDefault();
-        const titleInput = document.getElementById("blog-title");
-        const contentInput = document.getElementById("blog-content");
-        const title = titleInput.value.trim();
-        const content = contentInput.value.trim();
-        if (!title || !content) return alert("Please provide both title and content.");
+      async function deletePost(
+        postId,
+      ) {
+        if (
+          !confirm(
+            "Are you sure you want to delete this post?",
+          )
+        ) {
+          return;
+        }
+        const token =
+          localStorage.getItem(
+            "token",
+          );
         try {
-          const token = localStorage.getItem("token");
-          const response = await fetch("https://personalsite-2xti.onrender.com/api/blogposts", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer " + token
-            },
-            body: JSON.stringify({ title, content })
-          });
-          if (response.ok) {
-            alert("Post published successfully!");
-            titleInput.value = "";
-            contentInput.value = "";
-            document.getElementById("new-blog-form").classList.add("hidden");
-            document.getElementById("main-content").classList.remove("hidden");
+          const response =
+            await fetch(
+              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
+              {
+                method:
+                  "DELETE",
+                headers:
+                  {
+                    Authorization: `Bearer ${token}`,
+                  },
+              },
+            );
+          if (
+            response.ok
+          ) {
+            alert(
+              "Post deleted successfully!",
+            );
             loadBlogPosts();
           } else {
-            const data = await response.json();
-            alert("Error publishing post: " + (data.error || response.statusText));
+            const result =
+              await response.json();
+            alert(
+              "Error deleting post: " +
+                (result.error ||
+                  "Unknown error"),
+            );
           }
         } catch (error) {
-          console.error("Error publishing post:", error);
-          alert("An error occurred while publishing the post.");
+          console.error(
+            "Error deleting post:",
+            error,
+          );
+          alert(
+            "An error occurred while deleting the post.",
+          );
         }
       }
 
-      function showNewBlogForm(e) {
-        e.preventDefault();
-        document.getElementById("main-content").classList.add("hidden");
-        document.getElementById("new-blog-form").classList.remove("hidden");
+      function showNewBlogForm(
+        event,
+      ) {
+        event.preventDefault();
+        document
+          .getElementById(
+            "main-content",
+          )
+          .classList.add(
+            "hidden",
+          );
+        document
+          .getElementById(
+            "new-blog-form",
+          )
+          .classList.remove(
+            "hidden",
+          );
       }
 
-      function backToMain(e) {
-        e.preventDefault();
-        document.getElementById("new-blog-form").classList.add("hidden");
-        document.getElementById("main-content").classList.remove("hidden");
+      function backToMain(
+        event,
+      ) {
+        event.preventDefault();
+        document
+          .getElementById(
+            "new-blog-form",
+          )
+          .classList.add(
+            "hidden",
+          );
+        document
+          .getElementById(
+            "main-content",
+          )
+          .classList.remove(
+            "hidden",
+          );
       }
 
       function init() {
         updateAuthButtons();
-        document.getElementById("blog-form").addEventListener("submit", addPost);
-        document.querySelectorAll(".back-to-home").forEach(link => {
-          link.addEventListener("click", backToMain);
-        });
+        document
+          .getElementById(
+            "blog-form",
+          )
+          .addEventListener(
+            "submit",
+            submitBlogPost,
+          );
+        document
+          .querySelectorAll(
+            ".back-to-home",
+          )
+          .forEach(
+            (
+              link,
+            ) => {
+              link.addEventListener(
+                "click",
+                backToMain,
+              );
+            },
+          );
       }
 
-      window.addEventListener("DOMContentLoaded", init);
+      window.addEventListener(
+        "DOMContentLoaded",
+        init,
+      );
 
-      window.onclick = function(event) {
-        const modal = document.getElementById("login-modal");
-        if (event.target === modal) {
-          modal.classList.add("hidden");
-        }
-      };
+      window.onclick =
+        function (
+          event,
+        ) {
+          const modal =
+            document.getElementById(
+              "login-modal",
+            );
+          if (
+            event.target ===
+            modal
+          ) {
+            modal.classList.add(
+              "hidden",
+            );
+          }
+        };
     </script>
   </body>
 </html>
