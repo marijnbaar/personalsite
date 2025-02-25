@@ -22,12 +22,205 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
+      /* Custom color palette */
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --secondary: #10b981;
+        --accent: #f59e0b;
+        --dark: #1f2937;
+        --light: #f9fafb;
+        --gray-light: #f3f4f6;
+      }
+
+      /* Custom Typography */
+      body {
+        font-family: "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        line-height: 1.5;
+        color: var(
+          --dark
+        );
+      }
+
+      /* Focus ring and link hover (Josh Comeau style) */
+      *:focus-visible {
+        outline: 3px
+          solid
+          var(
+            --accent
+          );
+        outline-offset: 2px;
+      }
+      .link-underline {
+        position: relative;
+      }
+      .link-underline::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: currentColor;
+        transform: scaleX(
+          0
+        );
+        transform-origin: right;
+        transition: transform
+          0.3s ease;
+      }
+      .link-underline:hover::after {
+        transform: scaleX(
+          1
+        );
+        transform-origin: left;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(
+          --light
+        );
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Button styles */
+      .btn-primary {
+        background-color: var(
+          --primary
+        );
+        color: white;
+        padding: 0.75rem
+          1.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all
+          0.2s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(
+            255,
+            255,
+            255,
+            0.2
+          ),
+          transparent
+        );
+        transition: left
+          0.7s ease;
+        z-index: -1;
+      }
+      .btn-primary:hover {
+        transform: translateY(
+          -2px
+        );
+        box-shadow: 0
+          4px 12px
+          rgba(
+            59,
+            130,
+            246,
+            0.3
+          );
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .btn-secondary {
+        background-color: var(
+          --secondary
+        );
+        color: white;
+        padding: 0.75rem
+          1.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all
+          0.2s ease;
+      }
+      .btn-secondary:hover {
+        transform: translateY(
+          -2px
+        );
+        box-shadow: 0
+          4px 12px
+          rgba(
+            16,
+            185,
+            129,
+            0.3
+          );
+      }
+
+      /* Card hover effect */
+      .hover-card {
+        transition: transform
+            0.3s
+            ease,
+          box-shadow
+            0.3s
+            ease;
+      }
+      .hover-card:hover {
+        transform: translateY(
+          -8px
+        );
+        box-shadow: 0
+            20px
+            25px -5px
+            rgba(
+              0,
+              0,
+              0,
+              0.1
+            ),
+          0 10px
+            10px -5px
+            rgba(
+              0,
+              0,
+              0,
+              0.04
+            );
+      }
+
       /* Custom Keyframes for Animations */
       @keyframes slideUp {
+        from {
+          transform: translateY(
+            40px
+          );
+          opacity: 0;
+        }
         to {
           transform: translateY(
             0
           );
+          opacity: 1;
         }
       }
       .animate-slideUp {
@@ -35,7 +228,6 @@
           0.8s
           forwards;
       }
-
       @keyframes float {
         0% {
           transform: translateY(
@@ -69,7 +261,7 @@
           infinite;
       }
 
-      /* New: Wiggle animation for the logo */
+      /* Wiggle animation for the logo */
       @keyframes wiggle {
         0%,
         100% {
@@ -79,12 +271,12 @@
         }
         25% {
           transform: rotate(
-            3deg
+            5deg
           );
         }
         75% {
           transform: rotate(
-            -3deg
+            -5deg
           );
         }
       }
@@ -94,7 +286,7 @@
           ease-in-out;
       }
 
-      /* New: Fade in for nav items with stagger */
+      /* Fade in for nav items with stagger */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -135,52 +327,135 @@
         ) {
         animation-delay: 0.5s;
       }
+
+      /* Blog card enhancements */
+      .blog-card {
+        transition: transform
+            0.3s
+            cubic-bezier(
+              0.34,
+              1.56,
+              0.64,
+              1
+            ),
+          box-shadow
+            0.3s
+            ease;
+      }
+      .blog-card:hover {
+        transform: translateY(
+            -8px
+          )
+          scale(
+            1.02
+          );
+      }
+      .blog-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .blog-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(
+            --primary
+          ),
+          var(
+            --secondary
+          )
+        );
+        opacity: 0.8;
+        z-index: 1;
+      }
+      .blog-date {
+        display: inline-block;
+        font-size: 0.875rem;
+        color: var(
+          --primary
+        );
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Enhanced blog detail view */
+      .blog-detail-container {
+        max-width: 65ch;
+        line-height: 1.7;
+      }
+      .blog-detail-container
+        h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      .blog-detail-container
+        p {
+        margin-bottom: 1.5rem;
+      }
+
+      /* Custom selection */
+      ::selection {
+        background-color: var(
+          --accent
+        );
+        color: white;
+      }
     </style>
   </head>
   <body
     class="bg-gray-50 text-gray-800"
   >
-    <!-- Header -->
+    <!-- Header with animations -->
     <header
       id="header"
-      class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50 transition-all duration-300"
+      class="fixed top-0 left-0 right-0 bg-white bg-opacity-80 backdrop-filter backdrop-blur-md z-50 transition-all duration-300 border-b border-gray-100"
     >
       <div
         class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
       >
-        <!-- Logo with wiggle on hover -->
+        <!-- Logo with wiggle effect -->
         <a
           href="#"
-          class="text-2xl font-serif font-bold text-gray-900 hover:animate-wiggle"
+          class="text-2xl font-serif font-bold text-gray-900 hover:animate-wiggle relative group"
         >
           Marijn
           <span
-            class="text-blue-700"
+            class="text-blue-600"
             >Baar</span
           >
+          <span
+            class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-green-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
+          ></span>
         </a>
-        <!-- Navigation with fade in effect -->
+        <!-- Navigation with fade in -->
         <nav
-          class="hidden md:flex space-x-6 items-center"
+          class="hidden md:flex space-x-8 items-center"
         >
           <a
             href="#about"
-            class="nav-item hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-600 transition link-underline"
             >About</a
           >
           <a
             href="#portfolio"
-            class="nav-item hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-600 transition link-underline"
             >Portfolio</a
           >
           <a
             href="#blog"
-            class="nav-item hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-600 transition link-underline"
             >Blog</a
           >
           <a
             href="#contact"
-            class="nav-item hover:text-blue-700 transition"
+            class="nav-item hover:text-blue-600 transition link-underline"
             >Contact</a
           >
         </nav>
@@ -191,13 +466,17 @@
             id="auth-buttons"
             class="flex items-center"
           ></div>
-          <!-- New Post button (visible only when logged in) -->
+          <!-- New Post button -->
           <button
             id="new-blog-btn"
-            class="hidden bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            class="hidden bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2 rounded-full hover:shadow-lg transition transform hover:-translate-y-1"
             onclick="showNewBlogForm(event)"
           >
-            New Post
+            <i
+              class="fas fa-plus mr-2"
+            ></i
+            >New
+            Post
           </button>
         </div>
         <button
@@ -209,39 +488,47 @@
           ></i>
         </button>
       </div>
-      <!-- Mobile Nav -->
+      <!-- Mobile Navigation -->
       <nav
         id="mobileNav"
-        class="hidden bg-white shadow-md"
+        class="hidden bg-white shadow-lg rounded-b-lg mx-4 mt-2 overflow-hidden"
       >
         <ul
-          class="flex flex-col space-y-4 p-4"
+          class="flex flex-col p-4"
         >
-          <li>
+          <li
+            class="py-2 border-b border-gray-100"
+          >
             <a
               href="#about"
-              class="hover:text-blue-700 transition"
+              class="hover:text-blue-600 transition block"
               >About</a
             >
           </li>
-          <li>
+          <li
+            class="py-2 border-b border-gray-100"
+          >
             <a
               href="#portfolio"
-              class="hover:text-blue-700 transition"
+              class="hover:text-blue-600 transition block"
               >Portfolio</a
             >
           </li>
-          <li>
+          <li
+            class="py-2 border-b border-gray-100"
+          >
             <a
               href="#blog"
-              class="hover:text-blue-700 transition"
+              class="hover:text-blue-600 transition block"
               >Blog</a
             >
           </li>
-          <li>
+          <li
+            class="py-2"
+          >
             <a
               href="#contact"
-              class="hover:text-blue-700 transition"
+              class="hover:text-blue-600 transition block"
               >Contact</a
             >
           </li>
@@ -252,42 +539,61 @@
     <!-- Login Modal -->
     <div
       id="login-modal"
-      class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center z-50"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm"
     >
       <div
-        class="bg-white rounded-lg p-6 w-11/12 max-w-sm relative"
+        class="bg-white rounded-xl p-8 w-11/12 max-w-md relative shadow-2xl transform transition-all"
       >
         <button
-          class="absolute top-2 right-2 text-gray-600 text-2xl"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl transition"
           onclick="closeLoginModal()"
         >
           &times;
         </button>
         <h2
-          class="text-2xl font-bold mb-4"
+          class="text-3xl font-bold mb-6 text-gray-800"
         >
-          Login
+          Welcome
+          Back
         </h2>
-        <input
-          type="text"
-          id="loginUsername"
-          placeholder="Username"
-          class="w-full p-3 border border-gray-300 rounded mb-3"
-        />
-        <input
-          type="password"
-          id="loginPassword"
-          placeholder="Password"
-          class="w-full p-3 border border-gray-300 rounded mb-4"
-        />
-        <button
-          class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-600 transition"
-          onclick="loginUser()"
+        <div
+          class="space-y-4"
         >
-          Login
-        </button>
+          <div>
+            <label
+              for="loginUsername"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Username</label
+            >
+            <input
+              type="text"
+              id="loginUsername"
+              placeholder="Enter your username"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            />
+          </div>
+          <div>
+            <label
+              for="loginPassword"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter your password"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            />
+          </div>
+          <button
+            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 font-medium"
+            onclick="loginUser()"
+          >
+            Sign In
+          </button>
+        </div>
         <p
-          class="text-sm text-gray-500 mt-2"
+          class="text-sm text-gray-500 mt-4 text-center"
         >
           (Use your
           credentials)
@@ -304,15 +610,28 @@
       <section
         class="min-h-screen flex flex-col md:flex-row items-center px-4 md:px-8 py-20 relative overflow-hidden"
       >
-        <!-- Floating circles -->
+        <!-- Floating shapes -->
         <div
-          class="absolute top-[-150px] right-[-100px] w-96 h-96 rounded-full bg-yellow-400 opacity-20 z-[-1]"
+          class="absolute top-[-150px] right-[-100px] w-96 h-96 rounded-full bg-yellow-400 opacity-20 z-[-1] animate-float"
+          style="
+            animation-delay: 0s;
+          "
         ></div>
         <div
-          class="absolute bottom-[-100px] left-10 w-72 h-72 rounded-full bg-blue-700 opacity-10 z-[-1]"
+          class="absolute bottom-[-100px] left-10 w-72 h-72 rounded-full bg-blue-600 opacity-10 z-[-1] animate-float"
+          style="
+            animation-delay: 2s;
+          "
         ></div>
         <div
-          class="flex-1 space-y-6"
+          class="absolute top-[20%] left-[-50px] w-40 h-40 rounded-full bg-green-500 opacity-15 z-[-1] animate-float"
+          style="
+            animation-delay: 4s;
+          "
+        ></div>
+
+        <div
+          class="flex-1 space-y-8"
         >
           <h1
             class="text-5xl md:text-6xl font-serif font-bold leading-tight"
@@ -329,12 +648,21 @@
               style="
                 animation-delay: 0.3s;
               "
-              >Consultant.
-              Innovator.</span
+              >Consultant.</span
+            >
+            <span
+              class="block animate-slideUp text-blue-600"
+              style="
+                animation-delay: 0.5s;
+              "
+              >Innovator.</span
             >
           </h1>
           <p
-            class="text-lg text-gray-600 max-w-lg"
+            class="text-xl text-gray-600 max-w-lg animate-slideUp"
+            style="
+              animation-delay: 0.7s;
+            "
           >
             I build
             modern,
@@ -363,16 +691,22 @@
           </p>
           <a
             href="#contact"
-            class="bg-blue-700 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition inline-block"
+            class="btn-primary inline-block animate-slideUp"
+            style="
+              animation-delay: 0.9s;
+            "
             >Get in
             Touch</a
           >
         </div>
         <div
-          class="flex-1 flex justify-center mt-8 md:mt-0 relative"
+          class="flex-1 flex justify-center mt-12 md:mt-0 relative"
         >
           <div
-            class="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl"
+            class="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl animate-slideUp"
+            style="
+              animation-delay: 0.5s;
+            "
           >
             <img
               src="https://source.unsplash.com/500x500/?technology,developer"
@@ -380,11 +714,20 @@
               class="w-full h-full object-cover"
             />
           </div>
-          <!-- Floating Tech Icons -->
+          <!-- Floating tech icons -->
           <div
-            class="hidden md:block absolute top-16 left-8 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center text-blue-600 text-2xl animate-float"
+            class="hidden md:flex items-center justify-center absolute top-16 left-8 w-16 h-16 bg-white rounded-lg shadow-lg text-blue-600 text-2xl animate-float"
             style="
               animation-delay: 0.5s;
+              box-shadow: 0
+                10px
+                25px
+                rgba(
+                  59,
+                  130,
+                  246,
+                  0.3
+                );
             "
           >
             <i
@@ -392,13 +735,41 @@
             ></i>
           </div>
           <div
-            class="hidden md:block absolute bottom-20 right-8 w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-green-500 text-3xl animate-float"
+            class="hidden md:flex items-center justify-center absolute bottom-20 right-8 w-20 h-20 bg-white rounded-lg shadow-lg text-green-500 text-3xl animate-float"
             style="
               animation-delay: 1.5s;
+              box-shadow: 0
+                10px
+                25px
+                rgba(
+                  16,
+                  185,
+                  129,
+                  0.3
+                );
             "
           >
             <i
               class="fab fa-node-js"
+            ></i>
+          </div>
+          <div
+            class="hidden md:flex items-center justify-center absolute top-40 right-0 w-14 h-14 bg-white rounded-lg shadow-lg text-yellow-500 text-2xl animate-float"
+            style="
+              animation-delay: 2.5s;
+              box-shadow: 0
+                10px
+                25px
+                rgba(
+                  245,
+                  158,
+                  11,
+                  0.3
+                );
+            "
+          >
+            <i
+              class="fab fa-python"
             ></i>
           </div>
         </div>
@@ -407,18 +778,35 @@
       <!-- About Section -->
       <section
         id="about"
-        class="py-20 bg-white"
+        class="py-20 bg-white relative"
       >
         <div
-          class="max-w-6xl mx-auto px-4"
+          class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50"
+        ></div>
+        <div
+          class="max-w-6xl mx-auto px-4 relative"
         >
-          <h2
-            class="text-4xl font-bold mb-6 text-center"
+          <div
+            class="text-center mb-12"
           >
-            About Me
-          </h2>
+            <span
+              class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-3"
+              >About
+              Me</span
+            >
+            <h2
+              class="text-4xl font-bold mb-3"
+            >
+              The
+              Story
+              So Far
+            </h2>
+            <div
+              class="h-1 w-20 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"
+            ></div>
+          </div>
           <p
-            class="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-10"
+            class="max-w-3xl mx-auto text-center text-xl text-gray-600 mb-10 leading-relaxed"
           >
             I'm
             Marijn
@@ -447,16 +835,18 @@
             solutions.
           </p>
           <div
-            class="text-gray-700 space-y-4 max-w-3xl mx-auto"
+            class="text-gray-700 space-y-6 max-w-3xl mx-auto"
           >
-            <p>
+            <p
+              class="leading-relaxed"
+            >
               In my
               current
               role
               at
               Gemeente
               Amsterdam,
-              I’m
+              I'm
               developing
               a
               RAG‑based
@@ -474,7 +864,9 @@
               industry
               demands.
             </p>
-            <p>
+            <p
+              class="leading-relaxed"
+            >
               My
               extensive
               Azure
@@ -506,7 +898,9 @@
               and
               innovation.
             </p>
-            <p>
+            <p
+              class="leading-relaxed"
+            >
               With a
               background
               in
@@ -532,20 +926,31 @@
       <!-- Portfolio Section -->
       <section
         id="portfolio"
-        class="py-20 bg-gray-50"
+        class="py-20 bg-gray-50 relative"
       >
         <div
-          class="max-w-6xl mx-auto px-4"
+          class="max-w-6xl mx-auto px-4 relative"
         >
-          <h2
-            class="text-4xl font-bold text-center mb-6"
+          <div
+            class="text-center mb-12"
           >
-            My
-            Recent
-            Work
-          </h2>
+            <span
+              class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-semibold mb-3"
+              >Projects</span
+            >
+            <h2
+              class="text-4xl font-bold mb-3"
+            >
+              My
+              Recent
+              Work
+            </h2>
+            <div
+              class="h-1 w-20 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"
+            ></div>
+          </div>
           <p
-            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
+            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12"
           >
             Explore
             a
@@ -570,29 +975,32 @@
           >
             <!-- Portfolio Item 1 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
+              class="hover-card bg-white rounded-xl shadow-md overflow-hidden group"
             >
               <div
-                class="relative h-48 overflow-hidden"
+                class="relative h-52 overflow-hidden"
               >
                 <img
                   src="https://source.unsplash.com/600x400/?environment,cloud"
                   alt="Eco-Hackathon"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
-                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
                 >
                   <i
                     class="fas fa-leaf text-green-500"
                   ></i>
                 </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
+                ></div>
               </div>
               <div
-                class="p-4"
+                class="p-6"
               >
                 <h3
-                  class="text-xl font-bold mb-2"
+                  class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors"
                 >
                   Amsterdam
                   Eco-Hackathon
@@ -617,54 +1025,74 @@
                   innovation.
                 </p>
                 <div
-                  class="flex space-x-2 mb-4"
+                  class="flex flex-wrap gap-2 mb-4"
                 >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Sustainability</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Cloud</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Hackathon</span
                   >
                 </div>
                 <a
                   href="#"
-                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
-                  >View
-                  Details</a
+                  class="btn-secondary inline-flex items-center text-sm"
                 >
+                  <span
+                    >View
+                    Details</span
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
             <!-- Portfolio Item 2 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
+              class="hover-card bg-white rounded-xl shadow-md overflow-hidden group"
             >
               <div
-                class="relative h-48 overflow-hidden"
+                class="relative h-52 overflow-hidden"
               >
                 <img
                   src="https://source.unsplash.com/600x400/?chat,ai"
                   alt="ChatAmsterdam"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
-                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
                 >
                   <i
                     class="fas fa-comments text-blue-600"
                   ></i>
                 </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
+                ></div>
               </div>
               <div
-                class="p-4"
+                class="p-6"
               >
                 <h3
-                  class="text-xl font-bold mb-2"
+                  class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors"
                 >
                   ChatAmsterdam
                 </h3>
@@ -686,54 +1114,74 @@
                   delivery.
                 </p>
                 <div
-                  class="flex space-x-2 mb-4"
+                  class="flex flex-wrap gap-2 mb-4"
                 >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Chatbot</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium"
                     >AI</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Municipal</span
                   >
                 </div>
                 <a
                   href="#"
-                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
-                  >View
-                  Details</a
+                  class="btn-secondary inline-flex items-center text-sm"
                 >
+                  <span
+                    >View
+                    Details</span
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
             <!-- Portfolio Item 3 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
+              class="hover-card bg-white rounded-xl shadow-md overflow-hidden group"
             >
               <div
-                class="relative h-48 overflow-hidden"
+                class="relative h-52 overflow-hidden"
               >
                 <img
                   src="https://source.unsplash.com/600x400/?openai,cloud"
                   alt="Azure OpenAI"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
-                  class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
+                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
                 >
                   <i
                     class="fas fa-brain text-yellow-500"
                   ></i>
                 </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
+                ></div>
               </div>
               <div
-                class="p-4"
+                class="p-6"
               >
                 <h3
-                  class="text-xl font-bold mb-2"
+                  class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors"
                 >
                   FBAI
                   Azure
@@ -759,27 +1207,44 @@
                   OpenAI.
                 </p>
                 <div
-                  class="flex space-x-2 mb-4"
+                  class="flex flex-wrap gap-2 mb-4"
                 >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Azure</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-medium"
                     >OpenAI</span
                   >
                   <span
-                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                    class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium"
                     >Deployment</span
                   >
                 </div>
                 <a
                   href="#"
-                  class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition"
-                  >View
-                  Details</a
+                  class="btn-secondary inline-flex items-center text-sm"
                 >
+                  <span
+                    >View
+                    Details</span
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -794,14 +1259,26 @@
         <div
           class="max-w-6xl mx-auto px-4"
         >
-          <h2
-            class="text-4xl font-bold text-center mb-6"
+          <div
+            class="text-center mb-12"
           >
-            From My
-            Blog
-          </h2>
+            <span
+              class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-3"
+              >Blog</span
+            >
+            <h2
+              class="text-4xl font-bold mb-3"
+            >
+              From
+              My
+              Blog
+            </h2>
+            <div
+              class="h-1 w-20 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"
+            ></div>
+          </div>
           <p
-            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
+            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12"
           >
             I share
             insights,
@@ -818,34 +1295,51 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts will be rendered dynamically via JS -->
+            <!-- Blog posts will be rendered dynamically via JavaScript -->
           </div>
         </div>
       </section>
 
-      <!-- Blog Post Detail Container (Full Post) -->
+      <!-- Blog Post Detail Container -->
       <div
         id="blog-post-container"
-        class="max-w-3xl mx-auto my-10 px-4 hidden"
+        class="max-w-4xl mx-auto my-20 px-4 hidden"
       >
         <button
-          class="bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-600 mb-4"
+          class="mb-8 inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
           onclick="hideBlogDetail()"
         >
-          &larr;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
           Back to
           Blog
         </button>
         <div
-          class="bg-white shadow-md rounded-lg p-6"
+          class="bg-white shadow-xl rounded-2xl overflow-hidden"
         >
-          <h1
-            id="detail-title"
-            class="text-3xl font-bold mb-4"
-          ></h1>
+          <div
+            class="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+          >
+            <h1
+              id="detail-title"
+              class="text-3xl md:text-4xl font-bold leading-tight"
+            ></h1>
+          </div>
           <div
             id="detail-content"
-            class="text-gray-700 leading-relaxed"
+            class="blog-detail-container p-8 prose prose-lg max-w-none"
           ></div>
         </div>
       </div>
@@ -858,12 +1352,23 @@
         <div
           class="max-w-6xl mx-auto px-4"
         >
-          <h2
-            class="text-4xl font-bold text-center mb-6"
+          <div
+            class="text-center mb-12"
           >
-            Get In
-            Touch
-          </h2>
+            <span
+              class="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-600 text-sm font-semibold mb-3"
+              >Contact</span
+            >
+            <h2
+              class="text-4xl font-bold mb-3"
+            >
+              Get In
+              Touch
+            </h2>
+            <div
+              class="h-1 w-20 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"
+            ></div>
+          </div>
           <p
             class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
           >
@@ -1304,7 +1809,7 @@
       </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript: Functional Code -->
     <script>
       // Mobile nav toggle
       const menuBtn =
@@ -1692,9 +2197,8 @@
           !confirm(
             "Are you sure you want to delete this post?",
           )
-        ) {
+        )
           return;
-        }
         const token =
           localStorage.getItem(
             "token",
