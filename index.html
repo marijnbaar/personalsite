@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Chen | Researcher • Engineer • Consultant</title>
+  <style>
+    /* Variables */
+    :root {
+      --primary: #2D7D9A;
+      --secondary: #48A9A6;
+      --accent: #E4B363;
+      --light: #f7f9f9;
+      --dark: #333344;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--secondary);
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-btn {
+      background: white;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .hero-btn:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 0;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .section-description {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      font-size: 1.2rem;
+    }
+
+    /* About */
+    .about {
+      background-color: white;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: all 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px var(--shadow);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      background-color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .portfolio-content {
+      padding: 1.5rem;
+      background: white;
+    }
+
+    .portfolio-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tag {
+      background: var(--light);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Blog Section */
+    .blog {
+      background-color: var(--light);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-image {
+      height: 200px;
+      background-color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-date {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-excerpt {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    /* Contact */
+    .contact {
+      background: white;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      background: var(--light);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-icon {
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Blog Post Page */
+    .blog-container {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .blog-post-header {
+      margin-bottom: 2rem;
+    }
+
+    .blog-post-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-post-meta {
+      color: #777;
+      margin-bottom: 2rem;
+    }
+
+    .blog-post-content {
+      line-height: 1.8;
+    }
+
+    .blog-post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-post-content h2 {
+      margin-top: 2.5rem;
+      font-size: 1.8rem;
+      text-align: left;
+    }
+
+    .blog-post-content ul,
+    .blog-post-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    .back-to-home {
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    /* New Blog Form */
+    .new-blog-form {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        order: 2;
+      }
+
+      .hero-image {
+        order: 1;
+      }
+
+      .hero p {
+        margin: 0 auto 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      #menu-toggle:checked ~ .nav-links {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .section-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Content -->
+  <div id="main-content">
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">Alex<span>Chen</span></a>
+          <input type="checkbox" id="menu-toggle" />
+          <label for="menu-toggle" class="hamburger">☰</label>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+            <a href="#" id="new-blog-btn" class="btn">New Post</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Solving Complex Problems Through Innovation</h1>
+        <p>
+          I'm a researcher, engineer, and consultant specializing in creating innovative solutions at the intersection of technology and business.
+        </p>
+        <a href="#contact" class="btn hero-btn">Get in Touch</a>
+      </div>
+      <div class="hero-image">
+        <img src="/api/placeholder/400/400" alt="Alex Chen" />
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="section-description">
+          With over a decade of experience in research and engineering, I help organizations navigate complex technical challenges and deliver innovative solutions.
+        </p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Research</h3>
+            <p>
+              Conducting cutting-edge research in artificial intelligence, machine learning, and data science. My work has been published in top-tier academic journals and conferences.
+            </p>
+          </div>
+          <div class="skill-card">
+            <h3>Engineering</h3>
+            <p>
+              Designing and implementing scalable systems and infrastructure. Expertise in cloud architecture, microservices, and high-performance computing.
+            </p>
+          </div>
+          <div class="skill-card">
+            <h3>Consulting</h3>
+            <p>
+              Advising organizations on technology strategy, digital transformation, and innovation. Helping teams implement best practices and optimize processes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <div class="container">
+        <h2>Featured Work</h2>
+        <p class="section-description">
+          A selection of projects showcasing my expertise across research, engineering, and consulting.
+        </p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <div class="portfolio-image">Project 1</div>
+            <div class="portfolio-content">
+              <h3>AI-Driven Market Analysis Platform</h3>
+              <p>
+                Developed a platform that leverages machine learning to provide real-time market insights and predictive analytics.
+              </p>
+              <div class="tags">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Big Data</span>
+                <span class="tag">Cloud Architecture</span>
+              </div>
+              <a href="#" class="btn">View Details</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">Project 2</div>
+            <div class="portfolio-content">
+              <h3>Smart City Infrastructure Solution</h3>
+              <p>
+                Designed an integrated system for urban infrastructure monitoring using IoT sensors and real-time data processing.
+              </p>
+              <div class="tags">
+                <span class="tag">IoT</span>
+                <span class="tag">Real-time Analytics</span>
+                <span class="tag">Sustainable Technology</span>
+              </div>
+              <a href="#" class="btn">View Details</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">Project 3</div>
+            <div class="portfolio-content">
+              <h3>Enterprise Digital Transformation</h3>
+              <p>
+                Led a comprehensive digital transformation initiative for a Fortune 500 company, resulting in 40% efficiency improvement.
+              </p>
+              <div class="tags">
+                <span class="tag">Strategy</span>
+                <span class="tag">Process Optimization</span>
+                <span class="tag">Change Management</span>
+              </div>
+              <a href="#" class="btn">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+      <div class="container">
+        <h2>Latest Insights</h2>
+        <p class="section-description">
+          Thoughts, ideas, and insights on technology, innovation, and industry trends.
+        </p>
+        <div class="blog-grid" id="blog-posts-container">
+          <!-- Blog posts will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <p class="section-description">
+          Have a project in mind or want to explore collaboration opportunities? I'd love to hear from you.
+        </p>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <h3>Location</h3>
+                <p>San Francisco, CA</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <h3>Email</h3>
+                <p>hello@alexchen.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <div>
+                <h3>Phone</h3>
+                <p>+1 (555) 123-4567</p>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <h3>Alex Chen</h3>
+          <p>Researcher • Engineer • Consultant</p>
+          <div class="social-links">
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">tw</a>
+            <a href="#" class="social-icon">gh</a>
+            <a href="#" class="social-icon">md</a>
+          </div>
+          <p>&copy; 2025 Alex Chen. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Blog Post Container -->
+  <div id="blog-post-container" class="blog-container">
+    <a href="#" class="back-to-home">&larr; Back to Home</a>
+    <div class="blog-post-header">
+      <h1 class="blog-post-title" id="post-title"></h1>
+      <div class="blog-post-meta" id="post-meta"></div>
+    </div>
+    <div class="blog-post-content" id="post-content"></div>
+  </div>
+
+  <!-- New Blog Form -->
+  <div id="new-blog-form" class="new-blog-form">
+    <a href="#" class="back-to-home">&larr; Back to Home</a>
+    <h1>Create New Blog Post</h1>
+    <form id="blog-form" class="contact-form">
+      <div class="form-group">
+        <label for="blog-title">Title</label>
+        <input type="text" id="blog-title" required />
+      </div>
+      <div class="form-group">
+        <label for="blog-content">Content</label>
+        <textarea id="blog-content" required></textarea>
+      </div>
+      <button type="submit" class="btn">Publish Post</button>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Sample blog data
+    let blogPosts = [
+      {
+        id: 1,
+        title: "The Future of AI in Research and Development",
+        date: "February 20, 2025",
+        excerpt: "Exploring how artificial intelligence is transforming the landscape of R&D across industries.",
+        content: `
+          <p>Artificial intelligence has become an indispensable tool in modern research and development processes. As we move further into 2025, the integration of AI into R&D workflows is accelerating at an unprecedented pace.</p>
+          
+          <h2>Transforming Discovery Processes</h2>
+          <p>One of the most significant impacts of AI in R&D is the acceleration of discovery processes. Machine learning algorithms can now analyze vast datasets, identify patterns, and generate hypotheses at speeds unimaginable to human researchers. This capability has led to breakthroughs in drug discovery, materials science, and many other fields.</p>
+          
+          <p>For example, in pharmaceutical research, AI systems can predict how different compounds might interact with specific protein targets, dramatically reducing the time and cost of drug development. Similarly, in materials science, machine learning models can predict the properties of novel materials before they're synthesized in a lab.</p>
+          
+          <h2>Augmenting Human Researchers</h2>
+          <p>Contrary to popular concerns, AI is not replacing human researchers but rather augmenting their capabilities. By handling routine analytical tasks and data processing, AI frees researchers to focus on creative problem-solving, experimental design, and the interpretation of results in broader contexts.</p>
+          
+          <p>The most successful R&D teams today have developed workflows that seamlessly integrate human intuition and creativity with AI-powered analysis and prediction. This hybrid approach is proving to be far more powerful than either humans or AI working in isolation.</p>
+          
+          <h2>Challenges and Opportunities</h2>
+          <p>Despite its promise, integrating AI into R&D processes comes with challenges. Issues of explainability, bias, and reproducibility need to be addressed to ensure that AI-assisted research maintains scientific rigor. Additionally, organizations must invest in both technical infrastructure and skill development to fully leverage AI capabilities.</p>
+          
+          <p>Looking ahead, the organizations that will lead innovation in their respective fields will be those that successfully navigate these challenges while building research ecosystems that combine the best of human and artificial intelligence.</p>
+        `
+      },
+      {
+        id: 2,
+        title: "Sustainable Engineering: Balancing Innovation and Environmental Impact",
+        date: "February 12, 2025",
+        excerpt: "How engineers can embrace sustainability principles without compromising on innovation and performance.",
+        content: `
+          <p>As the climate crisis accelerates, the engineering community faces a dual mandate: drive technological progress while minimizing environmental impact. This balancing act represents one of the most significant challenges—and opportunities—for engineers today.</p>
+          
+          <h2>Rethinking the Design Process</h2>
+          <p>Sustainable engineering begins with fundamentally rethinking the design process. Rather than treating environmental considerations as constraints or afterthoughts, forward-thinking engineers are placing sustainability at the core of their design methodology.</p>
+          
+          <p>This approach, often called "regenerative design," aims not just to reduce negative impacts but to create solutions that actively benefit ecosystems and communities. It involves considering the entire lifecycle of a product or system—from raw material extraction through manufacturing, use, and eventual disposal or recycling.</p>
+          
+          <h2>Technologies Enabling Sustainable Engineering</h2>
+          <p>Several emerging technologies are making sustainable engineering more feasible and economically viable:</p>
+          
+          <ul>
+            <li>Advanced simulation and modeling tools that can accurately predict environmental impacts</li>
+            <li>Biomimicry approaches that draw inspiration from nature's time-tested patterns and strategies</li>
+            <li>Digital twins that enable more efficient operation and maintenance of physical assets</li>
+            <li>Circular economy platforms that facilitate the reuse and recycling of materials</li>
+          </ul>
+          
+          <h2>Case Study: Reimagining Urban Infrastructure</h2>
+          <p>Urban infrastructure projects offer particularly compelling examples of sustainable engineering in action. For instance, modern stormwater management systems are being designed to mimic natural hydrology, using permeable surfaces, retention ponds, and vegetation to filter pollutants and reduce flooding while creating community amenities.</p>
+          
+          <p>Similarly, next-generation buildings are being conceived as integrated ecosystems that generate their own energy, process waste, and create healthy indoor environments while adapting to changing external conditions.</p>
+          
+          <h2>The Path Forward</h2>
+          <p>For engineers committed to sustainability, the path forward involves continuous learning, cross-disciplinary collaboration, and a willingness to challenge conventional approaches. It also requires advocating for sustainability within organizations and helping clients understand the long-term benefits of environmentally sound solutions.</p>
+          
+          <p>By embracing these principles, engineers can fulfill their professional obligation to protect public welfare while driving innovation that addresses our most pressing global challenges.</p>
+        `
+      },
+      {
+        id: 3,
+        title: "Effective Technology Consulting in an Age of Disruption",
+        date: "February 5, 2025",
+        excerpt: "Strategies for technology consultants to deliver value in rapidly changing environments.",
+        content: `
+          <p>Technology consulting has never been more challenging—or more necessary. As organizations navigate waves of disruption from AI, blockchain, quantum computing, and other emerging technologies, the role of the technology consultant has evolved from tactical advisor to strategic partner.</p>
+          
+          <h2>Beyond Technical Expertise</h2>
+          <p>While technical knowledge remains essential, today's most effective technology consultants bring much more to the table. They combine deep domain expertise with business acumen, change management skills, and the ability to translate complex technical concepts into business value.</p>
+          
+          <p>This expanded skill set enables consultants to bridge the persistent gap between technical and business stakeholders—a gap that continues to derail digital transformation initiatives across industries.</p>
+          
+          <h2>Embracing Uncertainty</h2>
+          <p>In an era of constant disruption, consultants must help clients navigate uncertainty rather than promising false certainty. This means shifting from rigid long-term technology roadmaps to more adaptive approaches that emphasize experimentation, rapid learning, and the ability to pivot as conditions change.</p>
+          
+          <p>Effective consultants now function as guides through uncharted territory, helping organizations develop the capabilities and mindsets needed to thrive amid continuous change rather than simply implementing predetermined solutions.</p>
+          
+          <h2>Building Lasting Capability</h2>
+          <p>Perhaps the most significant evolution in technology consulting is the focus on building clients' internal capabilities rather than creating dependency. Forward-thinking consultants measure their success not by billable hours but by how quickly they make themselves unnecessary for specific functions.</p>
+          
+          <p>This approach involves significant knowledge transfer, coaching, and the co-creation of solutions rather than the delivery of pre-packaged recommendations. It requires consultants to act as teachers and mentors as much as subject matter experts.</p>
+          
+          <h2>The Ethical Dimension</h2>
+          <p>As technology's impact on society grows more profound, technology consultants face increasing ethical responsibilities. They must help clients consider the broader implications of their technology choices—from privacy and security concerns to potential job displacement and algorithmic bias.</p>
+          
+          <p>This ethical dimension adds complexity to the consultant's role but also creates opportunities to deliver more meaningful and sustainable value. By helping clients navigate both the technical and ethical aspects of technology adoption, consultants can position themselves as truly indispensable partners in an age of disruption.</p>
+        `
+      }
+    ];
+
+    // DOM elements
+    const mainContent = document.getElementById('main-content');
+    const blogPostContainer = document.getElementById('blog-post-container');
+    const postTitle = document.getElementById('post-title');
+    const postMeta = document.getElementById('post-meta');
+    const postContent = document.getElementById('post-content');
+    const blogPostsContainer = document.getElementById('blog-posts-container');
+    const newBlogForm = document.getElementById('new-blog-form');
+    const newBlogBtn = document.getElementById('new-blog-btn');
+    const blogForm = document.getElementById('blog-form');
+    const backLinks = document.querySelectorAll('.back-to-home');
+
+    // Render blog posts
+    function renderBlogPosts() {
+      blogPostsContainer.innerHTML = '';
+
+      blogPosts.forEach(post => {
+        const blogCard = document.createElement('div');
+        blogCard.className = 'blog-card';
+
+        blogCard.innerHTML = `
+          <div class="blog-image">${post.title.charAt(0)}</div>
+          <div class="blog-content">
+            <div class="blog-date">${post.date}</div>
+            <div class="blog-title">${post.title}</div>
+            <div class="blog-excerpt">${post.excerpt}</div>
+            <a href="#" class="btn" onclick="openPost(${post.id})">Read More</a>
+          </div>
+        `;
+        blogPostsContainer.appendChild(blogCard);
+      });
+    }
+
+    // Function to display a full blog post
+    function openPost(id) {
+      const post = blogPosts.find(p => p.id === id);
+      if (post) {
+        postTitle.innerText = post.title;
+        postMeta.innerText = post.date;
+        postContent.innerHTML = post.content;
+        mainContent.style.display = 'none';
+        blogPostContainer.style.display = 'block';
+      }
+    }
+
+    // Back to home functionality (for both blog post and new blog form)
+    backLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        blogPostContainer.style.display = 'none';
+        newBlogForm.style.display = 'none';
+        mainContent.style.display = 'block';
+      });
+    });
+
+    // Show the new blog form when clicking the "New Post" button
+    newBlogBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      mainContent.style.display = 'none';
+      newBlogForm.style.display = 'block';
+    });
+
+    // Handle new blog post submission
+    blogForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const titleInput = document.getElementById('blog-title');
+      const contentInput = document.getElementById('blog-content');
+
+      const title = titleInput.value.trim();
+      const content = contentInput.value.trim();
+
+      if (title && content) {
+        const newId = blogPosts.length ? Math.max(...blogPosts.map(p => p.id)) + 1 : 1;
+        const today = new Date();
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+        const formattedDate = today.toLocaleDateString('en-US', options);
+
+        const newPost = {
+          id: newId,
+          title: title,
+          date: formattedDate,
+          excerpt: content.substring(0, 100) + '...',
+          content: `<p>${content}</p>`
+        };
+
+        // Add the new post at the beginning of the array
+        blogPosts.unshift(newPost);
+        renderBlogPosts();
+        newBlogForm.style.display = 'none';
+        mainContent.style.display = 'block';
+        blogForm.reset();
+      }
+    });
+
+    // Initialize page with blog posts rendered and appropriate views hidden
+    function init() {
+      renderBlogPosts();
+      blogPostContainer.style.display = 'none';
+      newBlogForm.style.display = 'none';
+      mainContent.style.display = 'block';
+    }
+
+    init();
+  </script>
+</body>
+</html>
