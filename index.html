@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marijn | Engineer • AI Strategist • Innovator</title>
+    <meta
+      charset="UTF-8"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Marijn |
+      Engineer • AI
+      Strategist •
+      Innovator
+    </title>
     <style>
       :root {
         --primary: #2d7d9a;
@@ -11,110 +21,160 @@
         --accent: #e4b363;
         --light: #f7f9f9;
         --dark: #333344;
-        --shadow: rgba(0, 0, 0, 0.1);
+        --shadow: rgba(
+          0,
+          0,
+          0,
+          0.1
+        );
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Inter",
+          sans-serif;
         line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
+        color: var(
+          --dark
+        );
+        background-color: var(
+          --light
+        );
       }
-
       a {
-        color: var(--primary);
+        color: var(
+          --primary
+        );
         text-decoration: none;
-        transition: color 0.3s;
+        transition: color
+          0.3s;
       }
-
       a:hover {
-        color: var(--secondary);
+        color: var(
+          --secondary
+        );
       }
-
       .container {
         max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
+        margin: 0
+          auto;
+        padding: 0
+          2rem;
       }
-
       .btn {
         display: inline-block;
-        background: var(--primary);
+        background: var(
+          --primary
+        );
         color: white;
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem
+          1.5rem;
         border-radius: 4px;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: all
+          0.3s ease;
         cursor: pointer;
         border: none;
       }
-
       .btn:hover {
-        background: var(--secondary);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px var(--shadow);
+        background: var(
+          --secondary
+        );
+        transform: translateY(
+          -2px
+        );
+        box-shadow: 0
+          4px 8px
+          var(
+            --shadow
+          );
       }
-
       header {
         background: white;
-        box-shadow: 0 2px 10px var(--shadow);
+        box-shadow: 0
+          2px 10px
+          var(
+            --shadow
+          );
         position: sticky;
         top: 0;
         z-index: 100;
       }
-
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 0;
+        padding: 1.5rem
+          0;
       }
-
       .logo {
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--dark);
+        color: var(
+          --dark
+        );
       }
-
+      /* Container for auth buttons */
+      #auth-buttons {
+        display: flex;
+        gap: 1rem;
+      }
       .hero {
         display: flex;
         align-items: center;
-        padding: 6rem 0;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        padding: 6rem
+          0;
+        background: linear-gradient(
+          135deg,
+          var(
+              --primary
+            )
+            0%,
+          var(
+              --secondary
+            )
+            100%
+        );
         color: white;
         text-align: center;
       }
-
       .hero h1 {
         font-size: 3rem;
         margin-bottom: 1.5rem;
       }
-
       .hero p {
         font-size: 1.2rem;
         margin-bottom: 2rem;
         max-width: 600px;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
       }
-
       section {
-        padding: 5rem 0;
+        padding: 5rem
+          0;
         text-align: center;
       }
-
       .blog-container {
         text-align: left;
         max-width: 800px;
-        margin: 0 auto;
+        margin: 0
+          auto;
       }
-
-      /* Modal styling */
+      .blog-post {
+        border-bottom: 1px
+          solid #ccc;
+        padding: 1rem
+          0;
+      }
+      /* Add Post Section */
+      #add-post-section {
+        display: none;
+        margin-top: 2rem;
+      }
+      /* Modal styling for login */
       .modal {
         display: none;
         position: fixed;
@@ -124,13 +184,20 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.4
+        );
       }
       .modal-content {
         background-color: #fefefe;
-        margin: 10% auto;
+        margin: 10%
+          auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px
+          solid #888;
         width: 90%;
         max-width: 400px;
         border-radius: 5px;
@@ -147,280 +214,562 @@
         text-decoration: none;
         cursor: pointer;
       }
-
-      /* Blog post styling */
-      .blog-post {
-        border-bottom: 1px solid #ccc;
-        padding: 1rem 0;
+      input,
+      textarea {
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
       }
     </style>
+    <script>
+      // --- Authentication and UI Updates ---
+      function updateAuthButtons() {
+        const authButtons =
+          document.getElementById(
+            "auth-buttons",
+          );
+        const token =
+          localStorage.getItem(
+            "token",
+          );
+        if (token) {
+          authButtons.innerHTML =
+            '<button class="btn" onclick="logoutUser()">Logout</button>';
+          document.getElementById(
+            "add-post-section",
+          ).style.display =
+            "block";
+        } else {
+          authButtons.innerHTML =
+            '<button class="btn" onclick="openLoginModal()">Login</button>';
+          document.getElementById(
+            "add-post-section",
+          ).style.display =
+            "none";
+        }
+      }
+      function openLoginModal() {
+        document.getElementById(
+          "login-modal",
+        ).style.display =
+          "block";
+      }
+      function closeLoginModal() {
+        document.getElementById(
+          "login-modal",
+        ).style.display =
+          "none";
+      }
+      async function loginUser() {
+        const username =
+          document.getElementById(
+            "loginUsername",
+          ).value;
+        const password =
+          document.getElementById(
+            "loginPassword",
+          ).value;
+        try {
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/auth/login",
+              {
+                method:
+                  "POST",
+                headers:
+                  {
+                    "Content-Type":
+                      "application/json",
+                  },
+                body: JSON.stringify(
+                  {
+                    username,
+                    password,
+                  },
+                ),
+              },
+            );
+          const data =
+            await response.json();
+          if (
+            data.token
+          ) {
+            localStorage.setItem(
+              "token",
+              data.token,
+            );
+            alert(
+              "Logged in successfully!",
+            );
+            closeLoginModal();
+            updateAuthButtons();
+            loadBlogPosts();
+          } else {
+            alert(
+              "Login failed: " +
+                (data.error ||
+                  "Unknown error"),
+            );
+          }
+        } catch (error) {
+          console.error(
+            "Login error:",
+            error,
+          );
+          alert(
+            "An error occurred during login.",
+          );
+        }
+      }
+      function logoutUser() {
+        localStorage.removeItem(
+          "token",
+        );
+        alert(
+          "Logged out",
+        );
+        updateAuthButtons();
+        loadBlogPosts();
+      }
+      // --- Blog Post Functions ---
+      async function loadBlogPosts() {
+        try {
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/blogposts",
+            );
+          const posts =
+            await response.json();
+          const container =
+            document.getElementById(
+              "blog-posts",
+            );
+          container.innerHTML =
+            "";
+          const token =
+            localStorage.getItem(
+              "token",
+            );
+          posts.forEach(
+            (
+              post,
+            ) => {
+              const postElement =
+                document.createElement(
+                  "div",
+                );
+              postElement.classList.add(
+                "blog-post",
+              );
+              let html = `<h3>${post.title}</h3><p>${post.content}</p>`;
+              if (
+                token &&
+                post._id
+              ) {
+                html += `<button class="btn" onclick="deletePost('${post._id}')">Delete</button> `;
+                html += `<button class="btn" onclick="editPost('${post._id}')">Edit</button>`;
+              }
+              postElement.innerHTML =
+                html;
+              container.appendChild(
+                postElement,
+              );
+            },
+          );
+        } catch (error) {
+          console.error(
+            "Error loading blog posts:",
+            error,
+          );
+          document.getElementById(
+            "blog-posts",
+          ).innerHTML =
+            "Error loading posts.";
+        }
+      }
+      async function addPost() {
+        const token =
+          localStorage.getItem(
+            "token",
+          );
+        if (
+          !token
+        ) {
+          alert(
+            "You must be logged in to add a post.",
+          );
+          return;
+        }
+        const title =
+          document.getElementById(
+            "newPostTitle",
+          ).value;
+        const content =
+          document.getElementById(
+            "newPostContent",
+          ).value;
+        try {
+          const response =
+            await fetch(
+              "https://personalsite-2xti.onrender.com/api/blogposts",
+              {
+                method:
+                  "POST",
+                headers:
+                  {
+                    "Content-Type":
+                      "application/json",
+                    Authorization:
+                      "Bearer " +
+                      token,
+                  },
+                body: JSON.stringify(
+                  {
+                    title,
+                    content,
+                  },
+                ),
+              },
+            );
+          if (
+            response.ok
+          ) {
+            alert(
+              "Post added successfully!",
+            );
+            document.getElementById(
+              "newPostTitle",
+            ).value =
+              "";
+            document.getElementById(
+              "newPostContent",
+            ).value =
+              "";
+            loadBlogPosts();
+          } else {
+            const data =
+              await response.json();
+            alert(
+              "Error adding post: " +
+                (data.error ||
+                  response.statusText),
+            );
+          }
+        } catch (error) {
+          console.error(
+            "Error adding post:",
+            error,
+          );
+          alert(
+            "Error adding post.",
+          );
+        }
+      }
+      async function deletePost(
+        postId,
+      ) {
+        const token =
+          localStorage.getItem(
+            "token",
+          );
+        if (
+          !token
+        ) {
+          alert(
+            "You must be logged in to delete a post.",
+          );
+          return;
+        }
+        if (
+          !confirm(
+            "Are you sure you want to delete this post?",
+          )
+        )
+          return;
+        try {
+          const response =
+            await fetch(
+              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
+              {
+                method:
+                  "DELETE",
+                headers:
+                  {
+                    Authorization:
+                      "Bearer " +
+                      token,
+                  },
+              },
+            );
+          if (
+            response.ok
+          ) {
+            alert(
+              "Post deleted successfully!",
+            );
+            loadBlogPosts();
+          } else {
+            const data =
+              await response.json();
+            alert(
+              "Error deleting post: " +
+                (data.error ||
+                  response.statusText),
+            );
+          }
+        } catch (error) {
+          console.error(
+            "Error deleting post:",
+            error,
+          );
+          alert(
+            "Error deleting post.",
+          );
+        }
+      }
+      // For simplicity, use prompt dialogs for editing posts.
+      function editPost(
+        postId,
+      ) {
+        const newTitle =
+          prompt(
+            "Enter the new title:",
+          );
+        const newContent =
+          prompt(
+            "Enter the new content:",
+          );
+        if (
+          newTitle &&
+          newContent
+        ) {
+          updatePost(
+            postId,
+            newTitle,
+            newContent,
+          );
+        }
+      }
+      async function updatePost(
+        postId,
+        title,
+        content,
+      ) {
+        const token =
+          localStorage.getItem(
+            "token",
+          );
+        if (
+          !token
+        ) {
+          alert(
+            "You must be logged in to update a post.",
+          );
+          return;
+        }
+        try {
+          const response =
+            await fetch(
+              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
+              {
+                method:
+                  "PUT",
+                headers:
+                  {
+                    "Content-Type":
+                      "application/json",
+                    Authorization:
+                      "Bearer " +
+                      token,
+                  },
+                body: JSON.stringify(
+                  {
+                    title,
+                    content,
+                  },
+                ),
+              },
+            );
+          if (
+            response.ok
+          ) {
+            alert(
+              "Post updated successfully!",
+            );
+            loadBlogPosts();
+          } else {
+            const data =
+              await response.json();
+            alert(
+              "Error updating post: " +
+                (data.error ||
+                  response.statusText),
+            );
+          }
+        } catch (error) {
+          console.error(
+            "Error updating post:",
+            error,
+          );
+          alert(
+            "Error updating post.",
+          );
+        }
+      }
+      // --- Initialization ---
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          updateAuthButtons();
+          loadBlogPosts();
+        },
+      );
+      // Close the login modal if clicking outside its content
+      window.onclick =
+        function (
+          event,
+        ) {
+          const modal =
+            document.getElementById(
+              "login-modal",
+            );
+          if (
+            event.target ==
+            modal
+          ) {
+            modal.style.display =
+              "none";
+          }
+        };
+    </script>
   </head>
   <body>
     <header>
-      <div class="container">
+      <div
+        class="container"
+      >
         <nav>
-          <a href="#" class="logo">Marijn</a>
-          <!-- Auth buttons: Will display "Login" or "Logout" based on user state -->
-          <div id="auth-buttons"></div>
+          <a
+            href="#"
+            class="logo"
+            >Marijn</a
+          >
+          <div
+            id="auth-buttons"
+          ></div>
         </nav>
       </div>
     </header>
 
     <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeLoginModal()">&times;</span>
-        <h2>Login</h2>
-        <input id="loginUsername" type="text" placeholder="Username" />
-        <input id="loginPassword" type="password" placeholder="Password" />
-        <button class="btn" onclick="loginUser()">Login</button>
+    <div
+      id="login-modal"
+      class="modal"
+    >
+      <div
+        class="modal-content"
+      >
+        <span
+          class="close"
+          onclick="closeLoginModal()"
+          >&times;</span
+        >
+        <h2>
+          Login
+        </h2>
+        <input
+          id="loginUsername"
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Password"
+        />
+        <button
+          class="btn"
+          onclick="loginUser()"
+        >
+          Login
+        </button>
       </div>
     </div>
 
-    <section class="hero">
-      <div class="container">
-        <h1>Optimizing AI, Data & DevOps for the Future</h1>
+    <section
+      class="hero"
+    >
+      <div
+        class="container"
+      >
+        <h1>
+          Optimizing
+          AI, Data &
+          DevOps for
+          the Future
+        </h1>
         <p>
-          Bridging technology, strategy, and innovation to build sustainable,
-          scalable solutions.
+          Bridging
+          technology,
+          strategy,
+          and
+          innovation
+          to build
+          sustainable,
+          scalable
+          solutions.
         </p>
-        <a href="#contact" class="btn">Get in Touch</a>
+        <a
+          href="#contact"
+          class="btn"
+          >Get in
+          Touch</a
+        >
       </div>
     </section>
 
-    <section id="blog">
-      <div class="container blog-container">
-        <h2>Blog</h2>
-        <div id="blog-posts">Loading posts...</div>
-        <!-- Section to add a new post; only visible if logged in -->
-        <div id="add-post-section" style="display: none; margin-top: 2rem;">
-          <h3>Add New Post</h3>
-          <input id="newPostTitle" type="text" placeholder="Title" /><br /><br />
-          <textarea id="newPostContent" placeholder="Content" rows="4" style="width:100%;"></textarea><br /><br />
-          <button class="btn" onclick="addPost()">Add Post</button>
+    <section
+      id="blog"
+    >
+      <div
+        class="container blog-container"
+      >
+        <h2>
+          Blog
+        </h2>
+        <div
+          id="blog-posts"
+        >
+          Loading
+          posts...
+        </div>
+        <!-- Add Post Section: only visible when logged in -->
+        <div
+          id="add-post-section"
+        >
+          <h3>
+            Add New
+            Post
+          </h3>
+          <input
+            id="newPostTitle"
+            type="text"
+            placeholder="Title"
+          /><br />
+          <textarea
+            id="newPostContent"
+            placeholder="Content"
+            rows="4"
+          ></textarea
+          ><br />
+          <button
+            class="btn"
+            onclick="addPost()"
+          >
+            Add Post
+          </button>
         </div>
       </div>
     </section>
-
-    <script>
-      // --- Authentication & UI Control Functions ---
-
-      // Update header buttons and post controls based on login state
-      function updateAuthButtons() {
-        const authButtons = document.getElementById("auth-buttons");
-        const token = localStorage.getItem("token");
-        if (token) {
-          authButtons.innerHTML =
-            '<button class="btn" onclick="logoutUser()">Logout</button>';
-          document.getElementById("add-post-section").style.display = "block";
-        } else {
-          authButtons.innerHTML =
-            '<button class="btn" onclick="openLoginModal()">Login</button>';
-          document.getElementById("add-post-section").style.display = "none";
-        }
-      }
-
-      // Open the login modal
-      function openLoginModal() {
-        document.getElementById("login-modal").style.display = "block";
-      }
-
-      // Close the login modal
-      function closeLoginModal() {
-        document.getElementById("login-modal").style.display = "none";
-      }
-
-      // Log in user by calling the server's /api/auth/login endpoint
-      async function loginUser() {
-        const username = document.getElementById("loginUsername").value;
-        const password = document.getElementById("loginPassword").value;
-        try {
-          const response = await fetch(
-            "https://personalsite-2xti.onrender.com/api/auth/login",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ username, password }),
-            }
-          );
-          const data = await response.json();
-          if (data.token) {
-            localStorage.setItem("token", data.token);
-            alert("Logged in successfully!");
-            closeLoginModal();
-            updateAuthButtons();
-            loadBlogPosts();
-          } else {
-            alert("Login failed: " + (data.error || "Unknown error"));
-          }
-        } catch (error) {
-          console.error("Login error:", error);
-          alert("An error occurred during login.");
-        }
-      }
-
-      // Log out by removing token from localStorage
-      function logoutUser() {
-        localStorage.removeItem("token");
-        alert("Logged out");
-        updateAuthButtons();
-        loadBlogPosts();
-      }
-
-      // --- Blog Posts Functions ---
-
-      // Load and display blog posts from the server
-      async function loadBlogPosts() {
-        try {
-          const response = await fetch(
-            "https://personalsite-2xti.onrender.com/api/blogposts"
-          );
-          const posts = await response.json();
-          const container = document.getElementById("blog-posts");
-          container.innerHTML = "";
-          const token = localStorage.getItem("token");
-          posts.forEach((post) => {
-            const postElement = document.createElement("div");
-            postElement.classList.add("blog-post");
-            let html = `<h3>${post.title}</h3><p>${post.content}</p>`;
-            // If logged in, add Edit and Delete buttons for each post
-            if (token && post._id) {
-              html += `<button class="btn" onclick="deletePost('${post._id}')">Delete</button> `;
-              html += `<button class="btn" onclick="editPost('${post._id}')">Edit</button>`;
-            }
-            postElement.innerHTML = html;
-            container.appendChild(postElement);
-          });
-        } catch (error) {
-          console.error("Error loading blog posts:", error);
-          document.getElementById("blog-posts").innerHTML =
-            "Error loading posts.";
-        }
-      }
-
-      // Add a new blog post (requires login)
-      async function addPost() {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          alert("You must be logged in to add a post.");
-          return;
-        }
-        const title = document.getElementById("newPostTitle").value;
-        const content = document.getElementById("newPostContent").value;
-        try {
-          const response = await fetch(
-            "https://personalsite-2xti.onrender.com/api/blogposts",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token,
-              },
-              body: JSON.stringify({ title, content }),
-            }
-          );
-          if (response.ok) {
-            alert("Post added successfully!");
-            loadBlogPosts();
-          } else {
-            const data = await response.json();
-            alert("Error adding post: " + (data.error || response.statusText));
-          }
-        } catch (error) {
-          console.error("Error adding post:", error);
-          alert("Error adding post.");
-        }
-      }
-
-      // Delete a blog post (requires login)
-      async function deletePost(postId) {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          alert("You must be logged in to delete a post.");
-          return;
-        }
-        if (!confirm("Are you sure you want to delete this post?")) return;
-        try {
-          const response = await fetch(
-            `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
-            {
-              method: "DELETE",
-              headers: { Authorization: "Bearer " + token },
-            }
-          );
-          if (response.ok) {
-            alert("Post deleted successfully!");
-            loadBlogPosts();
-          } else {
-            const data = await response.json();
-            alert(
-              "Error deleting post: " +
-                (data.error || response.statusText)
-            );
-          }
-        } catch (error) {
-          console.error("Error deleting post:", error);
-          alert("Error deleting post.");
-        }
-      }
-
-      // Edit a blog post (simple prompt-based editing for demo purposes)
-      function editPost(postId) {
-        const newTitle = prompt("Enter the new title:");
-        const newContent = prompt("Enter the new content:");
-        if (newTitle && newContent) {
-          updatePost(postId, newTitle, newContent);
-        }
-      }
-
-      // Update a blog post (requires login; assumes server supports PUT on /api/blogposts/:id)
-      async function updatePost(postId, title, content) {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          alert("You must be logged in to update a post.");
-          return;
-        }
-        try {
-          const response = await fetch(
-            `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
-            {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token,
-              },
-              body: JSON.stringify({ title, content }),
-            }
-          );
-          if (response.ok) {
-            alert("Post updated successfully!");
-            loadBlogPosts();
-          } else {
-            const data = await response.json();
-            alert(
-              "Error updating post: " +
-                (data.error || response.statusText)
-            );
-          }
-        } catch (error) {
-          console.error("Error updating post:", error);
-          alert("Error updating post.");
-        }
-      }
-
-      // --- Initialization ---
-      document.addEventListener("DOMContentLoaded", () => {
-        updateAuthButtons();
-        loadBlogPosts();
-      });
-
-      // Close the login modal when clicking outside of its content
-      window.onclick = function (event) {
-        const modal = document.getElementById("login-modal");
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    </script>
   </body>
 </html>
