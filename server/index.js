@@ -8,7 +8,16 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Configure CORS to allow requests from your GitHub Pages domain and local testing
+app.use(cors({
+  origin: [
+    'https://marijnbaar.github.io', // GitHub Pages URL
+    'http://localhost:3000'          // For local testing
+  ],
+  methods: ['GET', 'POST', 'DELETE'], // Add PUT/PATCH if needed
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Connect to MongoDB with an increased server selection timeout for better reliability.
@@ -60,7 +69,7 @@ function authenticateToken(req, res, next) {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) return res.status(403).json({ error: "Token is invalid or expired" });
-    req.user = decoded; // decoded contains the payload we signed (e.g., userId)
+    req.user = decoded; // decoded contains the payload we signed (e.g., { userId: ... })
     next();
   });
 }
