@@ -14,14 +14,13 @@ app.use(
   express.json(),
 );
 
-// Connect to MongoDB
+// Connect to MongoDB with an increased server selection timeout
 mongoose
   .connect(
     process.env
       .MONGO_URI,
     {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
     },
   )
   .then(() =>
@@ -35,6 +34,35 @@ mongoose
       err,
     ),
   );
+
+// Log Mongoose connection events
+mongoose.connection.on(
+  "connected",
+  () => {
+    console.log(
+      "Mongoose connected to " +
+        process.env
+          .MONGO_URI,
+    );
+  },
+);
+mongoose.connection.on(
+  "error",
+  (err) => {
+    console.error(
+      "Mongoose connection error:",
+      err,
+    );
+  },
+);
+mongoose.connection.on(
+  "disconnected",
+  () => {
+    console.log(
+      "Mongoose disconnected",
+    );
+  },
+);
 
 // Define Blog Schema
 const blogSchema =
@@ -59,9 +87,20 @@ app.get(
     req,
     res,
   ) => {
-    const posts =
-      await BlogPost.find();
-    res.json(posts);
+    try {
+      const posts =
+        await BlogPost.find();
+      res.json(
+        posts,
+      );
+    } catch (err) {
+      res
+        .status(500)
+        .json({
+          error:
+            err.message,
+        });
+    }
   },
 );
 
@@ -71,21 +110,32 @@ app.post(
     req,
     res,
   ) => {
-    const {
-      title,
-      content,
-    } = req.body;
-    const newPost =
-      new BlogPost({
+    try {
+      const {
         title,
         content,
-      });
-    await newPost.save();
-    res
-      .status(201)
-      .json(
-        newPost,
-      );
+      } = req.body;
+      const newPost =
+        new BlogPost(
+          {
+            title,
+            content,
+          },
+        );
+      await newPost.save();
+      res
+        .status(201)
+        .json(
+          newPost,
+        );
+    } catch (err) {
+      res
+        .status(500)
+        .json({
+          error:
+            err.message,
+        });
+    }
   },
 );
 
