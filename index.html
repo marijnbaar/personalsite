@@ -74,7 +74,8 @@
   >
     <!-- Header -->
     <header
-      class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50 transition-all"
+      id="header"
+      class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50 transition-all duration-300"
     >
       <div
         class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
@@ -141,7 +142,7 @@
       <!-- Mobile Nav -->
       <nav
         id="mobileNav"
-        class="hidden md:hidden bg-white shadow-md"
+        class="hidden bg-white shadow-md"
       >
         <ul
           class="flex flex-col space-y-4 p-4"
@@ -149,28 +150,28 @@
           <li>
             <a
               href="#about"
-              class="hover:text-blue-700"
+              class="hover:text-blue-700 transition"
               >About</a
             >
           </li>
           <li>
             <a
               href="#portfolio"
-              class="hover:text-blue-700"
+              class="hover:text-blue-700 transition"
               >Portfolio</a
             >
           </li>
           <li>
             <a
               href="#blog"
-              class="hover:text-blue-700"
+              class="hover:text-blue-700 transition"
               >Blog</a
             >
           </li>
           <li>
             <a
               href="#contact"
-              class="hover:text-blue-700"
+              class="hover:text-blue-700 transition"
               >Contact</a
             >
           </li>
@@ -267,18 +268,29 @@
           >
             I build
             modern,
-            responsive,
-            and
-            user-friendly
+            responsive
             web
             applications
-            that
-            help
-            businesses
-            thrive
-            in the
-            digital
-            age.
+            powered
+            by
+            cutting-edge
+            AI.
+            Currently,
+            I'm
+            developing
+            a
+            RAG-based
+            LLM for
+            Amsterdam's
+            municipal
+            services,
+            leveraging
+            advanced
+            embedding
+            models
+            and
+            chunking
+            techniques.
           </p>
           <a
             href="#contact"
@@ -353,115 +365,95 @@
             I
             specialize
             in
+            integrating
+            AI,
             cloud,
-            AI, and
-            data-driven
-            solutions,
-            delivering
-            elegant,
-            efficient
+            and
+            modern
             web
-            applications
-            that
-            drive
-            business
-            success.
+            technologies
+            to
+            deliver
+            innovative
+            solutions.
           </p>
           <div
             class="text-gray-700 space-y-4 max-w-3xl mx-auto"
           >
             <p>
-              With a
-              strong
-              foundation
-              in
-              computer
-              science
-              and a
-              passion
-              for
-              innovative
-              technology,
-              I
-              combine
-              technical
-              expertise
+              In my
+              current
+              role
+              at
+              Gemeente
+              Amsterdam,
+              I’m
+              developing
+              a
+              RAG-based
+              LLM
+              using
+              advanced
+              embedding
+              models,
+              chunking,
+              and
+              GenAI
+              techniques—directly
+              aligning
               with
-              strategic
-              insights
-              to
-              craft
-              solutions
-              tailored
-              to
-              your
-              needs.
+              industry
+              demands.
             </p>
             <p>
               My
-              work
-              spans
-              from
-              modern
-              frontend
-              development
-              to
-              robust
-              backend
-              architectures,
+              extensive
+              experience
+              with
+              Azure
+              Cloud
+              (including
+              Serverless,
+              Entra
+              ID,
+              Azure
+              Machine
+              Learning,
               and
-              I’m
-              continually
-              expanding
+              PostgresSQL)
+              combined
+              with
               my
+              leadership
               skills
-              in
-              security,
-              cloud
-              computing,
-              and
-              networking.
+              have
+              enabled
+              me to
+              manage
+              cross-functional
+              teams
+              effectively.
             </p>
-            <ul
-              class="list-disc ml-6 mt-4 space-y-2"
-            >
-              <li>
-                Frontend:
-                React,
-                Vue.js,
-                Angular,
-                JavaScript/TypeScript
-              </li>
-              <li>
-                Backend:
-                Node.js,
-                Python,
-                PHP,
-                Ruby
-                on
-                Rails
-              </li>
-              <li>
-                Database:
-                MongoDB,
-                PostgreSQL,
-                MySQL
-              </li>
-              <li>
-                DevOps:
-                Docker,
-                AWS,
-                Google
-                Cloud,
-                CI/CD
-              </li>
-              <li>
-                Mobile:
-                React
-                Native,
-                Flutter
-              </li>
-            </ul>
+            <p>
+              With a
+              background
+              in
+              Python,
+              DevSecOps,
+              and
+              Agile
+              methodologies,
+              I
+              focus
+              on
+              process
+              improvement
+              and
+              creating
+              safe,
+              high-performing
+              teams.
+            </p>
           </div>
         </div>
       </section>
@@ -507,7 +499,7 @@
           >
             <!-- Portfolio Item 1 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden"
+              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
             >
               <div
                 class="relative h-48 overflow-hidden"
@@ -515,7 +507,7 @@
                 <img
                   src="https://source.unsplash.com/600x400/?environment,cloud"
                   alt="Eco-Hackathon"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div
                   class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
@@ -579,7 +571,7 @@
             </div>
             <!-- Portfolio Item 2 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden"
+              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
             >
               <div
                 class="relative h-48 overflow-hidden"
@@ -587,7 +579,7 @@
                 <img
                   src="https://source.unsplash.com/600x400/?chat,ai"
                   alt="ChatAmsterdam"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div
                   class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
@@ -648,7 +640,7 @@
             </div>
             <!-- Portfolio Item 3 -->
             <div
-              class="bg-white rounded-lg shadow-md overflow-hidden"
+              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:-translate-y-2"
             >
               <div
                 class="relative h-48 overflow-hidden"
@@ -656,7 +648,7 @@
                 <img
                   src="https://source.unsplash.com/600x400/?openai,cloud"
                   alt="Azure OpenAI"
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div
                   class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-2 shadow"
@@ -755,7 +747,7 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts will be rendered dynamically via JavaScript -->
+            <!-- Blog posts will be rendered dynamically via JS -->
           </div>
         </div>
       </section>
@@ -1274,14 +1266,14 @@
           );
         if (token) {
           authButtons.innerHTML =
-            '<button class="btn" onclick="logoutUser()">Logout</button>';
+            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="logoutUser()">Logout</button>';
           document.getElementById(
             "new-blog-btn",
           ).style.display =
             "inline-block";
         } else {
           authButtons.innerHTML =
-            '<button class="btn" onclick="openLoginModal()">Login</button>';
+            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="openLoginModal()">Login</button>';
           document.getElementById(
             "new-blog-btn",
           ).style.display =
@@ -1418,7 +1410,7 @@
                 "div",
               );
             blogCard.className =
-              "blog-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col";
+              "blog-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform transition duration-300 hover:-translate-y-2";
             blogCard.setAttribute(
               "data-id",
               post._id,
@@ -1444,7 +1436,7 @@
                 0,
                 100,
               )}...</p>
-              <a href="#" class="btn btn-secondary text-sm" onclick="showBlogDetail('${
+              <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition mt-4" onclick="showBlogDetail('${
                 post.title
               }', \`${
               post.content
@@ -1461,7 +1453,7 @@
                   "button",
                 );
               delBtn.className =
-                "btn btn-accent text-sm mt-2 self-start";
+                "bg-red-600 text-white px-4 py-2 rounded-full text-sm mt-2 self-start hover:bg-red-700 transition";
               delBtn.innerText =
                 "Delete";
               delBtn.onclick =
@@ -1716,6 +1708,7 @@
           );
       }
 
+      // Initialize all functionality on DOMContentLoaded
       function init() {
         updateAuthButtons();
         document
@@ -1726,27 +1719,14 @@
             "submit",
             submitBlogPost,
           );
-        document
-          .querySelectorAll(
-            ".back-to-home",
-          )
-          .forEach(
-            (
-              link,
-            ) => {
-              link.addEventListener(
-                "click",
-                backToMain,
-              );
-            },
-          );
+        // (Optional: Attach other event listeners here)
       }
-
       window.addEventListener(
         "DOMContentLoaded",
         init,
       );
 
+      // Close login modal if clicking outside of it
       window.onclick =
         function (
           event,
