@@ -176,38 +176,6 @@
           );
       }
 
-      /* Card hover effect */
-      .hover-card {
-        transition: transform
-            0.3s
-            ease,
-          box-shadow
-            0.3s
-            ease;
-      }
-      .hover-card:hover {
-        transform: translateY(
-          -8px
-        );
-        box-shadow: 0
-            20px
-            25px -5px
-            rgba(
-              0,
-              0,
-              0,
-              0.1
-            ),
-          0 10px
-            10px -5px
-            rgba(
-              0,
-              0,
-              0,
-              0.04
-            );
-      }
-
       /* Custom Keyframes for Animations */
       @keyframes slideUp {
         from {
@@ -412,194 +380,250 @@
   <body
     class="bg-gray-50 text-gray-800"
   >
-    <!-- Header with animations -->
+    <!-- Header Component in Josh Comeau Style -->
     <header
       id="header"
-      class="fixed top-0 left-0 right-0 bg-white bg-opacity-80 backdrop-filter backdrop-blur-md z-50 transition-all duration-300 border-b border-gray-100"
+      class="sticky top-0 z-50 py-4 backdrop-blur-lg transition-all duration-500 relative"
     >
+      <!-- Gradient border at top -->
       <div
-        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-blue-500 to-green-400"
+      ></div>
+      <!-- Noise texture overlay for subtle texture -->
+      <div
+        class="absolute inset-0 bg-white bg-opacity-70"
+        style="
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
+        "
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 relative flex items-center justify-between"
       >
-        <!-- Logo with wiggle effect -->
+        <!-- Logo with playful animation -->
         <a
           href="#"
-          class="text-2xl font-serif font-bold text-gray-900 hover:animate-wiggle relative group"
+          class="group relative"
         >
-          Marijn
-          <span
-            class="text-blue-600"
-            >Baar</span
+          <h1
+            class="text-2xl font-bold relative z-10 transition-all duration-300 ease-out"
           >
-          <span
-            class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-green-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
-          ></span>
+            <span
+              class="inline-block transition-transform duration-300 origin-bottom group-hover:-rotate-2"
+              >M</span
+            >
+            <span
+              class="inline-block transition-transform duration-300 delay-[25ms] origin-bottom group-hover:-rotate-1"
+              >a</span
+            >
+            <span
+              class="inline-block transition-transform duration-300 delay-[50ms] origin-bottom group-hover:rotate-1"
+              >r</span
+            >
+            <span
+              class="inline-block transition-transform duration-300 delay-[75ms] origin-bottom group-hover:rotate-2"
+              >i</span
+            >
+            <span
+              class="inline-block transition-transform duration-300 delay-[100ms] origin-bottom group-hover:rotate-3"
+              >j</span
+            >
+            <span
+              class="inline-block transition-transform duration-300 delay-[125ms] origin-bottom group-hover:rotate-2"
+              >n</span
+            >
+            <span
+              class="inline-block ml-2 transition-transform duration-300 delay-[150ms] origin-bottom group-hover:-rotate-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-400"
+              >Baar</span
+            >
+          </h1>
+          <!-- Playful blob shape behind the logo -->
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-500 group-hover:duration-200"
+          ></div>
         </a>
-        <!-- Navigation with fade in -->
+
+        <!-- Animated Navigation Items -->
         <nav
-          class="hidden md:flex space-x-8 items-center"
+          class="hidden md:flex items-center space-x-8"
         >
           <a
             href="#about"
-            class="nav-item hover:text-blue-600 transition link-underline"
+            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
             >About</a
           >
           <a
             href="#portfolio"
-            class="nav-item hover:text-blue-600 transition link-underline"
+            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
             >Portfolio</a
           >
           <a
             href="#blog"
-            class="nav-item hover:text-blue-600 transition link-underline"
+            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
             >Blog</a
           >
           <a
             href="#contact"
-            class="nav-item hover:text-blue-600 transition link-underline"
+            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
             >Contact</a
           >
         </nav>
+
+        <!-- Theme Toggle, Auth, and New Post -->
         <div
-          class="flex items-center space-x-4"
+          class="flex items-center gap-3"
         >
+          <button
+            id="theme-toggle"
+            class="relative w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden group transition-all duration-300 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Sun icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-yellow-500 transition-transform duration-500 rotate-0 group-[.dark]:rotate-[180deg] group-[.dark]:scale-0"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <!-- Moon icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-blue-500 absolute transition-transform duration-500 rotate-[-180deg] scale-0 group-[.dark]:rotate-0 group-[.dark]:scale-100"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              />
+            </svg>
+            <!-- Animated stars (only visible in dark mode) -->
+            <span
+              class="absolute top-2 right-2 w-1 h-1 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-100"
+            ></span>
+            <span
+              class="absolute bottom-2 left-3 w-1 h-1 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-200"
+            ></span>
+            <span
+              class="absolute top-3 left-2 w-0.5 h-0.5 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-300"
+            ></span>
+          </button>
+
+          <!-- Auth Buttons Container -->
           <div
             id="auth-buttons"
-            class="flex items-center"
+            class="flex items-center gap-2"
           ></div>
-          <!-- New Post button -->
+
+          <!-- New Post Button -->
           <button
             id="new-blog-btn"
-            class="hidden bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2 rounded-full hover:shadow-lg transition transform hover:-translate-y-1"
+            class="hidden relative overflow-hidden group px-5 py-2 bg-gradient-to-br from-purple-500 to-pink-500 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/30 active:scale-95 active:duration-75"
             onclick="showNewBlogForm(event)"
           >
-            <i
-              class="fas fa-plus mr-2"
-            ></i
-            >New
-            Post
+            <span
+              class="relative z-10 flex items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 mr-1.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              <span
+                >New
+                Post</span
+              >
+            </span>
+            <span
+              class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out"
+            ></span>
           </button>
         </div>
+        <!-- Mobile Menu Button -->
         <button
           id="menuBtn"
-          class="md:hidden text-2xl text-gray-700 focus:outline-none ml-4"
+          class="md:hidden w-10 h-10 relative focus:outline-none"
         >
-          <i
-            class="fas fa-bars"
-          ></i>
+          <div
+            class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <span
+              class="block absolute h-0.5 w-5 bg-gray-800 transform transition duration-300 ease-in-out"
+            ></span>
+            <span
+              class="block absolute h-0.5 w-5 bg-gray-800 mt-1.5 transform transition duration-300 ease-in-out"
+            ></span>
+            <span
+              class="block absolute h-0.5 w-5 bg-gray-800 mt-3 transform transition duration-300 ease-in-out"
+            ></span>
+          </div>
         </button>
       </div>
       <!-- Mobile Navigation -->
       <nav
         id="mobileNav"
-        class="hidden bg-white shadow-lg rounded-b-lg mx-4 mt-2 overflow-hidden"
+        class="hidden mt-2 mx-4 overflow-hidden"
       >
-        <ul
-          class="flex flex-col p-4"
+        <div
+          class="bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100"
         >
-          <li
-            class="py-2 border-b border-gray-100"
+          <ul
+            class="divide-y divide-gray-100"
           >
-            <a
-              href="#about"
-              class="hover:text-blue-600 transition block"
-              >About</a
+            <li
+              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
             >
-          </li>
-          <li
-            class="py-2 border-b border-gray-100"
-          >
-            <a
-              href="#portfolio"
-              class="hover:text-blue-600 transition block"
-              >Portfolio</a
+              <a
+                href="#about"
+                class="flex items-center text-lg text-gray-800 hover:text-blue-600"
+                >About</a
+              >
+            </li>
+            <li
+              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
             >
-          </li>
-          <li
-            class="py-2 border-b border-gray-100"
-          >
-            <a
-              href="#blog"
-              class="hover:text-blue-600 transition block"
-              >Blog</a
+              <a
+                href="#portfolio"
+                class="flex items-center text-lg text-gray-800 hover:text-green-600"
+                >Portfolio</a
+              >
+            </li>
+            <li
+              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
             >
-          </li>
-          <li
-            class="py-2"
-          >
-            <a
-              href="#contact"
-              class="hover:text-blue-600 transition block"
-              >Contact</a
+              <a
+                href="#blog"
+                class="flex items-center text-lg text-gray-800 hover:text-pink-600"
+                >Blog</a
+              >
+            </li>
+            <li
+              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
             >
-          </li>
-        </ul>
+              <a
+                href="#contact"
+                class="flex items-center text-lg text-gray-800 hover:text-purple-600"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
-
-    <!-- Login Modal -->
-    <div
-      id="login-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm"
-    >
-      <div
-        class="bg-white rounded-xl p-8 w-11/12 max-w-md relative shadow-2xl transform transition-all"
-      >
-        <button
-          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl transition"
-          onclick="closeLoginModal()"
-        >
-          &times;
-        </button>
-        <h2
-          class="text-3xl font-bold mb-6 text-gray-800"
-        >
-          Welcome
-          Back
-        </h2>
-        <div
-          class="space-y-4"
-        >
-          <div>
-            <label
-              for="loginUsername"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Username</label
-            >
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter your username"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            />
-          </div>
-          <div>
-            <label
-              for="loginPassword"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Password</label
-            >
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter your password"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            />
-          </div>
-          <button
-            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 font-medium"
-            onclick="loginUser()"
-          >
-            Sign In
-          </button>
-        </div>
-        <p
-          class="text-sm text-gray-500 mt-4 text-center"
-        >
-          (Use your
-          credentials)
-        </p>
-      </div>
-    </div>
 
     <!-- Main Content -->
     <div
@@ -610,7 +634,7 @@
       <section
         class="min-h-screen flex flex-col md:flex-row items-center px-4 md:px-8 py-20 relative overflow-hidden"
       >
-        <!-- Floating shapes -->
+        <!-- Floating Shapes -->
         <div
           class="absolute top-[-150px] right-[-100px] w-96 h-96 rounded-full bg-yellow-400 opacity-20 z-[-1] animate-float"
           style="
@@ -664,28 +688,31 @@
               animation-delay: 0.7s;
             "
           >
-            I build
-            modern,
-            responsive
-            web
-            applications
+            Creating
+            intuitive
+            digital
+            experiences
             powered
             by
-            cutting‑edge
+            cutting-edge
             AI.
             Currently,
             I'm
-            developing
-            a
-            RAG‑based
-            LLM for
+            leading
+            development
+            on a
+            retrieval-augmented
+            generation
+            system
+            for
             Amsterdam's
             municipal
-            services—leveraging
+            services—combining
             advanced
             embedding
             models
-            and
+            with
+            sophisticated
             chunking
             techniques.
           </p>
@@ -714,7 +741,7 @@
               class="w-full h-full object-cover"
             />
           </div>
-          <!-- Floating tech icons -->
+          <!-- Floating Tech Icons -->
           <div
             class="hidden md:flex items-center justify-center absolute top-16 left-8 w-16 h-16 bg-white rounded-lg shadow-lg text-blue-600 text-2xl animate-float"
             style="
@@ -811,28 +838,33 @@
             I'm
             Marijn
             Baar – a
+            versatile
             full‑stack
             developer
             and
+            technology
             consultant
             with
             over 8
             years of
-            experience.
-            I
-            specialize
-            in
-            integrating
-            AI,
-            cloud,
+            experience
+            crafting
+            digital
+            solutions.
+            My
+            expertise
+            lies at
+            the
+            intersection
+            of
+            artificial
+            intelligence,
+            cloud
+            architecture,
             and
             modern
             web
-            technologies
-            to
-            deliver
-            innovative
-            solutions.
+            development.
           </p>
           <div
             class="text-gray-700 space-y-6 max-w-3xl mx-auto"
@@ -843,81 +875,113 @@
               In my
               current
               role
-              at
-              Gemeente
+              with
+              the
+              City
+              of
               Amsterdam,
               I'm
-              developing
-              a
-              RAG‑based
-              LLM
-              using
+              spearheading
+              the
+              development
+              of a
+              retrieval-augmented
+              generation
+              (RAG)
+              system
+              that
+              leverages
+              state-of-the-art
+              large
+              language
+              models.
+              This
+              project
+              involves
               advanced
               embedding
-              models,
-              chunking,
+              techniques
               and
-              GenAI
-              techniques—directly
-              aligning
-              with
-              industry
-              demands.
+              optimized
+              chunking
+              strategies
+              to
+              address
+              real‑world
+              municipal
+              challenges.
             </p>
             <p
               class="leading-relaxed"
             >
               My
+              technical
+              background
+              includes
               extensive
+              work
+              with
               Azure
               Cloud
-              expertise
-              includes
-              Serverless,
+              technologies,
+              including
+              Serverless
+              architecture,
               Entra
               ID,
               Azure
               Machine
               Learning,
               and
-              PostgresSQL.
-              Combined
-              with
-              proven
-              team
-              leadership
+              PostgreSQL
+              database
+              management.
+              Beyond
+              technical
               skills,
               I
-              guide
-              technical
+              bring
+              strong
+              leadership
+              capabilities,
+              guiding
+              cross‑functional
               teams
-              with a
-              focus
+              with
+              an
+              emphasis
               on
-              safety
+              both
+              security
               and
-              innovation.
+              creative
+              problem-solving.
             </p>
             <p
               class="leading-relaxed"
             >
-              With a
-              background
+              With
+              expertise
               in
-              Python,
-              DevSecOps,
+              Python
+              development,
+              DevSecOps
+              principles,
               and
               Agile
               methodologies,
               I
-              continuously
-              improve
+              continually
+              refine
               processes
               and
-              foster
-              high‑performing,
-              creative
-              teams.
+              cultivate
+              high‑performing
+              teams
+              that
+              deliver
+              exceptional
+              results.
             </p>
           </div>
         </div>
@@ -958,16 +1022,16 @@
             of
             projects
             that
-            demonstrate
+            showcase
             my
-            ability
+            approach
             to
-            tackle
-            diverse
+            solving
+            complex
             challenges
-            and
-            deliver
+            through
             innovative
+            technical
             solutions.
           </p>
           <div
@@ -982,7 +1046,7 @@
               >
                 <img
                   src="https://source.unsplash.com/600x400/?environment,cloud"
-                  alt="Eco-Hackathon"
+                  alt="Amsterdam Eco-Hackathon Challenge"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
@@ -1012,17 +1076,25 @@
                   Leading
                   a
                   collaborative
+                  innovation
                   event
-                  to
-                  optimize
+                  focused
+                  on
+                  optimizing
                   cloud
-                  software
+                  infrastructure
                   for
-                  sustainability
-                  and
-                  drive
                   environmental
-                  innovation.
+                  sustainability—bringing
+                  together
+                  technologists
+                  and
+                  environmental
+                  experts
+                  to
+                  create
+                  impactful
+                  solutions.
                 </p>
                 <div
                   class="flex flex-wrap gap-2 mb-4"
@@ -1100,18 +1172,26 @@
                   class="text-gray-600 text-sm mb-4"
                 >
                   Developing
-                  a
-                  chatbot
+                  an
+                  intelligent
+                  conversational
+                  interface
                   for
                   municipal
                   employees
-                  to
-                  streamline
+                  that
+                  streamlines
+                  internal
                   communication
                   and
-                  enhance
+                  enhances
+                  citizen
                   service
-                  delivery.
+                  delivery
+                  through
+                  natural
+                  language
+                  processing.
                 </p>
                 <div
                   class="flex flex-wrap gap-2 mb-4"
@@ -1163,7 +1243,7 @@
               >
                 <img
                   src="https://source.unsplash.com/600x400/?openai,cloud"
-                  alt="Azure OpenAI"
+                  alt="FBAI Azure OpenAI Deployment"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
@@ -1191,20 +1271,30 @@
                 <p
                   class="text-gray-600 text-sm mb-4"
                 >
-                  Managing
-                  a
-                  secure
+                  Architecting
                   and
-                  cost-optimized
+                  implementing
+                  a
+                  secure,
+                  cost‑optimized
                   deployment
                   for
                   a
                   functional
                   administration
-                  chatbot
-                  using
+                  assistant
+                  utilizing
                   Azure
-                  OpenAI.
+                  OpenAI
+                  services—with
+                  an
+                  emphasis
+                  on
+                  data
+                  privacy
+                  and
+                  operational
+                  efficiency.
                 </p>
                 <div
                   class="flex flex-wrap gap-2 mb-4"
@@ -1287,9 +1377,11 @@
             reflections
             on web
             development,
-            technology
-            trends,
-            and best
+            emerging
+            technologies,
+            and
+            industry
+            best
             practices.
           </p>
           <div
@@ -1381,7 +1473,7 @@
             discuss
             how I
             can help
-            turn
+            transform
             your
             ideas
             into
@@ -1461,9 +1553,8 @@
                   <p
                     class="text-gray-600"
                   >
-                    San
-                    Francisco,
-                    CA
+                    Amsterdam,
+                    Netherlands
                   </p>
                 </div>
               </div>
@@ -1566,7 +1657,7 @@
               solutions
               to
               help
-              businesses
+              organizations
               thrive
               in the
               digital
@@ -1823,14 +1914,47 @@
       menuBtn.addEventListener(
         "click",
         () => {
-          mobileNav.classList.toggle(
-            "hidden",
+          menuBtn.classList.toggle(
+            "opened",
           );
+          if (
+            mobileNav.classList.contains(
+              "hidden",
+            )
+          ) {
+            mobileNav.classList.remove(
+              "hidden",
+            );
+            mobileNav.style.maxHeight =
+              "0";
+            mobileNav.style.opacity =
+              "0";
+            mobileNav.style.transition =
+              "max-height 0.5s ease-out, opacity 0.3s ease-out";
+            mobileNav.offsetHeight;
+            const height =
+              mobileNav.scrollHeight;
+            mobileNav.style.maxHeight = `${height}px`;
+            mobileNav.style.opacity =
+              "1";
+          } else {
+            mobileNav.style.maxHeight =
+              "0";
+            mobileNav.style.opacity =
+              "0";
+            setTimeout(
+              () => {
+                mobileNav.classList.add(
+                  "hidden",
+                );
+              },
+              500,
+            );
+          }
         },
       );
 
       // ----- Authentication & Blog Management Functions -----
-
       async function updateAuthButtons() {
         const authButtons =
           document.getElementById(
