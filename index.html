@@ -176,7 +176,7 @@
           );
       }
 
-      /* Custom Keyframes for Animations */
+      /* Keyframes for animations */
       @keyframes slideUp {
         from {
           transform: translateY(
@@ -229,7 +229,7 @@
           infinite;
       }
 
-      /* Wiggle animation for the logo */
+      /* Wiggle animation for logo */
       @keyframes wiggle {
         0%,
         100% {
@@ -296,7 +296,7 @@
         animation-delay: 0.5s;
       }
 
-      /* Blog card enhancements */
+      /* Blog card styles */
       .blog-card {
         transition: transform
             0.3s
@@ -351,7 +351,7 @@
         margin-bottom: 0.5rem;
       }
 
-      /* Enhanced blog detail view */
+      /* Blog detail view */
       .blog-detail-container {
         max-width: 65ch;
         line-height: 1.7;
@@ -380,158 +380,56 @@
   <body
     class="bg-gray-50 text-gray-800"
   >
-    <!-- Header Component in Josh Comeau Style -->
+    <!-- Header Component with Personal Cosmic Theme -->
     <header
       id="header"
-      class="sticky top-0 z-50 py-4 backdrop-blur-lg transition-all duration-500 relative"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     >
       <!-- Gradient border at top -->
       <div
-        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-blue-500 to-green-400"
-      ></div>
-      <!-- Noise texture overlay for subtle texture -->
-      <div
-        class="absolute inset-0 bg-white bg-opacity-70"
-        style="
-          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
-        "
+        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500"
       ></div>
 
+      <!-- Main header container with glass effect -->
       <div
-        class="max-w-7xl mx-auto px-6 relative flex items-center justify-between"
+        class="relative bg-white bg-opacity-80 backdrop-filter backdrop-blur-md"
       >
-        <!-- Logo with playful animation -->
-        <a
-          href="#"
-          class="group relative"
-        >
-          <h1
-            class="text-2xl font-bold relative z-10 transition-all duration-300 ease-out"
-          >
-            <span
-              class="inline-block transition-transform duration-300 origin-bottom group-hover:-rotate-2"
-              >M</span
-            >
-            <span
-              class="inline-block transition-transform duration-300 delay-[25ms] origin-bottom group-hover:-rotate-1"
-              >a</span
-            >
-            <span
-              class="inline-block transition-transform duration-300 delay-[50ms] origin-bottom group-hover:rotate-1"
-              >r</span
-            >
-            <span
-              class="inline-block transition-transform duration-300 delay-[75ms] origin-bottom group-hover:rotate-2"
-              >i</span
-            >
-            <span
-              class="inline-block transition-transform duration-300 delay-[100ms] origin-bottom group-hover:rotate-3"
-              >j</span
-            >
-            <span
-              class="inline-block transition-transform duration-300 delay-[125ms] origin-bottom group-hover:rotate-2"
-              >n</span
-            >
-            <span
-              class="inline-block ml-2 transition-transform duration-300 delay-[150ms] origin-bottom group-hover:-rotate-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-400"
-              >Baar</span
-            >
-          </h1>
-          <!-- Playful blob shape behind the logo -->
-          <div
-            class="absolute -inset-1 bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-500 group-hover:duration-200"
-          ></div>
-        </a>
-
-        <!-- Animated Navigation Items -->
-        <nav
-          class="hidden md:flex items-center space-x-8"
-        >
-          <a
-            href="#about"
-            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
-            >About</a
-          >
-          <a
-            href="#portfolio"
-            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
-            >Portfolio</a
-          >
-          <a
-            href="#blog"
-            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
-            >Blog</a
-          >
-          <a
-            href="#contact"
-            class="nav-item relative py-2 text-gray-800 font-medium group overflow-hidden link-underline"
-            >Contact</a
-          >
-        </nav>
-
-        <!-- Theme Toggle, Auth, and New Post -->
+        <!-- Interactive cosmic background -->
         <div
-          class="flex items-center gap-3"
+          id="cosmic-background"
+          class="absolute inset-0 overflow-hidden"
         >
-          <button
-            id="theme-toggle"
-            class="relative w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden group transition-all duration-300 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            aria-label="Toggle dark mode"
-          >
-            <!-- Sun icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-yellow-500 transition-transform duration-500 rotate-0 group-[.dark]:rotate-[180deg] group-[.dark]:scale-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <!-- Moon icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-blue-500 absolute transition-transform duration-500 rotate-[-180deg] scale-0 group-[.dark]:rotate-0 group-[.dark]:scale-100"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-              />
-            </svg>
-            <!-- Animated stars (only visible in dark mode) -->
-            <span
-              class="absolute top-2 right-2 w-1 h-1 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-100"
-            ></span>
-            <span
-              class="absolute bottom-2 left-3 w-1 h-1 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-200"
-            ></span>
-            <span
-              class="absolute top-3 left-2 w-0.5 h-0.5 rounded-full bg-yellow-300 opacity-0 group-[.dark]:opacity-70 transition-opacity duration-300 delay-300"
-            ></span>
-          </button>
-
-          <!-- Auth Buttons Container -->
           <div
-            id="auth-buttons"
-            class="flex items-center gap-2"
-          ></div>
-
-          <!-- New Post Button -->
-          <button
-            id="new-blog-btn"
-            class="hidden relative overflow-hidden group px-5 py-2 bg-gradient-to-br from-purple-500 to-pink-500 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/30 active:scale-95 active:duration-75"
-            onclick="showNewBlogForm(event)"
+            class="cosmic-container h-full w-full relative"
           >
-            <span
-              class="relative z-10 flex items-center"
+            <!-- Central "world" -->
+            <div
+              id="your-world"
+              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 opacity-20 shadow-lg transition-all duration-300 ease-out"
+            >
+              <div
+                class="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20"
+                style="
+                  animation-duration: 3s;
+                "
+              ></div>
+              <div
+                class="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-10"
+                style="
+                  animation-duration: 5s;
+                "
+              ></div>
+            </div>
+            <!-- Floating elements -->
+            <div
+              class="floating-element book absolute h-6 w-6 text-amber-600 transition-all duration-1000"
+              style="
+                left: 25%;
+                top: 35%;
+              "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 mr-1.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -540,92 +438,226 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M12 4v16m8-8H4"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
                 />
               </svg>
-              <span
-                >New
-                Post</span
+            </div>
+            <div
+              class="floating-element cat absolute h-6 w-6 text-orange-400 transition-all duration-1000"
+              style="
+                left: 70%;
+                top: 45%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-            </span>
-            <span
-              class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out"
-            ></span>
-          </button>
-        </div>
-        <!-- Mobile Menu Button -->
-        <button
-          id="menuBtn"
-          class="md:hidden w-10 h-10 relative focus:outline-none"
-        >
-          <div
-            class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <span
-              class="block absolute h-0.5 w-5 bg-gray-800 transform transition duration-300 ease-in-out"
-            ></span>
-            <span
-              class="block absolute h-0.5 w-5 bg-gray-800 mt-1.5 transform transition duration-300 ease-in-out"
-            ></span>
-            <span
-              class="block absolute h-0.5 w-5 bg-gray-800 mt-3 transform transition duration-300 ease-in-out"
-            ></span>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element code absolute h-6 w-6 text-green-500 transition-all duration-1000"
+              style="
+                left: 15%;
+                top: 60%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element plant absolute h-6 w-6 text-emerald-500 transition-all duration-1000"
+              style="
+                left: 85%;
+                top: 30%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element ai absolute h-6 w-6 text-purple-500 transition-all duration-1000"
+              style="
+                left: 60%;
+                top: 65%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element people absolute h-6 w-6 text-rose-500 transition-all duration-1000"
+              style="
+                left: 40%;
+                top: 25%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4.354a4 4 0 100-5.292 4 4 0 000 5.292zm-7 9H10v7H5v-7zm7-7h5v7h-5V6z"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element ethics absolute h-6 w-6 text-cyan-500 transition-all duration-1000"
+              style="
+                left: 30%;
+                top: 75%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element philosophy absolute h-6 w-6 text-blue-500 transition-all duration-1000"
+              style="
+                left: 75%;
+                top: 60%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div
+              class="floating-element journalism absolute h-6 w-6 text-amber-500 transition-all duration-1000"
+              style="
+                left: 50%;
+                top: 85%;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                />
+              </svg>
+            </div>
           </div>
-        </button>
+          <!-- Animated connecting lines (drawn dynamically) -->
+          <svg
+            id="connection-lines"
+            class="absolute inset-0 w-full h-full pointer-events-none"
+          ></svg>
+        </div>
+        <!-- Header content (repeated for structure, if needed) -->
+        <div
+          class="max-w-7xl mx-auto px-6 py-4 relative z-10 hidden md:block"
+        >
+          <!-- (Optional extra header content can go here) -->
+        </div>
       </div>
-      <!-- Mobile Navigation -->
-      <nav
+
+      <!-- Mobile Navigation (separate from header above) -->
+      <div
         id="mobileNav"
-        class="hidden mt-2 mx-4 overflow-hidden"
+        class="fixed top-0 right-0 w-full h-0 bg-white z-10 transition-all duration-500 overflow-hidden"
       >
         <div
-          class="bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100"
+          class="min-h-screen flex flex-col justify-center items-center p-8 space-y-10"
         >
-          <ul
-            class="divide-y divide-gray-100"
+          <a
+            href="#about"
+            class="mobile-nav-link text-3xl font-medium text-gray-800 hover:text-indigo-600 transition-transform duration-300 transform hover:translate-x-2"
+            >About</a
           >
-            <li
-              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
-            >
-              <a
-                href="#about"
-                class="flex items-center text-lg text-gray-800 hover:text-blue-600"
-                >About</a
-              >
-            </li>
-            <li
-              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
-            >
-              <a
-                href="#portfolio"
-                class="flex items-center text-lg text-gray-800 hover:text-green-600"
-                >Portfolio</a
-              >
-            </li>
-            <li
-              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
-            >
-              <a
-                href="#blog"
-                class="flex items-center text-lg text-gray-800 hover:text-pink-600"
-                >Blog</a
-              >
-            </li>
-            <li
-              class="px-6 py-4 transform hover:translate-x-2 transition-transform duration-200"
-            >
-              <a
-                href="#contact"
-                class="flex items-center text-lg text-gray-800 hover:text-purple-600"
-                >Contact</a
-              >
-            </li>
-          </ul>
+          <a
+            href="#portfolio"
+            class="mobile-nav-link text-3xl font-medium text-gray-800 hover:text-blue-600 transition-transform duration-300 transform hover:translate-x-2"
+            >Portfolio</a
+          >
+          <a
+            href="#blog"
+            class="mobile-nav-link text-3xl font-medium text-gray-800 hover:text-purple-600 transition-transform duration-300 transform hover:translate-x-2"
+            >Blog</a
+          >
+          <a
+            href="#contact"
+            class="mobile-nav-link text-3xl font-medium text-gray-800 hover:text-emerald-600 transition-transform duration-300 transform hover:translate-x-2"
+            >Contact</a
+          >
         </div>
-      </nav>
+      </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Page Content -->
     <div
       id="main-content"
       class="pt-24"
@@ -2442,5 +2474,7 @@
           }
         };
     </script>
+
+    <!-- End of Body Content -->
   </body>
 </html>
