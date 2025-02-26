@@ -48,6 +48,7 @@
         --pink: #F8A7C3;
       }
       
+      /* Base styles */
       body {
         font-family: 'Space Grotesk', sans-serif;
         line-height: 1.5;
@@ -58,13 +59,12 @@
         background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23F15A24' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
       }
       
-      /* Headings */
       h1, h2, h3, .serif {
         font-family: 'DM Serif Display', serif;
         font-weight: normal;
       }
       
-      /* Link Underline Effect */
+      /* Link underline effect for nav links */
       .nav-link {
         position: relative;
         text-decoration: none;
@@ -88,7 +88,7 @@
         transform: scaleX(1);
       }
       
-      /* Button styles */
+      /* Button Styles */
       .btn-primary {
         background-color: var(--primary);
         color: white;
@@ -149,15 +149,15 @@
         0% { transform: translateY(100%); opacity: 0; }
         100% { transform: translateY(0); opacity: 1; }
       }
-      .animate-reveal-1 { animation: revealText 0.8s cubic-bezier(0.5,0,0.1,1) forwards; }
-      .animate-reveal-2 { animation: revealText 0.8s cubic-bezier(0.5,0,0.1,1) 0.2s forwards; }
+      .animate-reveal-1 { animation: revealText 0.8s cubic-bezier(0.5, 0, 0.1, 1) forwards; }
+      .animate-reveal-2 { animation: revealText 0.8s cubic-bezier(0.5, 0, 0.1, 1) 0.2s forwards; }
       
-      /* Glass effect for header */
+      /* Glass effect */
       .glass {
-        background: rgba(255,255,255,0.7);
+        background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
       
       /* Cosmic header backgrounds */
@@ -181,7 +181,7 @@
         background-image: linear-gradient(90deg, var(--primary), var(--accent));
       }
       
-      /* Header specific styles */
+      /* Header styles */
       .header {
         position: fixed;
         top: 0;
@@ -191,13 +191,13 @@
         transition: all 0.5s;
       }
       
-      /* Floating decorative elements (used in hero) */
+      /* Floating decorative elements */
       .float-element {
         position: absolute;
         animation: float 6s ease-in-out infinite;
       }
       
-      /* Grid pattern background (for hero and portfolio) */
+      /* Grid pattern background */
       .grid-pattern {
         position: absolute;
         width: 100%;
@@ -224,6 +224,44 @@
       }
       
       .page-transition { transition: opacity 0.4s ease; }
+      
+      /* Header cosmic animations (from Josh Comeau-inspired snippet) */
+      .animate-rotate {
+        animation: rotate 30s linear infinite;
+      }
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Custom cursor (optional) */
+      .custom-cursor {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        transition: width 0.3s, height 0.3s, transform 0.1s;
+        mix-blend-mode: difference;
+      }
+      
+      .cursor-star {
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 10000;
+        width: 20px;
+        height: 20px;
+      }
+      
+      .cursor-star svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 0 2px rgba(241,90,36,0.5));
+      }
     </style>
   </head>
   <body class="relative">
@@ -241,10 +279,10 @@
     <!-- Header with Cosmic Theme -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
       <div class="glass">
-        <!-- Space background in header (optional cosmic element) -->
+        <!-- Optional space background for header -->
         <div class="space-bg h-16 overflow-hidden">
           <div id="earth-container" class="relative h-full w-full">
-            <!-- (Optional: JS can add an earth element here) -->
+            <!-- Optional: add earth element via JS if desired -->
           </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 py-4 relative z-10 flex items-center justify-between">
@@ -264,7 +302,7 @@
           <!-- Action Buttons -->
           <div class="flex items-center gap-3">
             <div id="auth-buttons" class="flex items-center"></div>
-            <!-- New Post button (only shows when logged in) -->
+            <!-- New Post button (shows when logged in) -->
             <button id="new-blog-btn" class="hidden bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg" onclick="showNewBlogForm(event)">
               <i class="fas fa-plus mr-2"></i>New Post
             </button>
@@ -331,10 +369,14 @@
           <path d="M1 25H99M1 75H99M25 1V99M75 1V99" stroke="currentColor" stroke-width="0.5" />
         </svg>
       </div>
+      
+      <!-- Constellation Stars -->
+      <div id="constellation" class="absolute inset-0"></div>
+      
       <!-- Hero Content -->
       <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-12">
-          <!-- Left Column (Text) -->
+          <!-- Text Column -->
           <div class="w-full lg:w-1/2 text-center lg:text-left">
             <p class="text-primary font-medium tracking-wider mb-4 opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">EXPLORING IDEAS &amp; CREATING CONNECTIONS</p>
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight opacity-0 animate-fadeIn playful-heading" style="animation-delay: 0.4s;">
@@ -368,10 +410,10 @@
               <span class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium">Web Development</span>
             </div>
           </div>
-          <!-- Right Column (Image) -->
+          <!-- Image Column -->
           <div class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
             <div class="relative mx-auto w-full max-w-md aspect-square">
-              <div id="profile-container" class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl transform transition hover:scale-105 duration-500">
+              <div id="profile-container" class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl transform transition hover:scale-105 duration-500 bg-white">
                 <div class="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-90"></div>
                 <div class="absolute inset-0 flex items-center justify-center text-white text-7xl font-bold serif">
                   <span class="tracking-wider">MB</span>
@@ -403,7 +445,7 @@
       </div>
     </section>
     
-    <!-- Main Content Sections -->
+    <!-- Main Content Container -->
     <div id="main-content" class="pt-12 page-transition">
       <!-- About Section -->
       <section id="about" class="py-20 bg-white relative">
@@ -720,7 +762,7 @@
       </footer>
     </div>
     
-    <!-- New Blog Form (for Authenticated Users) -->
+    <!-- New Blog Form (Authenticated Users) -->
     <div id="new-blog-form" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
       <div class="bg-white p-6 rounded-md w-11/12 max-w-xl relative">
         <a href="#" class="text-blue-700 font-semibold mb-4 block" onclick="backToMain(event)">&larr; Back to Home</a>
@@ -734,35 +776,145 @@
             <label class="block text-gray-700 font-medium mb-2" for="blog-content">Content</label>
             <textarea id="blog-content" required class="w-full p-3 border border-gray-300 rounded" rows="6"></textarea>
           </div>
-          <button type="submit" class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition">Publish Post</button>
+          <button type="submit" class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition">
+            Publish Post
+          </button>
         </form>
       </div>
     </div>
     
-    <!-- JavaScript for Functionality -->
+    <!-- JavaScript for Interactivity & Animations -->
     <script>
-      // Mobile nav toggle
-      const menuBtn = document.getElementById('menuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('opened');
-        if (mobileNav.classList.contains('hidden')) {
-          mobileNav.classList.remove('hidden');
-          mobileNav.style.maxHeight = '0';
-          mobileNav.style.opacity = '0';
-          mobileNav.style.transition = 'max-height 0.5s ease-out, opacity 0.3s ease-out';
-          mobileNav.offsetHeight; // Force reflow
-          const height = mobileNav.scrollHeight;
-          mobileNav.style.maxHeight = `${height}px`;
-          mobileNav.style.opacity = '1';
+      // --- Cosmic Header & Floating Elements ---
+      // Create twinkling stars
+      const constellation = document.getElementById('constellation');
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        // Random size
+        const size = Math.random();
+        if (size < 0.6) {
+          star.classList.add('tiny');
+        } else if (size < 0.9) {
+          star.classList.add('small');
         } else {
-          mobileNav.style.maxHeight = '0';
-          mobileNav.style.opacity = '0';
-          setTimeout(() => { mobileNav.classList.add('hidden'); }, 500);
+          star.classList.add('medium');
+        }
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        // Random animation delay
+        star.style.animationDelay = `${Math.random() * 4}s`;
+        constellation.appendChild(star);
+      }
+      
+      // Enhanced Interactive Floating Balls
+      const floatingBalls = document.querySelectorAll('.floating-ball');
+      const hero = document.querySelector('.hero-container');
+      floatingBalls.forEach(ball => {
+        const rect = ball.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        ball.setAttribute('data-x', centerX);
+        ball.setAttribute('data-y', centerY);
+        ball.setAttribute('data-original-x', centerX);
+        ball.setAttribute('data-original-y', centerY);
+        const randomDelay = Math.random() * 5;
+        const randomDuration = 5 + Math.random() * 5;
+        ball.style.animation = `gentleFloat ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
+      });
+      
+      hero.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        floatingBalls.forEach(ball => {
+          const speed = parseFloat(ball.getAttribute('data-speed')) * 1.5 || 0.075;
+          const maxDistance = parseFloat(ball.getAttribute('data-distance')) * 1.2 || 60;
+          const ballX = parseFloat(ball.getAttribute('data-x')) || 0;
+          const ballY = parseFloat(ball.getAttribute('data-y')) || 0;
+          const dx = mouseX - ballX;
+          const dy = mouseY - ballY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx);
+          const repulsionForce = Math.min(1, 1500 / (distance + 1)) * maxDistance;
+          const moveX = -Math.cos(angle) * repulsionForce * speed;
+          const moveY = -Math.sin(angle) * repulsionForce * speed;
+          const turbulence = Math.sin(Date.now() / 1000) * 3;
+          ball.style.transform = `translate(${moveX}px, ${moveY + turbulence}px)`;
+          const proximityScale = Math.max(0.85, Math.min(1.4, 1 + (400 - Math.min(distance, 400)) / 400 * 0.55));
+          const rotationAmount = (distance < 300) ? (300 - distance) / 6 : 0;
+          ball.style.transform += ` scale(${proximityScale}) rotate(${rotationAmount}deg)`;
+          const baseOpacity = ball.classList.contains('xl') ? 0.3 : 0.8;
+          const proximityOpacity = baseOpacity + (400 - Math.min(distance, 400)) / 400 * 0.2;
+          ball.style.opacity = proximityOpacity;
+          const shadowIntensity = Math.max(0, (400 - Math.min(distance, 400)) / 400 * 15);
+          ball.style.filter = `drop-shadow(0 ${shadowIntensity}px ${shadowIntensity * 1.5}px rgba(0,0,0,0.15))`;
+          const newSpeed = (distance < 200) ? speed * 1.5 : speed;
+          ball.setAttribute('data-current-speed', newSpeed);
+        });
+      });
+      
+      hero.addEventListener('mouseleave', () => {
+        floatingBalls.forEach(ball => {
+          ball.style.transition = 'transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          ball.style.transform = 'translate(0, 0) scale(1) rotate(0deg)';
+          ball.style.filter = 'none';
+          setTimeout(() => { ball.style.transition = 'none'; }, 1500);
+        });
+      });
+      
+      // --- Header Interactions ---
+      const logoChars = document.querySelectorAll('.logo-char');
+      logoChars.forEach((char, index) => {
+        char.addEventListener('mouseover', () => {
+          char.style.transform = `translateY(-5px) rotate(${index % 2 === 0 ? -3 : 3}deg) scale(1.2)`;
+          char.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          char.style.textShadow = `0 5px 15px ${getComputedStyle(char).color}40`;
+        });
+        char.addEventListener('mouseout', () => {
+          char.style.transform = '';
+          char.style.textShadow = '';
+          char.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        });
+      });
+      
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          link.style.transform = 'translateY(-3px)';
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.transform = '';
+        });
+      });
+      
+      // Custom Cursor
+      const customCursor = document.querySelector('.custom-cursor');
+      const cursorStar = document.querySelector('.cursor-star');
+      document.addEventListener('mousemove', (e) => {
+        customCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        setTimeout(() => {
+          cursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        }, 50);
+        const isOverInteractive = e.target.closest('a, button, .blog-card');
+        if (isOverInteractive) {
+          customCursor.style.width = '60px';
+          customCursor.style.height = '60px';
+          customCursor.style.backgroundColor = 'rgba(241,90,36,0.1)';
+          customCursor.style.mixBlendMode = 'normal';
+          cursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1.2)`;
+          cursorStar.style.filter = 'drop-shadow(0 0 10px rgba(241,90,36,0.5))';
+        } else {
+          customCursor.style.width = '40px';
+          customCursor.style.height = '40px';
+          customCursor.style.backgroundColor = 'transparent';
+          customCursor.style.mixBlendMode = 'difference';
+          cursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1)`;
+          cursorStar.style.filter = 'drop-shadow(0 0 2px rgba(241,90,36,0.5))';
         }
       });
       
-      // Authentication & Blog Management Functions
+      // --- Authentication & Blog Management ---
       async function updateAuthButtons() {
         const authButtons = document.getElementById("auth-buttons");
         const token = localStorage.getItem("token");
