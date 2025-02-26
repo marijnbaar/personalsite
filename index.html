@@ -106,6 +106,57 @@
         font-weight: 600;
       }
 
+      /* Custom Cursor (Star) */
+      .custom-cursor {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px
+          solid
+          var(
+            --primary
+          );
+        pointer-events: none;
+        transform: translate(
+          -50%,
+          -50%
+        );
+        z-index: 9999;
+        transition: width
+            0.3s,
+          height
+            0.3s,
+          transform
+            0.1s;
+        mix-blend-mode: difference;
+      }
+      .cursor-star {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+        transform: translate(
+          -50%,
+          -50%
+        );
+        z-index: 10000;
+      }
+      .cursor-star
+        svg {
+        width: 100%;
+        height: 100%;
+        fill: var(
+          --primary
+        );
+        filter: drop-shadow(
+          0 0 2px
+            var(
+              --primary
+            )
+        );
+      }
+
       /* Navigation link underline effect */
       .nav-link {
         position: relative;
@@ -577,6 +628,23 @@
   <body
     class="relative"
   >
+    <!-- Custom Cursor Elements -->
+    <div
+      class="custom-cursor"
+    ></div>
+    <div
+      class="cursor-star"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12,1L9,9H1L7,13.5L5,21L12,17L19,21L17,13.5L23,9H15L12,1Z"
+        />
+      </svg>
+    </div>
+
     <!-- Grid Pattern Overlay -->
     <div
       class="grid-pattern"
@@ -590,7 +658,7 @@
       <div
         class="glass shimmer-bg py-3"
       >
-        <!-- Floating Bubbles in Header (dynamisch aangemaakt) -->
+        <!-- Floating Bubbles (dynamically added) -->
         <div
           id="header-bubbles"
           class="absolute inset-0 overflow-hidden"
@@ -781,10 +849,12 @@
       id="hero"
       class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-gradient"
     >
+      <!-- Soft gradient background -->
       <div
         class="absolute inset-0 bg-gradient-to-br from-cream to-background"
       ></div>
 
+      <!-- Floating shapes & geometrische patronen -->
       <div
         class="absolute inset-0 overflow-hidden pointer-events-none"
       >
@@ -831,12 +901,14 @@
         </svg>
       </div>
 
+      <!-- Hero Content -->
       <div
         class="container mx-auto px-6 relative z-10"
       >
         <div
           class="flex flex-col lg:flex-row items-center gap-12"
         >
+          <!-- Tekstkolom -->
           <div
             class="w-full lg:w-1/2 text-center lg:text-left"
           >
@@ -940,6 +1012,7 @@
             </div>
           </div>
 
+          <!-- Floating Pastel Balls Container -->
           <div
             class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
             style="
@@ -950,7 +1023,7 @@
               class="relative mx-auto w-full h-96 max-w-md"
               id="floating-balls-container"
             >
-              <!-- Pastel balls added dynamically -->
+              <!-- Pastel balls will be created by JavaScript -->
             </div>
           </div>
         </div>
@@ -1057,7 +1130,7 @@
         </div>
       </section>
 
-      <!-- Showcase Section (renamed from "Portfolio") -->
+      <!-- Showcase Section -->
       <section
         id="showcase"
         class="py-20 relative"
@@ -1103,7 +1176,7 @@
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Example Showcase Item -->
+            <!-- Example Showcase Item 1 -->
             <div
               class="group blog-card"
             >
@@ -1112,7 +1185,7 @@
               >
                 <img
                   src="https://source.unsplash.com/600x400/?innovation,tech"
-                  alt="Project Showcase"
+                  alt="AI-Powered Innovation"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
@@ -1145,10 +1218,7 @@
                   build
                   efficient,
                   context-driven
-                  solutions
-                  for
-                  modern
-                  enterprises.
+                  solutions.
                 </p>
                 <button
                   class="btn-secondary inline-flex items-center text-sm"
@@ -1163,7 +1233,120 @@
                 </button>
               </div>
             </div>
-            <!-- More showcase items as needed... -->
+            <!-- Example Showcase Item 2 -->
+            <div
+              class="group blog-card"
+            >
+              <div
+                class="relative h-52 overflow-hidden"
+              >
+                <img
+                  src="https://source.unsplash.com/600x400/?web,design"
+                  alt="Responsive Web Design"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
+                >
+                  <i
+                    class="fas fa-laptop-code text-primary"
+                  ></i>
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
+                ></div>
+              </div>
+              <div
+                class="p-6"
+              >
+                <h3
+                  class="text-xl font-bold mb-2 group-hover:text-primary transition"
+                >
+                  Responsive
+                  Web
+                  Design
+                </h3>
+                <p
+                  class="text-gray-600 text-sm mb-4"
+                >
+                  Creating
+                  modern,
+                  mobile-friendly
+                  designs
+                  that
+                  scale
+                  beautifully.
+                </p>
+                <button
+                  class="btn-secondary inline-flex items-center text-sm"
+                >
+                  <span
+                    >View
+                    Details</span
+                  >
+                  <i
+                    class="fas fa-arrow-right ml-1"
+                  ></i>
+                </button>
+              </div>
+            </div>
+            <!-- Example Showcase Item 3 -->
+            <div
+              class="group blog-card"
+            >
+              <div
+                class="relative h-52 overflow-hidden"
+              >
+                <img
+                  src="https://source.unsplash.com/600x400/?cloud,devops"
+                  alt="Cloud & DevOps"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
+                >
+                  <i
+                    class="fas fa-cloud text-primary"
+                  ></i>
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
+                ></div>
+              </div>
+              <div
+                class="p-6"
+              >
+                <h3
+                  class="text-xl font-bold mb-2 group-hover:text-primary transition"
+                >
+                  Cloud
+                  &
+                  DevOps
+                </h3>
+                <p
+                  class="text-gray-600 text-sm mb-4"
+                >
+                  Streamlining
+                  deployments
+                  using
+                  containerization
+                  and
+                  cloud-native
+                  technologies.
+                </p>
+                <button
+                  class="btn-secondary inline-flex items-center text-sm"
+                >
+                  <span
+                    >View
+                    Details</span
+                  >
+                  <i
+                    class="fas fa-arrow-right ml-1"
+                  ></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1211,7 +1394,7 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts are dynamically loaded via JavaScript -->
+            <!-- Blog posts dynamically loaded -->
           </div>
         </div>
       </section>
@@ -1283,7 +1466,6 @@
             Let's
             connect.
           </p>
-          <!-- Only contact info, no form -->
           <div
             class="max-w-3xl mx-auto space-y-6"
           >
@@ -1357,7 +1539,7 @@
         </div>
       </section>
 
-      <!-- Footer (Removed "Services" & "Stay Updated" columns) -->
+      <!-- Footer (Removed extra columns) -->
       <footer
         class="bg-gray-900 text-white pt-12 pb-6 relative"
       >
@@ -1544,6 +1726,28 @@
 
     <!-- JavaScript for Blog Functionality & Floating Pastel Balls -->
     <script>
+      // --- Custom Cursor Logic ---
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          const customCursor =
+            document.querySelector(
+              ".custom-cursor",
+            );
+          const cursorStar =
+            document.querySelector(
+              ".cursor-star",
+            );
+          document.addEventListener(
+            "mousemove",
+            (e) => {
+              customCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+              cursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            },
+          );
+        },
+      );
+
       // --- Authentication & Blog Management ---
       async function updateAuthButtons() {
         const authButtons =
@@ -1654,6 +1858,28 @@
       }
 
       async function logoutUser() {
+        try {
+          const token =
+            localStorage.getItem(
+              "token",
+            );
+          await fetch(
+            "https://personalsite-2xti.onrender.com/api/auth/logout",
+            {
+              method:
+                "POST",
+              headers:
+                {
+                  Authorization: `Bearer ${token}`,
+                },
+            },
+          );
+        } catch (error) {
+          console.error(
+            "Logout error:",
+            error,
+          );
+        }
         localStorage.removeItem(
           "token",
         );
@@ -2090,7 +2316,6 @@
           ball.classList.add(
             "floating-ball",
           );
-          // Random size between 20px and 120px
           const size =
             20 +
             Math.floor(
@@ -2099,7 +2324,6 @@
             );
           ball.style.width = `${size}px`;
           ball.style.height = `${size}px`;
-          // Random position
           const xPos =
             Math.random() *
             100;
@@ -2108,7 +2332,6 @@
             100;
           ball.style.left = `${xPos}%`;
           ball.style.top = `${yPos}%`;
-          // Random pastel color
           const colorIndex =
             Math.floor(
               Math.random() *
@@ -2118,7 +2341,6 @@
             pastelColors[
               colorIndex
             ];
-          // Random animation timing
           const duration =
             5 +
             Math.random() *
@@ -2267,7 +2489,6 @@
                     dy,
                     dx,
                   );
-                // Repulsion logic
                 const repulsionForce =
                   Math.min(
                     1,
@@ -2298,7 +2519,6 @@
                   moveY +
                   turbulence
                 }px)`;
-                // Additional scale & rotate based on proximity
                 if (
                   distance <
                   300
@@ -2314,7 +2534,6 @@
                     15;
                   ball.style.transform += ` scale(${proximityScale}) rotate(${rotationAmount}deg)`;
                 }
-                // Enhanced shadow if close
                 if (
                   distance <
                   200
