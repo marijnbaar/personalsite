@@ -43,6 +43,10 @@
                       "#FFD166",
                     pink: "#FF90B3",
                     teal: "#63E5FF",
+
+                    /* Lila (soft lilac) for the mouse circle border */
+                    lilac:
+                      "#DCD3FF",
                   },
               },
           },
@@ -83,6 +87,7 @@
         --yellow: #ffd166;
         --pink: #ff90b3;
         --teal: #63e5ff;
+        --lilac: #dcd3ff; /* Soft lilac */
       }
 
       body {
@@ -115,8 +120,8 @@
         border: 2px
           solid
           var(
-            --primary
-          );
+            --lilac
+          ); /* Changed to lilac */
         pointer-events: none;
         transform: translate(
           -50%,
@@ -371,44 +376,6 @@
           forwards;
       }
 
-      @keyframes revealText {
-        0% {
-          transform: translateY(
-            100%
-          );
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(
-            0
-          );
-          opacity: 1;
-        }
-      }
-      .animate-reveal-1 {
-        animation: revealText
-          0.8s
-          cubic-bezier(
-            0.5,
-            0,
-            0.1,
-            1
-          )
-          forwards;
-      }
-      .animate-reveal-2 {
-        animation: revealText
-          0.8s
-          cubic-bezier(
-            0.5,
-            0,
-            0.1,
-            1
-          )
-          0.2s
-          forwards;
-      }
-
       /* Floating header bubbles & shimmer */
       .floating-bubble {
         position: absolute;
@@ -424,6 +391,18 @@
       .shimmer-bg {
         position: relative;
         overflow: hidden;
+      }
+      @keyframes shimmer {
+        0% {
+          transform: rotate(
+            0deg
+          );
+        }
+        100% {
+          transform: rotate(
+            360deg
+          );
+        }
       }
       .shimmer-bg::before {
         content: "";
@@ -452,18 +431,6 @@
         animation: shimmer
           15s linear
           infinite;
-      }
-      @keyframes shimmer {
-        0% {
-          transform: rotate(
-            0deg
-          );
-        }
-        100% {
-          transform: rotate(
-            360deg
-          );
-        }
       }
 
       /* Glass effect for header */
@@ -544,22 +511,6 @@
           #dfecff
             100%
         );
-      }
-
-      /* Gradient text */
-      .gradient-text {
-        background: linear-gradient(
-          90deg,
-          var(
-            --primary
-          ),
-          var(
-            --secondary
-          )
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
       }
 
       /* Blog Detail View */
@@ -658,11 +609,7 @@
       <div
         class="glass shimmer-bg py-3"
       >
-        <!-- Floating Bubbles (dynamically added) -->
-        <div
-          id="header-bubbles"
-          class="absolute inset-0 overflow-hidden"
-        ></div>
+        <!-- Optional floating bubbles in header could go here -->
         <div
           class="max-w-7xl mx-auto px-6 relative z-10 flex items-center justify-between"
         >
@@ -738,44 +685,6 @@
             ></i>
           </button>
         </div>
-        <!-- Mobile Navigation -->
-        <nav
-          id="mobileNav"
-          class="hidden md:hidden glass shadow-lg rounded-b-lg mx-4 mt-2 overflow-hidden"
-        >
-          <ul
-            class="flex flex-col space-y-4 p-4"
-          >
-            <li>
-              <a
-                href="#about"
-                class="hover:text-primary transition block"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#showcase"
-                class="hover:text-secondary transition block"
-                >Showcase</a
-              >
-            </li>
-            <li>
-              <a
-                href="#blog"
-                class="hover:text-accent transition block"
-                >Blog</a
-              >
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="hover:text-pink transition block"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </nav>
       </div>
     </header>
 
@@ -849,12 +758,10 @@
       id="hero"
       class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-gradient"
     >
-      <!-- Soft gradient background -->
       <div
         class="absolute inset-0 bg-gradient-to-br from-cream to-background"
       ></div>
 
-      <!-- Floating shapes & geometrische patronen -->
       <div
         class="absolute inset-0 overflow-hidden pointer-events-none"
       >
@@ -901,14 +808,12 @@
         </svg>
       </div>
 
-      <!-- Hero Content -->
       <div
         class="container mx-auto px-6 relative z-10"
       >
         <div
           class="flex flex-col lg:flex-row items-center gap-12"
         >
-          <!-- Tekstkolom -->
           <div
             class="w-full lg:w-1/2 text-center lg:text-left"
           >
@@ -1011,8 +916,6 @@
               >
             </div>
           </div>
-
-          <!-- Floating Pastel Balls Container -->
           <div
             class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
             style="
@@ -1023,7 +926,7 @@
               class="relative mx-auto w-full h-96 max-w-md"
               id="floating-balls-container"
             >
-              <!-- Pastel balls will be created by JavaScript -->
+              <!-- Pastel balls created by JavaScript -->
             </div>
           </div>
         </div>
@@ -1176,7 +1079,7 @@
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Example Showcase Item 1 -->
+            <!-- Example Showcase Items -->
             <div
               class="group blog-card"
             >
@@ -1233,7 +1136,6 @@
                 </button>
               </div>
             </div>
-            <!-- Example Showcase Item 2 -->
             <div
               class="group blog-card"
             >
@@ -1290,7 +1192,6 @@
                 </button>
               </div>
             </div>
-            <!-- Example Showcase Item 3 -->
             <div
               class="group blog-card"
             >
@@ -1394,12 +1295,12 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts dynamically loaded -->
+            <!-- Blog posts are dynamically loaded -->
           </div>
         </div>
       </section>
 
-      <!-- Blog Detail Container (hidden by default) -->
+      <!-- Blog Detail Container -->
       <div
         id="blog-post-container"
         class="max-w-4xl mx-auto my-20 px-4 hidden"
@@ -1539,7 +1440,7 @@
         </div>
       </section>
 
-      <!-- Footer (Removed extra columns) -->
+      <!-- Footer -->
       <footer
         class="bg-gray-900 text-white pt-12 pb-6 relative"
       >
@@ -1724,7 +1625,6 @@
       </div>
     </div>
 
-    <!-- JavaScript for Blog Functionality & Floating Pastel Balls -->
     <script>
       // --- Custom Cursor Logic ---
       document.addEventListener(
@@ -1738,6 +1638,7 @@
             document.querySelector(
               ".cursor-star",
             );
+
           document.addEventListener(
             "mousemove",
             (e) => {
@@ -1747,6 +1648,27 @@
           );
         },
       );
+
+      // Example fallback data if the real API fails or post not found
+      const EXAMPLE_BLOGS =
+        [
+          {
+            _id: "1",
+            title:
+              "Fallback Post: RAG Intro",
+            date: "2025-01-01",
+            content:
+              "<p>This is a fallback post about Retrieval-Augmented Generation.</p>",
+          },
+          {
+            _id: "2",
+            title:
+              "Fallback Post: Ethical AI",
+            date: "2025-02-10",
+            content:
+              "<p>Ethical AI ensures fairness and transparency in modern systems.</p>",
+          },
+        ];
 
       // --- Authentication & Blog Management ---
       async function updateAuthButtons() {
@@ -1895,15 +1817,25 @@
             await fetch(
               "https://personalsite-2xti.onrender.com/api/blogposts",
             );
+          if (
+            !response.ok
+          )
+            throw new Error(
+              "Could not load blogposts from server",
+            );
           const posts =
             await response.json();
           renderBlogPosts(
             posts,
           );
         } catch (error) {
-          console.error(
-            "Error loading blog posts:",
+          console.warn(
+            "Using fallback data, server fetch failed:",
             error,
+          );
+          // If fetch fails, use local fallback
+          renderBlogPosts(
+            EXAMPLE_BLOGS,
           );
         }
       }
@@ -1992,6 +1924,86 @@
         );
       }
 
+      async function showBlogDetail(
+        postId,
+      ) {
+        try {
+          const response =
+            await fetch(
+              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
+            );
+          if (
+            !response.ok
+          )
+            throw new Error(
+              "Post not found on server",
+            );
+          const post =
+            await response.json();
+          displayPostDetail(
+            post,
+          );
+        } catch (error) {
+          console.warn(
+            "showBlogDetail fallback triggered:",
+            error,
+          );
+          // Fallback: zoek in EXAMPLE_BLOGS
+          const fallbackPost =
+            EXAMPLE_BLOGS.find(
+              (b) =>
+                b._id ===
+                postId,
+            );
+          if (
+            fallbackPost
+          ) {
+            displayPostDetail(
+              fallbackPost,
+            );
+          } else {
+            alert(
+              "Error loading post: " +
+                error.message,
+            );
+          }
+        }
+      }
+
+      function displayPostDetail(
+        post,
+      ) {
+        document.getElementById(
+          "detail-title",
+        ).textContent =
+          post.title;
+        document.getElementById(
+          "detail-content",
+        ).innerHTML =
+          post.content;
+        document
+          .querySelector(
+            ".blog-grid",
+          )
+          .classList.add(
+            "hidden",
+          );
+        document
+          .getElementById(
+            "blog-post-container",
+          )
+          .classList.remove(
+            "hidden",
+          );
+        window.scrollTo(
+          {
+            top: 0,
+            behavior:
+              "smooth",
+          },
+        );
+      }
+
       async function deletePost(
         postId,
       ) {
@@ -2041,59 +2053,6 @@
           );
           alert(
             "An error occurred while deleting the post.",
-          );
-        }
-      }
-
-      async function showBlogDetail(
-        postId,
-      ) {
-        try {
-          const response =
-            await fetch(
-              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
-            );
-          if (
-            !response.ok
-          )
-            throw new Error(
-              "Post not found",
-            );
-          const post =
-            await response.json();
-          document.getElementById(
-            "detail-title",
-          ).textContent =
-            post.title;
-          document.getElementById(
-            "detail-content",
-          ).innerHTML =
-            post.content;
-          document
-            .querySelector(
-              ".blog-grid",
-            )
-            .classList.add(
-              "hidden",
-            );
-          document
-            .getElementById(
-              "blog-post-container",
-            )
-            .classList.remove(
-              "hidden",
-            );
-          window.scrollTo(
-            {
-              top: 0,
-              behavior:
-                "smooth",
-            },
-          );
-        } catch (error) {
-          alert(
-            "Error loading post: " +
-              error.message,
           );
         }
       }
