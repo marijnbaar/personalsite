@@ -1,427 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta
-      charset="UTF-8"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>
-      Marijn Baar |
-      Programmer •
-      Consultant •
-      Innovator
-    </title>
-
-    <!-- Tailwind CSS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marijn Baar | Programmer • Consultant • Innovator</title>
+    
+    <!-- Tailwind CSS (via CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config =
-        {
-          theme: {
-            extend:
-              {
-                colors:
-                  {
-                    primary:
-                      "#F15A24" /* Warm orange */,
-                    secondary:
-                      "#3E9BC5" /* Fresh blue */,
-                    accent:
-                      "#41A62A" /* Vibrant green */,
-                    cream:
-                      "#FFF6DC",
-                  },
-              },
-          },
-        };
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F15A24",
+              "primary-dark": "#E04D13",
+              secondary: "#3E9BC5",
+              accent: "#41A62A",
+              cream: "#FFF6DC",
+              yellow: "#FFD15C",
+              red: "#E74C3C",
+              pink: "#F8A7C3"
+            }
+          }
+        }
+      }
     </script>
-
+    
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <!-- Google Fonts -->
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Custom CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Custom Styles -->
     <style>
       :root {
-        --primary: #f15a24;
-        --primary-dark: #e04d13;
-        --secondary: #3e9bc5;
-        --accent: #41a62a;
+        --primary: #F15A24;
+        --primary-dark: #E04D13;
+        --secondary: #3E9BC5;
+        --accent: #41A62A;
         --dark: #333333;
-        --light: #fff6dc;
-        --yellow: #ffd15c;
-        --red: #e74c3c;
+        --light: #FFF6DC;
+        --yellow: #FFD15C;
+        --red: #E74C3C;
+        --pink: #F8A7C3;
       }
-
-      /* Base Styles */
+      
       body {
-        font-family: "Space Grotesk",
-          sans-serif;
+        font-family: 'Space Grotesk', sans-serif;
         line-height: 1.5;
-        color: var(
-          --dark
-        );
-        background-color: var(
-          --light
-        );
+        color: var(--dark);
+        background-color: var(--light);
         overflow-x: hidden;
         scroll-behavior: smooth;
-        /* Subtle pattern background */
         background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23F15A24' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
       }
-
-      h1,
-      h2,
-      h3,
-      .serif {
-        font-family: "DM Serif Display",
-          serif;
+      
+      /* Headings */
+      h1, h2, h3, .serif {
+        font-family: 'DM Serif Display', serif;
         font-weight: normal;
       }
-
-      /* Heading character animations */
-      .heading-character {
-        display: inline-block;
-        transition: transform
-          0.3s ease;
-      }
-      .heading-character.orange {
-        color: var(
-          --primary
-        );
-      }
-      .heading-character.blue {
-        color: var(
-          --secondary
-        );
-      }
-      .heading-character.green {
-        color: var(
-          --accent
-        );
-      }
-      .heading-character.yellow {
-        color: var(
-          --yellow
-        );
-      }
-      .heading-character.red {
-        color: var(
-          --red
-        );
-      }
-      .playful-heading:hover
-        .heading-character:nth-child(
-          odd
-        ) {
-        transform: translateY(
-            -5px
-          )
-          rotate(
-            -2deg
-          );
-      }
-      .playful-heading:hover
-        .heading-character:nth-child(
-          even
-        ) {
-        transform: translateY(
-            5px
-          )
-          rotate(
-            2deg
-          );
-      }
-
-      /* Focus-visible and link underline */
-      *:focus-visible {
-        outline: 3px
-          solid
-          var(
-            --accent
-          );
-        outline-offset: 2px;
-      }
+      
+      /* Link Underline Effect */
       .nav-link {
         position: relative;
         text-decoration: none;
         font-weight: 500;
-        transition: color
-          0.3s;
+        transition: color 0.3s;
         padding-bottom: 2px;
       }
       .nav-link::after {
         content: "";
         position: absolute;
-        width: 100%;
-        height: 2px;
         bottom: -2px;
         left: 0;
+        width: 100%;
+        height: 2px;
         background-color: currentColor;
-        transform: scaleX(
-          0
-        );
+        transform: scaleX(0);
         transform-origin: center;
-        transition: transform
-          0.3s ease;
+        transition: transform 0.3s ease;
       }
       .nav-link:hover::after {
-        transform: scaleX(
-          1
-        );
+        transform: scaleX(1);
       }
-
-      /* Scrollbar styling */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(
-          --light
-        );
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(
-          --primary
-        );
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(
-          --primary-dark
-        );
-      }
-
+      
       /* Button styles */
       .btn-primary {
-        background-color: var(
-          --primary
-        );
+        background-color: var(--primary);
         color: white;
-        padding: 0.75rem
-          1.5rem;
+        padding: 0.75rem 1.5rem;
         border-radius: 999px;
         font-weight: 600;
-        transition: all
-          0.2s ease;
-        position: relative;
-        overflow: hidden;
-        border: 2px
-          solid
-          var(
-            --primary
-          );
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 2px solid var(--primary);
       }
       .btn-primary:hover {
-        transform: translateY(
-          -2px
-        );
-        box-shadow: 0
-          4px 12px
-          rgba(
-            241,
-            90,
-            36,
-            0.3
-          );
-        background-color: var(
-          --primary-dark
-        );
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(241,90,36,0.3);
+        background-color: var(--primary-dark);
       }
       .btn-secondary {
-        background-color: var(
-          --secondary
-        );
+        background-color: var(--secondary);
         color: white;
-        padding: 0.75rem
-          1.5rem;
+        padding: 0.75rem 1.5rem;
         border-radius: 999px;
         font-weight: 600;
-        transition: all
-          0.2s ease;
-        border: 2px
-          solid
-          var(
-            --secondary
-          );
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 2px solid var(--secondary);
       }
       .btn-secondary:hover {
-        transform: translateY(
-          -2px
-        );
-        box-shadow: 0
-          4px 12px
-          rgba(
-            62,
-            155,
-            197,
-            0.3
-          );
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(62,155,197,0.3);
       }
       .btn-outline {
         background-color: transparent;
-        color: var(
-          --accent
-        );
-        padding: 0.75rem
-          1.5rem;
+        color: var(--accent);
+        padding: 0.75rem 1.5rem;
         border-radius: 999px;
         font-weight: 600;
-        transition: all
-          0.2s ease;
-        border: 2px
-          solid
-          var(
-            --accent
-          );
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 2px solid var(--accent);
       }
       .btn-outline:hover {
-        transform: translateY(
-          -2px
-        );
-        background-color: rgba(
-          65,
-          166,
-          42,
-          0.1
-        );
-        box-shadow: 0
-          4px 12px
-          rgba(
-            65,
-            166,
-            42,
-            0.2
-          );
+        transform: translateY(-2px);
+        background-color: rgba(65,166,42,0.1);
+        box-shadow: 0 4px 12px rgba(65,166,42,0.2);
       }
-
+      
       /* Animations */
       @keyframes float {
-        0% {
-          transform: translateY(
-            0
-          );
-        }
-        50% {
-          transform: translateY(
-            -15px
-          );
-        }
-        100% {
-          transform: translateY(
-            0
-          );
-        }
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0); }
       }
-      .animate-float {
-        animation: float
-          6s
-          ease-in-out
-          infinite;
-      }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      
       @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(
-            20px
-          );
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(
-            0
-          );
-        }
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
       }
-      .animate-fadeIn {
-        animation: fadeIn
-          0.8s
-          ease-out
-          forwards;
-      }
+      .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
+      
       @keyframes revealText {
-        0% {
-          transform: translateY(
-            100%
-          );
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(
-            0
-          );
-          opacity: 1;
-        }
+        0% { transform: translateY(100%); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
       }
-      .animate-reveal-1 {
-        animation: revealText
-          0.8s
-          cubic-bezier(
-            0.5,
-            0,
-            0.1,
-            1
-          )
-          forwards;
-      }
-      .animate-reveal-2 {
-        animation: revealText
-          0.8s
-          cubic-bezier(
-            0.5,
-            0,
-            0.1,
-            1
-          )
-          0.2s
-          forwards;
-      }
-
-      /* Glass effect */
+      .animate-reveal-1 { animation: revealText 0.8s cubic-bezier(0.5,0,0.1,1) forwards; }
+      .animate-reveal-2 { animation: revealText 0.8s cubic-bezier(0.5,0,0.1,1) 0.2s forwards; }
+      
+      /* Glass effect for header */
       .glass {
-        background: rgba(
-          255,
-          255,
-          255,
-          0.7
-        );
-        backdrop-filter: blur(
-          10px
-        );
-        -webkit-backdrop-filter: blur(
-          10px
-        );
-        border: 1px
-          solid
-          rgba(
-            255,
-            255,
-            255,
-            0.2
-          );
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
       }
-
-      /* Cosmic header specific */
+      
+      /* Cosmic header backgrounds */
       .space-bg {
         position: absolute;
         width: 100%;
@@ -430,781 +169,232 @@
         z-index: 0;
       }
       .constellation-background {
-        background-image: radial-gradient(
-            circle
-              at
-              25px
-              25px,
-            rgba(
-                241,
-                90,
-                36,
-                0.15
-              )
-              2px,
-            transparent
-              0
-          ),
-          radial-gradient(
-            circle
-              at
-              75px
-              75px,
-            rgba(
-                62,
-                155,
-                197,
-                0.15
-              )
-              2px,
-            transparent
-              0
-          );
-        background-size: 150px
-          150px;
+        background-image: radial-gradient(circle at 25px 25px, rgba(241,90,36,0.15) 2px, transparent 0),
+                          radial-gradient(circle at 75px 75px, rgba(62,155,197,0.15) 2px, transparent 0);
+        background-size: 150px 150px;
       }
+      
       .gradient-text {
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        background-image: linear-gradient(
-          90deg,
-          var(
-            --primary
-          ),
-          var(
-            --accent
-          )
-        );
+        background-image: linear-gradient(90deg, var(--primary), var(--accent));
       }
-
-      /* Header animations */
-      @keyframes wiggle {
-        0%,
-        100% {
-          transform: rotate(
-            0deg
-          );
-        }
-        25% {
-          transform: rotate(
-            5deg
-          );
-        }
-        75% {
-          transform: rotate(
-            -5deg
-          );
-        }
-      }
-      .hover\:animate-wiggle:hover {
-        animation: wiggle
-          0.5s
-          ease-in-out;
-      }
-
-      /* Card styles for portfolio and blog */
-      .card,
-      .blog-card {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0
-          4px 20px
-          rgba(
-            0,
-            0,
-            0,
-            0.05
-          );
-        transition: transform
-            0.3s
-            ease,
-          box-shadow
-            0.3s
-            ease;
-        overflow: hidden;
-        position: relative;
-      }
-      .card:hover,
-      .blog-card:hover {
-        transform: translateY(
-          -10px
-        );
-        box-shadow: 0
-          10px 30px
-          rgba(
-            0,
-            0,
-            0,
-            0.1
-          );
-      }
-      .card::before,
-      .blog-card::before {
-        content: "";
-        position: absolute;
+      
+      /* Header specific styles */
+      .header {
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(
-          to right,
-          var(
-            --primary
-          ),
-          var(
-            --secondary
-          )
-        );
+        right: 0;
+        z-index: 50;
+        transition: all 0.5s;
       }
-
-      /* Blog detail view */
-      .blog-detail-container {
-        max-width: 65ch;
-        line-height: 1.7;
-      }
-      .blog-detail-container
-        h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-      }
-      .blog-detail-container
-        p {
-        margin-bottom: 1.5rem;
-      }
-
-      /* Smooth page transition */
-      .page-transition {
-        transition: opacity
-          0.4s ease;
-      }
-
-      /* Floating elements */
+      
+      /* Floating decorative elements (used in hero) */
       .float-element {
         position: absolute;
-        animation: float
-          6s
-          ease-in-out
-          infinite;
+        animation: float 6s ease-in-out infinite;
       }
-
-      /* Interactive grid pattern (for hero background) */
+      
+      /* Grid pattern background (for hero and portfolio) */
       .grid-pattern {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(
-            to right,
-            rgba(
-                241,
-                90,
-                36,
-                0.1
-              )
-              1px,
-            transparent
-              1px
-          ),
-          linear-gradient(
-            to
-              bottom,
-            rgba(
-                241,
-                90,
-                36,
-                0.1
-              )
-              1px,
-            transparent
-              1px
-          );
-        background-size: 40px
-          40px;
-        z-index: 0;
+        background-image: linear-gradient(to right, rgba(241,90,36,0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(241,90,36,0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
         opacity: 0.5;
       }
-
-      /* Reveal animations */
-      .reveal-text {
-        opacity: 0;
+      
+      /* Blog Detail View */
+      .blog-detail-container {
+        max-width: 65ch;
+        line-height: 1.7;
       }
+      .blog-detail-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      .blog-detail-container p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .page-transition { transition: opacity 0.4s ease; }
     </style>
   </head>
-  <body
-    class="relative"
-  >
+  <body class="relative">
+    <!-- Custom cursor elements -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-star">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--primary)">
+        <path d="M12,1L9,9H1L7,13.5L5,21L12,17L19,21L17,13.5L23,9H15L12,1Z"/>
+      </svg>
+    </div>
+    
     <!-- Decorative grid overlay -->
-    <div
-      class="fixed inset-0 grid-pattern"
-    ></div>
-
+    <div class="fixed inset-0 grid-pattern"></div>
+    
     <!-- Header with Cosmic Theme -->
-    <header
-      id="header"
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-    >
-      <div
-        class="glass"
-      >
-        <!-- Space background for header -->
-        <div
-          class="space-bg h-16 overflow-hidden"
-        >
-          <div
-            id="earth-container"
-            class="relative h-full w-full"
-          >
-            <!-- (Optional JS can add an "earth" element here) -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+      <div class="glass">
+        <!-- Space background in header (optional cosmic element) -->
+        <div class="space-bg h-16 overflow-hidden">
+          <div id="earth-container" class="relative h-full w-full">
+            <!-- (Optional: JS can add an earth element here) -->
           </div>
         </div>
-        <!-- Header Content -->
-        <div
-          class="max-w-7xl mx-auto px-6 py-4 relative z-10 flex items-center justify-between"
-        >
+        <div class="max-w-7xl mx-auto px-6 py-4 relative z-10 flex items-center justify-between">
           <!-- Logo -->
-          <a
-            href="#"
-            class="group relative"
-          >
-            <h1
-              class="text-2xl font-bold relative z-10 transition-all duration-300 hover:animate-wiggle"
-            >
-              <span
-                class="gradient-text"
-                >Marijn
-                Baar</span
-              >
+          <a href="#" class="group relative">
+            <h1 class="text-2xl font-bold relative z-10 transition-all duration-300 hover:animate-wiggle">
+              <span class="gradient-text">Marijn Baar</span>
             </h1>
-            <div
-              class="absolute -inset-2 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"
-            ></div>
+            <div class="absolute -inset-2 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
           </a>
           <!-- Navigation (Desktop) -->
-          <nav
-            class="hidden md:flex space-x-8 items-center"
-          >
-            <a
-              href="#about"
-              class="nav-link text-primary"
-              >About</a
-            >
-            <a
-              href="#portfolio"
-              class="nav-link text-secondary"
-              >Portfolio</a
-            >
-            <a
-              href="#blog"
-              class="nav-link text-accent"
-              >Blog</a
-            >
+          <nav class="hidden md:flex space-x-8 items-center">
+            <a href="#about" class="nav-link text-primary">About</a>
+            <a href="#portfolio" class="nav-link text-secondary">Portfolio</a>
+            <a href="#blog" class="nav-link text-accent">Blog</a>
           </nav>
           <!-- Action Buttons -->
-          <div
-            class="flex items-center gap-3"
-          >
-            <div
-              id="auth-buttons"
-              class="flex items-center"
-            ></div>
-            <!-- New Post button appears only when logged in (handled by JS) -->
-            <button
-              id="new-blog-btn"
-              class="hidden bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg"
-              onclick="showNewBlogForm(event)"
-            >
-              <i
-                class="fas fa-plus mr-2"
-              ></i
-              >New
-              Post
+          <div class="flex items-center gap-3">
+            <div id="auth-buttons" class="flex items-center"></div>
+            <!-- New Post button (only shows when logged in) -->
+            <button id="new-blog-btn" class="hidden bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg" onclick="showNewBlogForm(event)">
+              <i class="fas fa-plus mr-2"></i>New Post
             </button>
           </div>
           <!-- Mobile Menu Button -->
-          <button
-            id="menuBtn"
-            class="md:hidden text-2xl text-primary focus:outline-none ml-4"
-          >
-            <i
-              class="fas fa-bars"
-            ></i>
+          <button id="menuBtn" class="md:hidden text-2xl text-primary focus:outline-none ml-4">
+            <i class="fas fa-bars"></i>
           </button>
         </div>
         <!-- Mobile Navigation -->
-        <nav
-          id="mobileNav"
-          class="hidden md:hidden glass shadow-lg rounded-b-lg mx-4 mt-2 overflow-hidden"
-        >
-          <ul
-            class="flex flex-col space-y-4 p-4"
-          >
-            <li>
-              <a
-                href="#about"
-                class="hover:text-primary transition block"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#portfolio"
-                class="hover:text-secondary transition block"
-                >Portfolio</a
-              >
-            </li>
-            <li>
-              <a
-                href="#blog"
-                class="hover:text-accent transition block"
-                >Blog</a
-              >
-            </li>
+        <nav id="mobileNav" class="hidden md:hidden glass shadow-lg rounded-b-lg mx-4 mt-2 overflow-hidden">
+          <ul class="flex flex-col space-y-4 p-4">
+            <li><a href="#about" class="hover:text-primary transition block">About</a></li>
+            <li><a href="#portfolio" class="hover:text-secondary transition block">Portfolio</a></li>
+            <li><a href="#blog" class="hover:text-accent transition block">Blog</a></li>
           </ul>
         </nav>
       </div>
     </header>
-
+    
     <!-- Login Modal -->
-    <div
-      id="login-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-blur-sm"
-    >
-      <div
-        class="bg-white rounded-xl p-8 w-11/12 max-w-md relative shadow-2xl"
-      >
-        <button
-          class="absolute top-4 right-4 text-gray-600 text-2xl transition"
-          onclick="closeLoginModal()"
-        >
-          &times;
-        </button>
-        <h2
-          class="text-3xl font-bold mb-6 text-gray-800"
-        >
-          Welcome
-          Back
-        </h2>
-        <div
-          class="space-y-4"
-        >
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-blur-sm">
+      <div class="bg-white rounded-xl p-8 w-11/12 max-w-md relative shadow-2xl">
+        <button class="absolute top-4 right-4 text-gray-600 text-2xl transition" onclick="closeLoginModal()">&times;</button>
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">Welcome Back</h2>
+        <div class="space-y-4">
           <div>
-            <label
-              for="loginUsername"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Username</label
-            >
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter your username"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
-            />
+            <label for="loginUsername" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter your username" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition" />
           </div>
           <div>
-            <label
-              for="loginPassword"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Password</label
-            >
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter your password"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
-            />
+            <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition" />
           </div>
-          <button
-            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 font-medium"
-            onclick="loginUser()"
-          >
+          <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 font-medium" onclick="loginUser()">
             Sign In
           </button>
         </div>
-        <p
-          class="text-sm text-gray-500 mt-2 text-center"
-        >
-          (Use your
-          credentials)
-        </p>
+        <p class="text-sm text-gray-500 mt-2 text-center">(Use your credentials)</p>
       </div>
     </div>
-
+    
     <!-- Hero Section with Cosmic Theme -->
-    <section
-      id="hero"
-      class="relative min-h-screen pt-32 pb-20 overflow-hidden"
-    >
-      <!-- Animated background gradient and constellation overlay -->
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-900 dark:to-indigo-950"
-      >
-        <div
-          class="constellation-background absolute inset-0 opacity-20"
-        ></div>
+    <section id="hero" class="relative min-h-screen pt-32 pb-20 overflow-hidden">
+      <!-- Background gradient and constellation overlay -->
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-900 dark:to-indigo-950">
+        <div class="constellation-background absolute inset-0 opacity-20"></div>
       </div>
       <!-- Floating geometric shapes -->
-      <div
-        class="absolute inset-0 overflow-hidden pointer-events-none"
-      >
-        <div
-          class="floating-circle absolute w-64 h-64 rounded-full bg-gradient-to-r from-purple-300 to-indigo-300 dark:from-purple-800 dark:to-indigo-900 blur-2xl opacity-20 -right-20 top-1/4 animate-float"
-          style="
-            animation-duration: 15s;
-          "
-        ></div>
-        <div
-          class="floating-circle absolute w-96 h-96 rounded-full bg-gradient-to-l from-blue-300 to-cyan-300 dark:from-blue-800 dark:to-cyan-900 blur-3xl opacity-20 -left-32 top-1/2 animate-float"
-          style="
-            animation-duration: 20s;
-          "
-        ></div>
-        <svg
-          class="absolute right-10 top-40 w-24 h-24 text-indigo-300 dark:text-indigo-700 opacity-40 animate-rotate"
-          style="
-            animation-duration: 30s;
-          "
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="30"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M50 10L94.3 90H5.7L50 10Z"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M50 90L5.7 10H94.3L50 90Z"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M10 50H90M50 10V90"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-circle absolute w-64 h-64 rounded-full bg-gradient-to-r from-purple-300 to-indigo-300 dark:from-purple-800 dark:to-indigo-900 blur-2xl opacity-20 -right-20 top-1/4 animate-float" style="animation-duration: 15s;"></div>
+        <div class="floating-circle absolute w-96 h-96 rounded-full bg-gradient-to-l from-blue-300 to-cyan-300 dark:from-blue-800 dark:to-cyan-900 blur-3xl opacity-20 -left-32 top-1/2 animate-float" style="animation-duration: 20s;"></div>
+        <svg class="absolute right-10 top-40 w-24 h-24 text-indigo-300 dark:text-indigo-700 opacity-40 animate-rotate" style="animation-duration: 30s;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.5" />
+          <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="0.5" />
+          <path d="M50 10L94.3 90H5.7L50 10Z" stroke="currentColor" stroke-width="0.5" />
+          <path d="M50 90L5.7 10H94.3L50 90Z" stroke="currentColor" stroke-width="0.5" />
+          <path d="M10 50H90M50 10V90" stroke="currentColor" stroke-width="0.5" />
         </svg>
-        <svg
-          class="absolute left-20 bottom-40 w-32 h-32 text-blue-300 dark:text-blue-700 opacity-30 animate-rotate"
-          style="
-            animation-duration: 40s;
-            transform: rotate(
-              -360deg
-            );
-          "
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="49"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M50 1L50 99M1 50H99"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M14.6 14.6L85.4 85.4M14.6 85.4L85.4 14.6"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M1 25H99M1 75H99M25 1V99M75 1V99"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
+        <svg class="absolute left-20 bottom-40 w-32 h-32 text-blue-300 dark:text-blue-700 opacity-30 animate-rotate" style="animation-duration: 40s; transform: rotate(-360deg);" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="49" stroke="currentColor" stroke-width="0.5" />
+          <path d="M50 1L50 99M1 50H99" stroke="currentColor" stroke-width="0.5" />
+          <path d="M14.6 14.6L85.4 85.4M14.6 85.4L85.4 14.6" stroke="currentColor" stroke-width="0.5" />
+          <path d="M1 25H99M1 75H99M25 1V99M75 1V99" stroke="currentColor" stroke-width="0.5" />
         </svg>
       </div>
       <!-- Hero Content -->
-      <div
-        class="container mx-auto px-6 relative z-10"
-      >
-        <div
-          class="flex flex-col lg:flex-row items-center gap-12"
-        >
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
           <!-- Left Column (Text) -->
-          <div
-            class="w-full lg:w-1/2 text-center lg:text-left"
-          >
-            <p
-              class="text-primary font-medium tracking-wider mb-4 opacity-0 animate-fadeIn"
-              style="
-                animation-delay: 0.2s;
-              "
-            >
-              EXPLORING
-              IDEAS
-              &amp;
-              CREATING
-              CONNECTIONS
-            </p>
-            <h1
-              class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight opacity-0 animate-fadeIn playful-heading"
-              style="
-                animation-delay: 0.4s;
-              "
-            >
-              <span
-                class="heading-character orange"
-                >H</span
-              >
-              <span
-                class="heading-character blue"
-                >i</span
-              >
-              <span
-                class="heading-character"
-                >,</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character green"
-                >I</span
-              >
-              <span
-                class="heading-character orange"
-                >'</span
-              >
-              <span
-                class="heading-character blue"
-                >m</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character green"
-                >M</span
-              >
-              <span
-                class="heading-character orange"
-                >a</span
-              >
-              <span
-                class="heading-character blue"
-                >r</span
-              >
-              <span
-                class="heading-character green"
-                >i</span
-              >
-              <span
-                class="heading-character orange"
-                >j</span
-              >
-              <span
-                class="heading-character blue"
-                >n</span
-              >
+          <div class="w-full lg:w-1/2 text-center lg:text-left">
+            <p class="text-primary font-medium tracking-wider mb-4 opacity-0 animate-fadeIn" style="animation-delay: 0.2s;">EXPLORING IDEAS &amp; CREATING CONNECTIONS</p>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight opacity-0 animate-fadeIn playful-heading" style="animation-delay: 0.4s;">
+              <span class="heading-character orange">H</span>
+              <span class="heading-character blue">i</span>
+              <span class="heading-character">,</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character green">I</span>
+              <span class="heading-character orange">'</span>
+              <span class="heading-character blue">m</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character green">M</span>
+              <span class="heading-character orange">a</span>
+              <span class="heading-character blue">r</span>
+              <span class="heading-character green">i</span>
+              <span class="heading-character orange">j</span>
+              <span class="heading-character blue">n</span>
             </h1>
-            <p
-              class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed opacity-0 animate-fadeIn"
-              style="
-                animation-delay: 0.6s;
-              "
-            >
-              Creating
-              intuitive
-              digital
-              experiences
-              powered
-              by
-              cutting‑edge
-              AI.
-              Currently,
-              I'm
-              leading
-              development
-              on a
-              retrieval‑augmented
-              generation
-              system
-              for
-              Amsterdam's
-              municipal
-              services—combining
-              advanced
-              embedding
-              models
-              with
-              sophisticated
-              chunking
-              techniques.
+            <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
+              Creating intuitive digital experiences powered by cutting‑edge AI. Currently, I'm leading development on a retrieval‑augmented generation system for Amsterdam's municipal services—combining advanced embedding models with sophisticated chunking techniques.
             </p>
-            <div
-              class="flex flex-wrap gap-4 justify-center lg:justify-start opacity-0 animate-fadeIn"
-              style="
-                animation-delay: 0.8s;
-              "
-            >
-              <a
-                href="#portfolio"
-                class="px-8 py-3 btn-primary"
-                >View
-                My
-                Work</a
-              >
-              <a
-                href="#about"
-                class="px-8 py-3 btn-outline"
-                >Learn
-                More</a
-              >
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start opacity-0 animate-fadeIn" style="animation-delay: 0.8s;">
+              <a href="#portfolio" class="px-8 py-3 btn-primary">View My Work</a>
+              <a href="#about" class="px-8 py-3 btn-outline">Learn More</a>
             </div>
-            <div
-              class="mt-10 hidden lg:flex flex-wrap gap-2 opacity-0 animate-fadeIn"
-              style="
-                animation-delay: 1s;
-              "
-            >
-              <span
-                class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium"
-                >AI</span
-              >
-              <span
-                class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium"
-                >Cloud
-                Architecture</span
-              >
-              <span
-                class="px-4 py-1.5 bg-green-100 text-accent rounded-full text-sm font-medium"
-                >Python</span
-              >
-              <span
-                class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium"
-                >DevSecOps</span
-              >
-              <span
-                class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium"
-                >Web
-                Development</span
-              >
+            <div class="mt-10 hidden lg:flex flex-wrap gap-2 opacity-0 animate-fadeIn" style="animation-delay: 1s;">
+              <span class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium">AI</span>
+              <span class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium">Cloud Architecture</span>
+              <span class="px-4 py-1.5 bg-green-100 text-accent rounded-full text-sm font-medium">Python</span>
+              <span class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium">DevSecOps</span>
+              <span class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium">Web Development</span>
             </div>
           </div>
-
           <!-- Right Column (Image) -->
-          <div
-            class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
-            style="
-              animation-delay: 0.6s;
-            "
-          >
-            <div
-              class="relative mx-auto w-full max-w-md aspect-square"
-            >
-              <div
-                id="profile-container"
-                class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl transform transition hover:scale-105 duration-500"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-90"
-                ></div>
-                <div
-                  class="absolute inset-0 flex items-center justify-center text-white text-7xl font-bold serif"
-                >
-                  <span
-                    class="tracking-wider"
-                    >MB</span
-                  >
+          <div class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn" style="animation-delay: 0.6s;">
+            <div class="relative mx-auto w-full max-w-md aspect-square">
+              <div id="profile-container" class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl transform transition hover:scale-105 duration-500">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-90"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-white text-7xl font-bold serif">
+                  <span class="tracking-wider">MB</span>
                 </div>
               </div>
-              <div
-                class="absolute inset-0 -z-10"
-              >
-                <div
-                  class="absolute inset-0 rounded-full border border-blue-300 opacity-50"
-                ></div>
-                <div
-                  class="absolute inset-[-20px] rounded-full border border-blue-300 opacity-30 animate-pulse"
-                  style="
-                    animation-duration: 4s;
-                  "
-                ></div>
-                <div
-                  class="absolute inset-[-40px] rounded-full border border-indigo-300 opacity-20 animate-pulse"
-                  style="
-                    animation-duration: 6s;
-                  "
-                ></div>
+              <div class="absolute inset-0 -z-10">
+                <div class="absolute inset-0 rounded-full border border-blue-300 opacity-50"></div>
+                <div class="absolute inset-[-20px] rounded-full border border-blue-300 opacity-30 animate-pulse" style="animation-duration: 4s;"></div>
+                <div class="absolute inset-[-40px] rounded-full border border-indigo-300 opacity-20 animate-pulse" style="animation-duration: 6s;"></div>
               </div>
-              <div
-                class="floating-interest absolute -left-4 top-1/4 p-3 bg-white rounded-full shadow-lg text-primary transition hover:scale-110 hover:rotate-12"
-                id="icon1"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                  />
+              <div class="floating-interest absolute -left-4 top-1/4 p-3 bg-white rounded-full shadow-lg text-primary transition hover:scale-110 hover:rotate-12" id="icon1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <div
-                class="floating-interest absolute -right-4 bottom-1/3 p-3 bg-white rounded-full shadow-lg text-secondary transition hover:scale-110 hover:-rotate-12"
-                id="icon2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
+              <div class="floating-interest absolute -right-4 bottom-1/3 p-3 bg-white rounded-full shadow-lg text-secondary transition hover:scale-110 hover:-rotate-12" id="icon2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
               </div>
-              <div
-                class="floating-interest absolute left-1/4 -bottom-4 p-3 bg-white rounded-full shadow-lg text-accent transition hover:scale-110 hover:rotate-45"
-                id="icon3"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  />
+              <div class="floating-interest absolute left-1/4 -bottom-4 p-3 bg-white rounded-full shadow-lg text-accent transition hover:scale-110 hover:rotate-45" id="icon3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
             </div>
@@ -1212,659 +402,158 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Main Content Sections -->
-    <div
-      id="main-content"
-      class="pt-12 page-transition"
-    >
+    <div id="main-content" class="pt-12 page-transition">
       <!-- About Section -->
-      <section
-        id="about"
-        class="py-20 bg-white relative"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 relative"
-        >
-          <div
-            class="text-center mb-12"
-          >
-            <span
-              class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3"
-              >About
-              Me</span
-            >
-            <h2
-              class="text-4xl mb-3 playful-heading"
-            >
-              <span
-                class="heading-character orange"
-                >T</span
-              >
-              <span
-                class="heading-character blue"
-                >h</span
-              >
-              <span
-                class="heading-character green"
-                >e</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character orange"
-                >S</span
-              >
-              <span
-                class="heading-character blue"
-                >t</span
-              >
-              <span
-                class="heading-character green"
-                >o</span
-              >
-              <span
-                class="heading-character orange"
-                >r</span
-              >
-              <span
-                class="heading-character blue"
-                >y</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character green"
-                >S</span
-              >
-              <span
-                class="heading-character orange"
-                >o</span
-              >
-              <span
-                class="heading-character blue"
-              >
-              </span>
-              <span
-                class="heading-character green"
-                >F</span
-              >
-              <span
-                class="heading-character orange"
-                >a</span
-              >
-              <span
-                class="heading-character blue"
-                >r</span
-              >
+      <section id="about" class="py-20 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 relative">
+          <div class="text-center mb-12">
+            <span class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3">About Me</span>
+            <h2 class="text-4xl mb-3 playful-heading">
+              <span class="heading-character orange">T</span>
+              <span class="heading-character blue">h</span>
+              <span class="heading-character green">e</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character orange">S</span>
+              <span class="heading-character blue">t</span>
+              <span class="heading-character green">o</span>
+              <span class="heading-character orange">r</span>
+              <span class="heading-character blue">y</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character green">S</span>
+              <span class="heading-character orange">o</span>
+              <span class="heading-character blue"> </span>
+              <span class="heading-character green">F</span>
+              <span class="heading-character orange">a</span>
+              <span class="heading-character blue">r</span>
             </h2>
-            <div
-              class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"
-            ></div>
+            <div class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
-          <p
-            class="max-w-3xl mx-auto text-center text-xl text-gray-600 mb-10 leading-relaxed"
-          >
-            I'm
-            Marijn
-            Baar – a
-            versatile
-            full‑stack
-            developer
-            and
-            technology
-            consultant
-            with
-            over 8
-            years of
-            experience
-            crafting
-            digital
-            solutions.
-            My
-            expertise
-            lies at
-            the
-            intersection
-            of
-            artificial
-            intelligence,
-            cloud
-            architecture,
-            and
-            modern
-            web
-            development.
+          <p class="max-w-3xl mx-auto text-center text-xl text-gray-600 mb-10 leading-relaxed">
+            I'm Marijn Baar – a versatile full‑stack developer and technology consultant with over 8 years of experience crafting digital solutions. My expertise lies at the intersection of artificial intelligence, cloud architecture, and modern web development.
           </p>
-          <div
-            class="text-gray-700 space-y-6 max-w-3xl mx-auto"
-          >
-            <p
-              class="leading-relaxed"
-            >
-              In my
-              current
-              role
-              with
-              the
-              City
-              of
-              Amsterdam,
-              I'm
-              spearheading
-              the
-              development
-              of a
-              retrieval-augmented
-              generation
-              (RAG)
-              system
-              that
-              leverages
-              state‑of‑the‑art
-              large
-              language
-              models.
-              This
-              project
-              involves
-              advanced
-              embedding
-              techniques
-              and
-              optimized
-              chunking
-              strategies
-              to
-              address
-              real‑world
-              municipal
-              challenges.
+          <div class="text-gray-700 space-y-6 max-w-3xl mx-auto">
+            <p class="leading-relaxed">
+              In my current role with the City of Amsterdam, I'm spearheading the development of a retrieval-augmented generation (RAG) system that leverages state‑of‑the‑art large language models. This project involves advanced embedding techniques and optimized chunking strategies to address real‑world municipal challenges.
             </p>
-            <p
-              class="leading-relaxed"
-            >
-              My
-              technical
-              background
-              includes
-              extensive
-              work
-              with
-              Azure
-              Cloud
-              technologies,
-              including
-              Serverless
-              architecture,
-              Entra
-              ID,
-              Azure
-              Machine
-              Learning,
-              and
-              PostgreSQL
-              database
-              management.
-              Beyond
-              technical
-              skills,
-              I
-              bring
-              strong
-              leadership
-              capabilities,
-              guiding
-              cross‑functional
-              teams
-              with
-              an
-              emphasis
-              on
-              both
-              security
-              and
-              creative
-              problem-solving.
+            <p class="leading-relaxed">
+              My technical background includes extensive work with Azure Cloud technologies, including Serverless architecture, Entra ID, Azure Machine Learning, and PostgreSQL database management. Beyond technical skills, I bring strong leadership capabilities, guiding cross‑functional teams with an emphasis on both security and creative problem-solving.
             </p>
-            <p
-              class="leading-relaxed"
-            >
-              With
-              expertise
-              in
-              Python
-              development,
-              DevSecOps
-              principles,
-              and
-              Agile
-              methodologies,
-              I
-              continually
-              refine
-              processes
-              and
-              cultivate
-              high‑performing
-              teams
-              that
-              deliver
-              exceptional
-              results.
+            <p class="leading-relaxed">
+              With expertise in Python development, DevSecOps principles, and Agile methodologies, I continually refine processes and cultivate high‑performing teams that deliver exceptional results.
             </p>
           </div>
         </div>
       </section>
-
+      
       <!-- Portfolio Section -->
-      <section
-        id="portfolio"
-        class="py-20 relative"
-      >
-        <div
-          class="grid-pattern absolute inset-0"
-        ></div>
-        <div
-          class="max-w-6xl mx-auto px-4 relative"
-        >
-          <div
-            class="text-center mb-12"
-          >
-            <span
-              class="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-3"
-              >Projects</span
-            >
-            <h2
-              class="text-4xl mb-3 playful-heading"
-            >
-              <span
-                class="heading-character blue"
-                >M</span
-              >
-              <span
-                class="heading-character green"
-                >y</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character orange"
-                >R</span
-              >
-              <span
-                class="heading-character blue"
-                >e</span
-              >
-              <span
-                class="heading-character green"
-                >c</span
-              >
-              <span
-                class="heading-character orange"
-                >e</span
-              >
-              <span
-                class="heading-character blue"
-                >n</span
-              >
-              <span
-                class="heading-character green"
-                >t</span
-              >
-              <span
-                class="heading-character"
-              >
-              </span>
-              <span
-                class="heading-character orange"
-                >W</span
-              >
-              <span
-                class="heading-character blue"
-                >o</span
-              >
-              <span
-                class="heading-character green"
-                >r</span
-              >
-              <span
-                class="heading-character orange"
-                >k</span
-              >
+      <section id="portfolio" class="py-20 relative">
+        <div class="grid-pattern absolute inset-0"></div>
+        <div class="max-w-6xl mx-auto px-4 relative">
+          <div class="text-center mb-12">
+            <span class="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-3">Projects</span>
+            <h2 class="text-4xl mb-3 playful-heading">
+              <span class="heading-character blue">M</span>
+              <span class="heading-character green">y</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character orange">R</span>
+              <span class="heading-character blue">e</span>
+              <span class="heading-character green">c</span>
+              <span class="heading-character orange">e</span>
+              <span class="heading-character blue">n</span>
+              <span class="heading-character green">t</span>
+              <span class="heading-character"> </span>
+              <span class="heading-character orange">W</span>
+              <span class="heading-character blue">o</span>
+              <span class="heading-character green">r</span>
+              <span class="heading-character orange">k</span>
             </h2>
-            <div
-              class="h-1 w-20 bg-gradient-to-r from-secondary to-accent mx-auto"
-            ></div>
+            <div class="h-1 w-20 bg-gradient-to-r from-secondary to-accent mx-auto"></div>
           </div>
-          <p
-            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12"
-          >
-            Explore
-            a
-            selection
-            of
-            projects
-            that
-            showcase
-            my
-            approach
-            to
-            solving
-            complex
-            challenges
-            through
-            innovative
-            technical
-            solutions.
+          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12">
+            Explore a selection of projects that showcase my approach to solving complex challenges through innovative technical solutions.
           </p>
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Portfolio Item 1 -->
-            <div
-              class="card group"
-            >
-              <div
-                class="relative h-52 overflow-hidden"
-              >
-                <img
-                  src="https://source.unsplash.com/600x400/?environment,cloud"
-                  alt="Amsterdam Eco-Hackathon Challenge"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
-                >
-                  <i
-                    class="fas fa-leaf text-primary"
-                  ></i>
+            <div class="card group">
+              <div class="relative h-52 overflow-hidden">
+                <img src="https://source.unsplash.com/600x400/?environment,cloud" alt="Amsterdam Eco-Hackathon Challenge" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md">
+                  <i class="fas fa-leaf text-primary"></i>
                 </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-                ></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
               </div>
-              <div
-                class="p-6"
-              >
-                <h3
-                  class="text-xl font-bold mb-2 group-hover:text-primary transition serif"
-                >
-                  Amsterdam
-                  Eco-Hackathon
-                  Challenge
-                </h3>
-                <p
-                  class="text-gray-600 text-sm mb-4"
-                >
-                  Leading
-                  a
-                  collaborative
-                  innovation
-                  event
-                  focused
-                  on
-                  optimizing
-                  cloud
-                  infrastructure
-                  for
-                  environmental
-                  sustainability—bringing
-                  together
-                  technologists
-                  and
-                  environmental
-                  experts
-                  to
-                  create
-                  impactful
-                  solutions.
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition serif">Amsterdam Eco-Hackathon Challenge</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Leading a collaborative innovation event focused on optimizing cloud infrastructure for environmental sustainability—bringing together technologists and environmental experts to create impactful solutions.
                 </p>
-                <div
-                  class="flex flex-wrap gap-2 mb-4"
-                >
-                  <span
-                    class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium"
-                    >Sustainability</span
-                  >
-                  <span
-                    class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium"
-                    >Cloud</span
-                  >
-                  <span
-                    class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium"
-                    >Hackathon</span
-                  >
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Sustainability</span>
+                  <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium">Cloud</span>
+                  <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">Hackathon</span>
                 </div>
-                <a
-                  href="#"
-                  class="btn-secondary inline-flex items-center text-sm"
-                >
-                  <span
-                    >View
-                    Details</span
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
+                <a href="#" class="btn-secondary inline-flex items-center text-sm">
+                  <span>View Details</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
               </div>
             </div>
-
+            
             <!-- Portfolio Item 2 -->
-            <div
-              class="card group"
-            >
-              <div
-                class="relative h-52 overflow-hidden"
-              >
-                <img
-                  src="https://source.unsplash.com/600x400/?chat,ai"
-                  alt="ChatAmsterdam"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
-                >
-                  <i
-                    class="fas fa-comments text-primary"
-                  ></i>
+            <div class="card group">
+              <div class="relative h-52 overflow-hidden">
+                <img src="https://source.unsplash.com/600x400/?chat,ai" alt="ChatAmsterdam" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md">
+                  <i class="fas fa-comments text-primary"></i>
                 </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-                ></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
               </div>
-              <div
-                class="p-6"
-              >
-                <h3
-                  class="text-xl font-bold mb-2 group-hover:text-primary transition serif"
-                >
-                  ChatAmsterdam
-                </h3>
-                <p
-                  class="text-gray-600 text-sm mb-4"
-                >
-                  Developing
-                  an
-                  intelligent
-                  conversational
-                  interface
-                  for
-                  municipal
-                  employees
-                  that
-                  streamlines
-                  internal
-                  communication
-                  and
-                  enhances
-                  citizen
-                  service
-                  delivery
-                  through
-                  natural
-                  language
-                  processing.
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition serif">ChatAmsterdam</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Developing an intelligent conversational interface for municipal employees that streamlines internal communication and enhances citizen service delivery through natural language processing.
                 </p>
-                <div
-                  class="flex flex-wrap gap-2 mb-4"
-                >
-                  <span
-                    class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium"
-                    >Chatbot</span
-                  >
-                  <span
-                    class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium"
-                    >AI</span
-                  >
-                  <span
-                    class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium"
-                    >Municipal</span
-                  >
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium">Chatbot</span>
+                  <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">AI</span>
+                  <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Municipal</span>
                 </div>
-                <a
-                  href="#"
-                  class="btn-secondary inline-flex items-center text-sm"
-                >
-                  <span
-                    >View
-                    Details</span
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
+                <a href="#" class="btn-secondary inline-flex items-center text-sm">
+                  <span>View Details</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
               </div>
             </div>
-
+            
             <!-- Portfolio Item 3 -->
-            <div
-              class="card group"
-            >
-              <div
-                class="relative h-52 overflow-hidden"
-              >
-                <img
-                  src="https://source.unsplash.com/600x400/?openai,cloud"
-                  alt="FBAI Azure OpenAI Deployment"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
-                >
-                  <i
-                    class="fas fa-brain text-primary"
-                  ></i>
+            <div class="card group">
+              <div class="relative h-52 overflow-hidden">
+                <img src="https://source.unsplash.com/600x400/?openai,cloud" alt="FBAI Azure OpenAI Deployment" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md">
+                  <i class="fas fa-brain text-primary"></i>
                 </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-                ></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
               </div>
-              <div
-                class="p-6"
-              >
-                <h3
-                  class="text-xl font-bold mb-2 group-hover:text-primary transition serif"
-                >
-                  FBAI
-                  Azure
-                  OpenAI
-                  Deployment
-                </h3>
-                <p
-                  class="text-gray-600 text-sm mb-4"
-                >
-                  Architecting
-                  and
-                  implementing
-                  a
-                  secure,
-                  cost‑optimized
-                  deployment
-                  for
-                  a
-                  functional
-                  administration
-                  assistant
-                  utilizing
-                  Azure
-                  OpenAI
-                  services—with
-                  an
-                  emphasis
-                  on
-                  data
-                  privacy
-                  and
-                  operational
-                  efficiency.
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition serif">FBAI Azure OpenAI Deployment</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Architecting and implementing a secure, cost‑optimized deployment for a functional administration assistant utilizing Azure OpenAI services—with an emphasis on data privacy and operational efficiency.
                 </p>
-                <div
-                  class="flex flex-wrap gap-2 mb-4"
-                >
-                  <span
-                    class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium"
-                    >Azure</span
-                  >
-                  <span
-                    class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium"
-                    >OpenAI</span
-                  >
-                  <span
-                    class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium"
-                    >Deployment</span
-                  >
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium">Azure</span>
+                  <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">OpenAI</span>
+                  <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">Deployment</span>
                 </div>
-                <a
-                  href="#"
-                  class="btn-secondary inline-flex items-center text-sm"
-                >
-                  <span
-                    >View
-                    Details</span
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
+                <a href="#" class="btn-secondary inline-flex items-center text-sm">
+                  <span>View Details</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
               </div>
@@ -1872,1138 +561,407 @@
           </div>
         </div>
       </section>
-
+      
       <!-- Blog Section -->
-      <section
-        id="blog"
-        class="py-20 bg-white"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4"
-        >
-          <div
-            class="text-center mb-12"
-          >
-            <span
-              class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-3"
-              >Blog</span
-            >
-            <h2
-              class="text-4xl font-bold mb-3"
-            >
-              From
-              My
-              Blog
-            </h2>
-            <div
-              class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"
-            ></div>
+      <section id="blog" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <span class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-3">Blog</span>
+            <h2 class="text-4xl font-bold mb-3">From My Blog</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
-          <p
-            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12"
-          >
-            I share
-            insights,
-            tutorials,
-            and
-            reflections
-            on web
-            development,
-            emerging
-            technologies,
-            and
-            industry
-            best
-            practices.
+          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-12">
+            I share insights, tutorials, and reflections on web development, emerging technologies, and industry best practices.
           </p>
-          <div
-            class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Blog posts will be rendered dynamically via JavaScript -->
           </div>
         </div>
       </section>
-
+      
       <!-- Blog Post Detail Container -->
-      <div
-        id="blog-post-container"
-        class="max-w-4xl mx-auto my-20 px-4 hidden"
-      >
-        <button
-          class="mb-8 inline-flex items-center text-primary hover:text-primary-dark transition-colors"
-          onclick="hideBlogDetail()"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
+      <div id="blog-post-container" class="max-w-4xl mx-auto my-20 px-4 hidden">
+        <button class="mb-8 inline-flex items-center text-primary hover:text-primary-dark transition-colors" onclick="hideBlogDetail()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Back to
-          Blog
+          Back to Blog
         </button>
-        <div
-          class="bg-white shadow-xl rounded-2xl overflow-hidden"
-        >
-          <div
-            class="px-8 py-6 bg-gradient-to-r from-primary to-accent text-white"
-          >
-            <h1
-              id="detail-title"
-              class="text-3xl md:text-4xl font-bold leading-tight"
-            ></h1>
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+          <div class="px-8 py-6 bg-gradient-to-r from-primary to-accent text-white">
+            <h1 id="detail-title" class="text-3xl md:text-4xl font-bold leading-tight"></h1>
           </div>
-          <div
-            id="detail-content"
-            class="blog-detail-container p-8 prose prose-lg max-w-none"
-          ></div>
+          <div id="detail-content" class="blog-detail-container p-8 prose prose-lg max-w-none"></div>
         </div>
       </div>
-
+      
       <!-- Contact Section -->
-      <section
-        id="contact"
-        class="py-20 bg-gray-50"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4"
-        >
-          <div
-            class="text-center mb-12"
-          >
-            <span
-              class="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-600 text-sm font-semibold mb-3"
-              >Contact</span
-            >
-            <h2
-              class="text-4xl font-bold mb-3"
-            >
-              Get In
-              Touch
-            </h2>
-            <div
-              class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"
-            ></div>
+      <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <span class="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-600 text-sm font-semibold mb-3">Contact</span>
+            <h2 class="text-4xl font-bold mb-3">Get In Touch</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
-          <p
-            class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10"
-          >
-            Have a
-            project
-            in mind?
-            Let's
-            connect
-            and
-            discuss
-            how I
-            can help
-            transform
-            your
-            ideas
-            into
-            reality.
+          <p class="text-center max-w-2xl mx-auto text-lg text-gray-600 mb-10">
+            Have a project in mind? Let's connect and discuss how I can help transform your ideas into reality.
           </p>
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Contact Info -->
-            <div
-              class="space-y-6"
-            >
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
-                >
-                  <i
-                    class="fas fa-envelope text-primary text-2xl"
-                  ></i>
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                  <i class="fas fa-envelope text-primary text-2xl"></i>
                 </div>
                 <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Email
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    hello@marijnbaar.com
-                  </p>
+                  <h3 class="text-xl font-bold">Email</h3>
+                  <p class="text-gray-600">hello@marijnbaar.com</p>
                 </div>
               </div>
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
-                >
-                  <i
-                    class="fas fa-phone text-primary text-2xl"
-                  ></i>
+              <div class="flex items-center space-x-4">
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                  <i class="fas fa-phone text-primary text-2xl"></i>
                 </div>
                 <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Phone
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    +1
-                    (555)
-                    123-4567
-                  </p>
+                  <h3 class="text-xl font-bold">Phone</h3>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
                 </div>
               </div>
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
-                >
-                  <i
-                    class="fas fa-map-marker-alt text-primary text-2xl"
-                  ></i>
+              <div class="flex items-center space-x-4">
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                  <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
                 </div>
                 <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Location
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    Amsterdam,
-                    Netherlands
-                  </p>
+                  <h3 class="text-xl font-bold">Location</h3>
+                  <p class="text-gray-600">Amsterdam, Netherlands</p>
                 </div>
               </div>
             </div>
             <!-- Contact Form -->
-            <form
-              class="bg-white p-6 rounded-lg shadow-md space-y-4"
-            >
+            <form class="bg-white p-6 rounded-lg shadow-md space-y-4">
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="name"
-                  >Your
-                  Name</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="John Doe"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
+                <label class="block text-gray-700 font-semibold mb-1" for="name">Your Name</label>
+                <input type="text" id="name" placeholder="John Doe" class="w-full p-3 border border-gray-300 rounded" />
               </div>
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="email"
-                  >Email
-                  Address</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="john@example.com"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
+                <label class="block text-gray-700 font-semibold mb-1" for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@example.com" class="w-full p-3 border border-gray-300 rounded" />
               </div>
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="subject"
-                  >Subject</label
-                >
-                <input
-                  type="text"
-                  id="subject"
-                  placeholder="Project Inquiry"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
+                <label class="block text-gray-700 font-semibold mb-1" for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Project Inquiry" class="w-full p-3 border border-gray-300 rounded" />
               </div>
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="message"
-                  >Message</label
-                >
-                <textarea
-                  id="message"
-                  placeholder="Tell me about your project..."
-                  class="w-full p-3 border border-gray-300 rounded"
-                ></textarea>
+                <label class="block text-gray-700 font-semibold mb-1" for="message">Message</label>
+                <textarea id="message" placeholder="Tell me about your project..." class="w-full p-3 border border-gray-300 rounded"></textarea>
               </div>
-              <button
-                type="submit"
-                class="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition w-full"
-              >
-                Send
-                Message
+              <button type="submit" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition w-full">
+                Send Message
               </button>
             </form>
           </div>
         </div>
       </section>
-
+      
       <!-- Footer -->
-      <footer
-        class="bg-gray-900 text-white pt-12 pb-6 relative"
-      >
-        <div
-          class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent"
-        ></div>
-        <div
-          class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8"
-        >
+      <footer class="bg-gray-900 text-white pt-12 pb-6 relative">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent"></div>
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3
-              class="text-xl font-bold mb-4"
-            >
-              Marijn
-              Baar
-            </h3>
-            <p
-              class="text-gray-400"
-            >
-              Creating
-              elegant,
-              efficient,
-              and
-              effective
-              web
-              solutions
-              to
-              help
-              organizations
-              thrive
-              in the
-              digital
-              landscape.
+            <h3 class="text-xl font-bold mb-4">Marijn Baar</h3>
+            <p class="text-gray-400">
+              Creating elegant, efficient, and effective web solutions to help organizations thrive in the digital landscape.
             </p>
-            <div
-              class="flex space-x-4 mt-4"
-            >
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
-              >
-                <i
-                  class="fab fa-github"
-                ></i>
+            <div class="flex space-x-4 mt-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
+                <i class="fab fa-github"></i>
               </a>
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
-              >
-                <i
-                  class="fab fa-twitter"
-                ></i>
+              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
+                <i class="fab fa-twitter"></i>
               </a>
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
-              >
-                <i
-                  class="fab fa-linkedin-in"
-                ></i>
+              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
+                <i class="fab fa-linkedin-in"></i>
               </a>
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition"
-              >
-                <i
-                  class="fab fa-dribbble"
-                ></i>
+              <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-green-500 transition">
+                <i class="fab fa-dribbble"></i>
               </a>
             </div>
           </div>
           <div>
-            <h4
-              class="text-lg font-semibold mb-3"
-            >
-              Quick
-              Links
-            </h4>
-            <ul
-              class="space-y-2"
-            >
-              <li>
-                <a
-                  href="#about"
-                  class="hover:text-white"
-                  >About
-                  Me</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#portfolio"
-                  class="hover:text-white"
-                  >Portfolio</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#blog"
-                  class="hover:text-white"
-                  >Blog</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  class="hover:text-white"
-                  >Contact</a
-                >
-              </li>
+            <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+            <ul class="space-y-2">
+              <li><a href="#about" class="hover:text-white">About Me</a></li>
+              <li><a href="#portfolio" class="hover:text-white">Portfolio</a></li>
+              <li><a href="#blog" class="hover:text-white">Blog</a></li>
+              <li><a href="#contact" class="hover:text-white">Contact</a></li>
             </ul>
           </div>
           <div>
-            <h4
-              class="text-lg font-semibold mb-3"
-            >
-              Services
-            </h4>
-            <ul
-              class="space-y-2"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Web
-                  Development</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Mobile
-                  Apps</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >UX/UI
-                  Design</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Consulting</a
-                >
-              </li>
+            <h4 class="text-lg font-semibold mb-3">Services</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">Web Development</a></li>
+              <li><a href="#" class="hover:text-white">Mobile Apps</a></li>
+              <li><a href="#" class="hover:text-white">UX/UI Design</a></li>
+              <li><a href="#" class="hover:text-white">Consulting</a></li>
             </ul>
           </div>
           <div>
-            <h4
-              class="text-lg font-semibold mb-3"
-            >
-              Stay
-              Updated
-            </h4>
-            <p
-              class="text-gray-400 mb-3"
-            >
-              Subscribe
-              to my
-              newsletter
-              for
-              the
-              latest
-              articles,
-              tutorials,
-              and
-              project
-              updates.
-            </p>
-            <form
-              class="flex"
-            >
-              <input
-                type="email"
-                placeholder="Your email address"
-                class="flex-grow p-2 rounded-l border-none text-white"
-              />
-              <button
-                type="submit"
-                class="bg-yellow-400 text-dark px-4 py-2 rounded-r"
-              >
-                <i
-                  class="fas fa-paper-plane"
-                ></i>
+            <h4 class="text-lg font-semibold mb-3">Stay Updated</h4>
+            <p class="text-gray-400 mb-3">Subscribe to my newsletter for the latest articles, tutorials, and project updates.</p>
+            <form class="flex">
+              <input type="email" placeholder="Your email address" class="flex-grow p-2 rounded-l border-none text-white" />
+              <button type="submit" class="bg-yellow-400 text-dark px-4 py-2 rounded-r">
+                <i class="fas fa-paper-plane"></i>
               </button>
             </form>
           </div>
         </div>
-        <p
-          class="text-center mt-8 text-gray-500 text-sm"
-        >
-          &copy;
-          2025
-          Marijn
-          Baar. All
-          rights
-          reserved.
-        </p>
+        <p class="text-center mt-8 text-gray-500 text-sm">&copy; 2025 Marijn Baar. All rights reserved.</p>
       </footer>
     </div>
-
+    
     <!-- New Blog Form (for Authenticated Users) -->
-    <div
-      id="new-blog-form"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50"
-    >
-      <div
-        class="bg-white p-6 rounded-md w-11/12 max-w-xl relative"
-      >
-        <a
-          href="#"
-          class="text-blue-700 font-semibold mb-4 block"
-          onclick="backToMain(event)"
-          >&larr;
-          Back to
-          Home</a
-        >
-        <h1
-          class="text-3xl font-bold mb-6"
-        >
-          Create New
-          Blog Post
-        </h1>
-        <form
-          id="blog-form"
-          class="space-y-4"
-        >
+    <div id="new-blog-form" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-md w-11/12 max-w-xl relative">
+        <a href="#" class="text-blue-700 font-semibold mb-4 block" onclick="backToMain(event)">&larr; Back to Home</a>
+        <h1 class="text-3xl font-bold mb-6">Create New Blog Post</h1>
+        <form id="blog-form" class="space-y-4">
           <div>
-            <label
-              class="block text-gray-700 font-medium mb-2"
-              for="blog-title"
-              >Title</label
-            >
-            <input
-              type="text"
-              id="blog-title"
-              required
-              class="w-full p-3 border border-gray-300 rounded"
-            />
+            <label class="block text-gray-700 font-medium mb-2" for="blog-title">Title</label>
+            <input type="text" id="blog-title" required class="w-full p-3 border border-gray-300 rounded" />
           </div>
           <div>
-            <label
-              class="block text-gray-700 font-medium mb-2"
-              for="blog-content"
-              >Content</label
-            >
-            <textarea
-              id="blog-content"
-              required
-              class="w-full p-3 border border-gray-300 rounded"
-              rows="6"
-            ></textarea>
+            <label class="block text-gray-700 font-medium mb-2" for="blog-content">Content</label>
+            <textarea id="blog-content" required class="w-full p-3 border border-gray-300 rounded" rows="6"></textarea>
           </div>
-          <button
-            type="submit"
-            class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition"
-          >
-            Publish
-            Post
-          </button>
+          <button type="submit" class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition">Publish Post</button>
         </form>
       </div>
     </div>
-
-    <!-- JavaScript: Functional Code -->
+    
+    <!-- JavaScript for Functionality -->
     <script>
       // Mobile nav toggle
-      const menuBtn =
-        document.getElementById(
-          "menuBtn",
-        );
-      const mobileNav =
-        document.getElementById(
-          "mobileNav",
-        );
-      menuBtn.addEventListener(
-        "click",
-        () => {
-          menuBtn.classList.toggle(
-            "opened",
-          );
-          if (
-            mobileNav.classList.contains(
-              "hidden",
-            )
-          ) {
-            mobileNav.classList.remove(
-              "hidden",
-            );
-            mobileNav.style.maxHeight =
-              "0";
-            mobileNav.style.opacity =
-              "0";
-            mobileNav.style.transition =
-              "max-height 0.5s ease-out, opacity 0.3s ease-out";
-            mobileNav.offsetHeight; // Force reflow
-            const height =
-              mobileNav.scrollHeight;
-            mobileNav.style.maxHeight = `${height}px`;
-            mobileNav.style.opacity =
-              "1";
-          } else {
-            mobileNav.style.maxHeight =
-              "0";
-            mobileNav.style.opacity =
-              "0";
-            setTimeout(
-              () => {
-                mobileNav.classList.add(
-                  "hidden",
-                );
-              },
-              500,
-            );
-          }
-        },
-      );
-
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('opened');
+        if (mobileNav.classList.contains('hidden')) {
+          mobileNav.classList.remove('hidden');
+          mobileNav.style.maxHeight = '0';
+          mobileNav.style.opacity = '0';
+          mobileNav.style.transition = 'max-height 0.5s ease-out, opacity 0.3s ease-out';
+          mobileNav.offsetHeight; // Force reflow
+          const height = mobileNav.scrollHeight;
+          mobileNav.style.maxHeight = `${height}px`;
+          mobileNav.style.opacity = '1';
+        } else {
+          mobileNav.style.maxHeight = '0';
+          mobileNav.style.opacity = '0';
+          setTimeout(() => { mobileNav.classList.add('hidden'); }, 500);
+        }
+      });
+      
       // Authentication & Blog Management Functions
       async function updateAuthButtons() {
-        const authButtons =
-          document.getElementById(
-            "auth-buttons",
-          );
-        const token =
-          localStorage.getItem(
-            "token",
-          );
+        const authButtons = document.getElementById("auth-buttons");
+        const token = localStorage.getItem("token");
         if (token) {
-          authButtons.innerHTML =
-            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="logoutUser()">Logout</button>';
-          document.getElementById(
-            "new-blog-btn",
-          ).style.display =
-            "inline-block";
+          authButtons.innerHTML = '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="logoutUser()">Logout</button>';
+          document.getElementById("new-blog-btn").style.display = "inline-block";
         } else {
-          authButtons.innerHTML =
-            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="openLoginModal()">Login</button>';
-          document.getElementById(
-            "new-blog-btn",
-          ).style.display =
-            "none";
+          authButtons.innerHTML = '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="openLoginModal()">Login</button>';
+          document.getElementById("new-blog-btn").style.display = "none";
         }
         await loadBlogPosts();
       }
-
+      
       function openLoginModal() {
-        document
-          .getElementById(
-            "login-modal",
-          )
-          .classList.remove(
-            "hidden",
-          );
+        document.getElementById("login-modal").classList.remove("hidden");
       }
-
+      
       function closeLoginModal() {
-        document
-          .getElementById(
-            "login-modal",
-          )
-          .classList.add(
-            "hidden",
-          );
+        document.getElementById("login-modal").classList.add("hidden");
       }
-
+      
       async function loginUser() {
-        const username =
-          document.getElementById(
-            "loginUsername",
-          ).value;
-        const password =
-          document.getElementById(
-            "loginPassword",
-          ).value;
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
         try {
-          const response =
-            await fetch(
-              "https://personalsite-2xti.onrender.com/api/auth/login",
-              {
-                method:
-                  "POST",
-                headers:
-                  {
-                    "Content-Type":
-                      "application/json",
-                  },
-                body: JSON.stringify(
-                  {
-                    username,
-                    password,
-                  },
-                ),
-              },
-            );
-          const data =
-            await response.json();
-          if (
-            data.token
-          ) {
-            localStorage.setItem(
-              "token",
-              data.token,
-            );
-            alert(
-              "Logged in successfully!",
-            );
+          const response = await fetch("https://personalsite-2xti.onrender.com/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+          });
+          const data = await response.json();
+          if (data.token) {
+            localStorage.setItem("token", data.token);
+            alert("Logged in successfully!");
             closeLoginModal();
             updateAuthButtons();
           } else {
-            alert(
-              "Login failed: " +
-                (data.error ||
-                  "Unknown error"),
-            );
+            alert("Login failed: " + (data.error || "Unknown error"));
           }
         } catch (error) {
-          console.error(
-            "Login error:",
-            error,
-          );
-          alert(
-            "An error occurred during login.",
-          );
+          console.error("Login error:", error);
+          alert("An error occurred during login.");
         }
       }
-
+      
       async function logoutUser() {
-        localStorage.removeItem(
-          "token",
-        );
-        alert(
-          "Logged out",
-        );
+        localStorage.removeItem("token");
+        alert("Logged out");
         updateAuthButtons();
       }
-
+      
       async function loadBlogPosts() {
         try {
-          const response =
-            await fetch(
-              "https://personalsite-2xti.onrender.com/api/blogposts",
-            );
-          const posts =
-            await response.json();
-          renderBlogPosts(
-            posts,
-          );
+          const response = await fetch("https://personalsite-2xti.onrender.com/api/blogposts");
+          const posts = await response.json();
+          renderBlogPosts(posts);
         } catch (error) {
-          console.error(
-            "Error loading blog posts:",
-            error,
-          );
+          console.error("Error loading blog posts:", error);
         }
       }
-
-      function renderBlogPosts(
-        posts,
-      ) {
-        const blogGrid =
-          document.querySelector(
-            ".blog-grid",
-          );
-        blogGrid.innerHTML =
-          "";
-        posts.forEach(
-          (
-            post,
-          ) => {
-            const blogCard =
-              document.createElement(
-                "div",
-              );
-            blogCard.className =
-              "blog-card card flex flex-col transition duration-300 hover:-translate-y-2";
-            blogCard.setAttribute(
-              "data-id",
-              post._id,
-            );
-            blogCard.innerHTML = `
+      
+      function renderBlogPosts(posts) {
+        const blogGrid = document.querySelector(".blog-grid");
+        blogGrid.innerHTML = "";
+        posts.forEach(post => {
+          const blogCard = document.createElement("div");
+          blogCard.className = "blog-card card flex flex-col transition duration-300 hover:-translate-y-2";
+          blogCard.setAttribute("data-id", post._id);
+          blogCard.innerHTML = `
             <div class="blog-image relative h-48 overflow-hidden">
               <div class="absolute inset-0 bg-blue-700 opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center text-white text-5xl z-10">
-                ${post.title.charAt(
-                  0,
-                )}
+                ${post.title.charAt(0)}
               </div>
             </div>
             <div class="blog-content p-4 flex-grow flex flex-col">
-              <span class="blog-date text-sm text-gray-500 mb-1">${
-                post.date ||
-                "Unknown Date"
-              }</span>
-              <h3 class="blog-title text-xl font-bold mb-2">${
-                post.title
-              }</h3>
-              <p class="blog-excerpt flex-grow text-gray-600">${post.content.substring(
-                0,
-                100,
-              )}...</p>
-              <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition mt-4" onclick="showBlogDetail('${
-                post.title
-              }', \`${
-              post.content
-            }\`)">Read More</a>
+              <span class="blog-date text-sm text-gray-500 mb-1">${post.date || "Unknown Date"}</span>
+              <h3 class="blog-title text-xl font-bold mb-2">${post.title}</h3>
+              <p class="blog-excerpt flex-grow text-gray-600">${post.content.substring(0, 100)}...</p>
+              <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition mt-4" onclick="showBlogDetail('${post.title}', \`${post.content}\`)">Read More</a>
             </div>
           `;
-            if (
-              localStorage.getItem(
-                "token",
-              )
-            ) {
-              const delBtn =
-                document.createElement(
-                  "button",
-                );
-              delBtn.className =
-                "bg-red-600 text-white px-4 py-2 rounded-full text-sm mt-2 self-start hover:bg-red-700 transition";
-              delBtn.innerText =
-                "Delete";
-              delBtn.onclick =
-                () =>
-                  deletePost(
-                    post._id,
-                  );
-              blogCard
-                .querySelector(
-                  ".blog-content",
-                )
-                .appendChild(
-                  delBtn,
-                );
-            }
-            blogGrid.appendChild(
-              blogCard,
-            );
-          },
-        );
+          if (localStorage.getItem("token")) {
+            const delBtn = document.createElement("button");
+            delBtn.className = "bg-red-600 text-white px-4 py-2 rounded-full text-sm mt-2 self-start hover:bg-red-700 transition";
+            delBtn.innerText = "Delete";
+            delBtn.onclick = () => deletePost(post._id);
+            blogCard.querySelector(".blog-content").appendChild(delBtn);
+          }
+          blogGrid.appendChild(blogCard);
+        });
       }
-
-      function showBlogDetail(
-        title,
-        content,
-      ) {
-        document.getElementById(
-          "detail-title",
-        ).textContent =
-          title;
-        document.getElementById(
-          "detail-content",
-        ).innerHTML =
-          content;
-        document
-          .querySelector(
-            ".blog-grid",
-          )
-          .classList.add(
-            "hidden",
-          );
-        document
-          .getElementById(
-            "blog-post-container",
-          )
-          .classList.remove(
-            "hidden",
-          );
-        window.scrollTo(
-          {
-            top: 0,
-            behavior:
-              "smooth",
-          },
-        );
+      
+      function showBlogDetail(title, content) {
+        document.getElementById("detail-title").textContent = title;
+        document.getElementById("detail-content").innerHTML = content;
+        document.querySelector(".blog-grid").classList.add("hidden");
+        document.getElementById("blog-post-container").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-
+      
       function hideBlogDetail() {
-        document
-          .querySelector(
-            ".blog-grid",
-          )
-          .classList.remove(
-            "hidden",
-          );
-        document
-          .getElementById(
-            "blog-post-container",
-          )
-          .classList.add(
-            "hidden",
-          );
+        document.querySelector(".blog-grid").classList.remove("hidden");
+        document.getElementById("blog-post-container").classList.add("hidden");
       }
-
-      async function submitBlogPost(
-        event,
-      ) {
+      
+      async function submitBlogPost(event) {
         event.preventDefault();
-        const titleInput =
-          document.getElementById(
-            "blog-title",
-          );
-        const contentInput =
-          document.getElementById(
-            "blog-content",
-          );
-        const title =
-          titleInput.value.trim();
-        const content =
-          contentInput.value.trim();
-        const token =
-          localStorage.getItem(
-            "token",
-          );
-        if (
-          !token
-        ) {
-          alert(
-            "You must be logged in to create a post",
-          );
+        const titleInput = document.getElementById("blog-title");
+        const contentInput = document.getElementById("blog-content");
+        const title = titleInput.value.trim();
+        const content = contentInput.value.trim();
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("You must be logged in to create a post");
           return;
         }
         try {
-          const response =
-            await fetch(
-              "https://personalsite-2xti.onrender.com/api/blogposts",
-              {
-                method:
-                  "POST",
-                headers:
-                  {
-                    "Content-Type":
-                      "application/json",
-                    Authorization: `Bearer ${token}`,
-                  },
-                body: JSON.stringify(
-                  {
-                    title,
-                    content,
-                  },
-                ),
-              },
-            );
-          if (
-            response.ok
-          ) {
-            alert(
-              "Blog post created successfully!",
-            );
-            titleInput.value =
-              "";
-            contentInput.value =
-              "";
-            backToMain(
-              {
-                preventDefault:
-                  () => {},
-              },
-            );
+          const response = await fetch("https://personalsite-2xti.onrender.com/api/blogposts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ title, content })
+          });
+          if (response.ok) {
+            alert("Blog post created successfully!");
+            titleInput.value = "";
+            contentInput.value = "";
+            backToMain({ preventDefault: () => {} });
             loadBlogPosts();
           } else {
-            const result =
-              await response.json();
-            alert(
-              "Error creating post: " +
-                (result.error ||
-                  "Unknown error"),
-            );
+            const result = await response.json();
+            alert("Error creating post: " + (result.error || "Unknown error"));
           }
         } catch (error) {
-          console.error(
-            "Error creating post:",
-            error,
-          );
-          alert(
-            "An error occurred while creating the post.",
-          );
+          console.error("Error creating post:", error);
+          alert("An error occurred while creating the post.");
         }
       }
-
-      async function deletePost(
-        postId,
-      ) {
-        if (
-          !confirm(
-            "Are you sure you want to delete this post?",
-          )
-        )
-          return;
-        const token =
-          localStorage.getItem(
-            "token",
-          );
+      
+      async function deletePost(postId) {
+        if (!confirm("Are you sure you want to delete this post?")) return;
+        const token = localStorage.getItem("token");
         try {
-          const response =
-            await fetch(
-              `https://personalsite-2xti.onrender.com/api/blogposts/${postId}`,
-              {
-                method:
-                  "DELETE",
-                headers:
-                  {
-                    Authorization: `Bearer ${token}`,
-                  },
-              },
-            );
-          if (
-            response.ok
-          ) {
-            alert(
-              "Post deleted successfully!",
-            );
+          const response = await fetch(`https://personalsite-2xti.onrender.com/api/blogposts/${postId}`, {
+            method: "DELETE",
+            headers: { "Authorization": `Bearer ${token}` }
+          });
+          if (response.ok) {
+            alert("Post deleted successfully!");
             loadBlogPosts();
           } else {
-            const result =
-              await response.json();
-            alert(
-              "Error deleting post: " +
-                (result.error ||
-                  "Unknown error"),
-            );
+            const result = await response.json();
+            alert("Error deleting post: " + (result.error || "Unknown error"));
           }
         } catch (error) {
-          console.error(
-            "Error deleting post:",
-            error,
-          );
-          alert(
-            "An error occurred while deleting the post.",
-          );
+          console.error("Error deleting post:", error);
+          alert("An error occurred while deleting the post.");
         }
       }
-
-      function showNewBlogForm(
-        event,
-      ) {
+      
+      function showNewBlogForm(event) {
         event.preventDefault();
-        document
-          .getElementById(
-            "main-content",
-          )
-          .classList.add(
-            "hidden",
-          );
-        document
-          .getElementById(
-            "new-blog-form",
-          )
-          .classList.remove(
-            "hidden",
-          );
+        document.getElementById("main-content").classList.add("hidden");
+        document.getElementById("new-blog-form").classList.remove("hidden");
       }
-
-      function backToMain(
-        event,
-      ) {
+      
+      function backToMain(event) {
         event.preventDefault();
-        document
-          .getElementById(
-            "new-blog-form",
-          )
-          .classList.add(
-            "hidden",
-          );
-        document
-          .getElementById(
-            "main-content",
-          )
-          .classList.remove(
-            "hidden",
-          );
+        document.getElementById("new-blog-form").classList.add("hidden");
+        document.getElementById("main-content").classList.remove("hidden");
       }
-
+      
       function init() {
         updateAuthButtons();
-        document
-          .getElementById(
-            "blog-form",
-          )
-          .addEventListener(
-            "submit",
-            submitBlogPost,
-          );
+        document.getElementById("blog-form").addEventListener("submit", submitBlogPost);
       }
-
-      window.addEventListener(
-        "DOMContentLoaded",
-        init,
-      );
-
-      window.onclick =
-        function (
-          event,
-        ) {
-          const modal =
-            document.getElementById(
-              "login-modal",
-            );
-          if (
-            event.target ===
-            modal
-          ) {
-            modal.classList.add(
-              "hidden",
-            );
-          }
-        };
-
-      // Cosmic Header Mouse Interaction (Optional)
-      document.addEventListener(
-        "mousemove",
-        (e) => {
-          const world =
-            document.getElementById(
-              "your-world",
-            );
-          if (
-            world
-          ) {
-            const {
-              innerWidth,
-              innerHeight,
-            } =
-              window;
-            const offsetX =
-              (e.clientX -
-                innerWidth /
-                  2) *
-              0.03;
-            const offsetY =
-              (e.clientY -
-                innerHeight /
-                  2) *
-              0.03;
-            world.style.transform = `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px)`;
-          }
-        },
-      );
+      
+      window.addEventListener("DOMContentLoaded", init);
+      
+      window.onclick = function(event) {
+        const modal = document.getElementById("login-modal");
+        if (event.target === modal) {
+          modal.classList.add("hidden");
+        }
+      };
+      
+      // Cosmic header mouse interaction (optional)
+      document.addEventListener('mousemove', (e) => {
+        const world = document.getElementById('your-world');
+        if (world) {
+          const { innerWidth, innerHeight } = window;
+          const offsetX = (e.clientX - innerWidth / 2) * 0.03;
+          const offsetY = (e.clientY - innerHeight / 2) * 0.03;
+          world.style.transform = `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px)`;
+        }
+      });
     </script>
   </body>
 </html>
