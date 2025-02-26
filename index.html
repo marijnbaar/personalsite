@@ -582,7 +582,7 @@
       class="grid-pattern"
     ></div>
 
-    <!-- Header with Shimmer & Floating Bubbles -->
+    <!-- Header -->
     <header
       id="header"
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
@@ -590,7 +590,7 @@
       <div
         class="glass shimmer-bg py-3"
       >
-        <!-- Floating Bubbles (dynamically added) -->
+        <!-- Floating Bubbles in Header (dynamisch aangemaakt) -->
         <div
           id="header-bubbles"
           class="absolute inset-0 overflow-hidden"
@@ -626,9 +626,9 @@
               >About</a
             >
             <a
-              href="#portfolio"
+              href="#showcase"
               class="nav-link text-secondary"
-              >Portfolio</a
+              >Showcase</a
             >
             <a
               href="#blog"
@@ -687,9 +687,9 @@
             </li>
             <li>
               <a
-                href="#portfolio"
+                href="#showcase"
                 class="hover:text-secondary transition block"
-                >Portfolio</a
+                >Showcase</a
               >
             </li>
             <li>
@@ -776,17 +776,15 @@
       </div>
     </div>
 
-    <!-- Hero Section with Soft Colors & Floating Pastel Balls -->
+    <!-- Hero Section with Floating Pastel Balls -->
     <section
       id="hero"
       class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-gradient"
     >
-      <!-- Soft gradient background -->
       <div
         class="absolute inset-0 bg-gradient-to-br from-cream to-background"
       ></div>
 
-      <!-- Floating shapes & geometric patterns -->
       <div
         class="absolute inset-0 overflow-hidden pointer-events-none"
       >
@@ -833,14 +831,12 @@
         </svg>
       </div>
 
-      <!-- Hero Content -->
       <div
         class="container mx-auto px-6 relative z-10"
       >
         <div
           class="flex flex-col lg:flex-row items-center gap-12"
         >
-          <!-- Text Column -->
           <div
             class="w-full lg:w-1/2 text-center lg:text-left"
           >
@@ -900,7 +896,7 @@
               "
             >
               <a
-                href="#portfolio"
+                href="#showcase"
                 class="px-8 py-3 btn-primary"
                 >View
                 My
@@ -944,7 +940,6 @@
             </div>
           </div>
 
-          <!-- Floating Pastel Balls Container -->
           <div
             class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
             style="
@@ -955,14 +950,14 @@
               class="relative mx-auto w-full h-96 max-w-md"
               id="floating-balls-container"
             >
-              <!-- Balls worden dynamisch aangemaakt door JavaScript -->
+              <!-- Pastel balls added dynamically -->
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Main Content Container -->
+    <!-- Main Content -->
     <div
       id="main-content"
       class="pt-12 page-transition"
@@ -1062,9 +1057,9 @@
         </div>
       </section>
 
-      <!-- Portfolio Section -->
+      <!-- Showcase Section (renamed from "Portfolio") -->
       <section
-        id="portfolio"
+        id="showcase"
         class="py-20 relative"
       >
         <div
@@ -1083,8 +1078,8 @@
             <h2
               class="text-4xl mb-3"
             >
-              My
-              Recent
+              Showcase
+              of
               Work
             </h2>
             <div
@@ -1108,7 +1103,7 @@
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Portfolio Item 1 -->
+            <!-- Example Showcase Item -->
             <div
               class="group blog-card"
             >
@@ -1116,15 +1111,15 @@
                 class="relative h-52 overflow-hidden"
               >
                 <img
-                  src="https://source.unsplash.com/600x400/?environment,cloud"
-                  alt="Amsterdam Eco-Hackathon Challenge"
+                  src="https://source.unsplash.com/600x400/?innovation,tech"
+                  alt="Project Showcase"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
                   class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
                 >
                   <i
-                    class="fas fa-leaf text-primary"
+                    class="fas fa-lightbulb text-primary"
                   ></i>
                 </div>
                 <div
@@ -1137,27 +1132,25 @@
                 <h3
                   class="text-xl font-bold mb-2 group-hover:text-primary transition"
                 >
-                  Amsterdam
-                  Eco-Hackathon
-                  Challenge
+                  AI-Powered
+                  Innovation
                 </h3>
                 <p
                   class="text-gray-600 text-sm mb-4"
                 >
-                  A
-                  collaborative
-                  innovation
-                  event
+                  Leveraging
+                  state-of-the-art
+                  models
                   to
-                  optimize
-                  cloud
-                  infrastructure
+                  build
+                  efficient,
+                  context-driven
+                  solutions
                   for
-                  environmental
-                  sustainability.
+                  modern
+                  enterprises.
                 </p>
                 <button
-                  onclick="showBlogDetail('${/* post id placeholder */ ''}')"
                   class="btn-secondary inline-flex items-center text-sm"
                 >
                   <span
@@ -1170,7 +1163,7 @@
                 </button>
               </div>
             </div>
-            <!-- (Portfolio Items 2 en 3 zouden vergelijkbaar worden toegevoegd) -->
+            <!-- More showcase items as needed... -->
           </div>
         </div>
       </section>
@@ -1218,7 +1211,7 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts worden dynamisch geladen -->
+            <!-- Blog posts are dynamically loaded via JavaScript -->
           </div>
         </div>
       </section>
@@ -1256,7 +1249,7 @@
         </div>
       </div>
 
-      <!-- Contact Section -->
+      <!-- Contact Section (Contact Info Only) -->
       <section
         id="contact"
         class="py-20 bg-gray-50"
@@ -1290,156 +1283,81 @@
             Let's
             connect.
           </p>
+          <!-- Only contact info, no form -->
           <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+            class="max-w-3xl mx-auto space-y-6"
           >
-            <!-- Contact Info -->
             <div
-              class="space-y-6"
+              class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow"
             >
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
-                >
-                  <i
-                    class="fas fa-envelope text-primary text-2xl"
-                  ></i>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Email
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    hello@marijnbaar.com
-                  </p>
-                </div>
+              <div>
+                <i
+                  class="fas fa-envelope text-primary text-2xl"
+                ></i>
               </div>
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
+              <div>
+                <h3
+                  class="text-xl font-bold"
                 >
-                  <i
-                    class="fas fa-phone text-primary text-2xl"
-                  ></i>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Phone
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    +1
-                    (555)
-                    123-4567
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex items-center space-x-4"
-              >
-                <div
-                  class="p-4 bg-white rounded-lg shadow-md"
+                  Email
+                </h3>
+                <p
+                  class="text-gray-600"
                 >
-                  <i
-                    class="fas fa-map-marker-alt text-primary text-2xl"
-                  ></i>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold"
-                  >
-                    Location
-                  </h3>
-                  <p
-                    class="text-gray-600"
-                  >
-                    Amsterdam,
-                    Netherlands
-                  </p>
-                </div>
+                  hello@marijnbaar.com
+                </p>
               </div>
             </div>
-            <!-- Contact Form -->
-            <form
-              class="bg-white p-6 rounded-lg shadow-md space-y-4"
+            <div
+              class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow"
             >
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="name"
-                  >Your
-                  Name</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="John Doe"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
+                <i
+                  class="fas fa-phone text-primary text-2xl"
+                ></i>
               </div>
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="email"
-                  >Email
-                  Address</label
+                <h3
+                  class="text-xl font-bold"
                 >
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="john@example.com"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
+                  Phone
+                </h3>
+                <p
+                  class="text-gray-600"
+                >
+                  +1
+                  (555)
+                  123-4567
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow"
+            >
+              <div>
+                <i
+                  class="fas fa-map-marker-alt text-primary text-2xl"
+                ></i>
               </div>
               <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="subject"
-                  >Subject</label
+                <h3
+                  class="text-xl font-bold"
                 >
-                <input
-                  type="text"
-                  id="subject"
-                  placeholder="Project Inquiry"
-                  class="w-full p-3 border border-gray-300 rounded"
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-gray-700 font-semibold mb-1"
-                  for="message"
-                  >Message</label
+                  Location
+                </h3>
+                <p
+                  class="text-gray-600"
                 >
-                <textarea
-                  id="message"
-                  placeholder="Tell me about your project..."
-                  class="w-full p-3 border border-gray-300 rounded"
-                ></textarea>
+                  Amsterdam,
+                  Netherlands
+                </p>
               </div>
-              <button
-                type="submit"
-                class="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition w-full"
-              >
-                Send
-                Message
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- Footer (Removed "Services" & "Stay Updated" columns) -->
       <footer
         class="bg-gray-900 text-white pt-12 pb-6 relative"
       >
@@ -1447,7 +1365,7 @@
           class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent"
         ></div>
         <div
-          class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8"
+          class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           <div>
             <h3
@@ -1526,9 +1444,9 @@
               </li>
               <li>
                 <a
-                  href="#portfolio"
+                  href="#showcase"
                   class="hover:text-white"
-                  >Portfolio</a
+                  >Showcase</a
                 >
               </li>
               <li>
@@ -1546,82 +1464,6 @@
                 >
               </li>
             </ul>
-          </div>
-          <div>
-            <h4
-              class="text-lg font-semibold mb-3"
-            >
-              Services
-            </h4>
-            <ul
-              class="space-y-2"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Web
-                  Development</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Mobile
-                  Apps</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >UX/UI
-                  Design</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-white"
-                  >Consulting</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4
-              class="text-lg font-semibold mb-3"
-            >
-              Stay
-              Updated
-            </h4>
-            <p
-              class="text-gray-400 mb-3"
-            >
-              Subscribe
-              to my
-              newsletter
-              for
-              updates.
-            </p>
-            <form
-              class="flex"
-            >
-              <input
-                type="email"
-                placeholder="Your email address"
-                class="flex-grow p-2 rounded-l border-none text-white"
-              />
-              <button
-                type="submit"
-                class="bg-yellow-400 text-dark px-4 py-2 rounded-r"
-              >
-                <i
-                  class="fas fa-paper-plane"
-                ></i>
-              </button>
-            </form>
           </div>
         </div>
         <p
@@ -1700,7 +1542,7 @@
       </div>
     </div>
 
-    <!-- JavaScript for Interactivity, Blog Management & Floating Effects -->
+    <!-- JavaScript for Blog Functionality & Floating Pastel Balls -->
     <script>
       // --- Authentication & Blog Management ---
       async function updateAuthButtons() {
@@ -2207,7 +2049,7 @@
         },
       );
 
-      // --- Floating Pastel Balls in Hero ---
+      // --- Floating Pastel Balls in Hero Section ---
       function createFloatingBalls() {
         const container =
           document.getElementById(
@@ -2228,7 +2070,7 @@
             "#CDB4DB",
             "#BDE0FE",
           ];
-        // Maak 15 tot 20 ballen
+        // Create 15 to 20 balls
         const ballCount =
           15 +
           Math.floor(
@@ -2248,7 +2090,7 @@
           ball.classList.add(
             "floating-ball",
           );
-          // Willekeurige grootte tussen 20px en 120px
+          // Random size between 20px and 120px
           const size =
             20 +
             Math.floor(
@@ -2257,7 +2099,7 @@
             );
           ball.style.width = `${size}px`;
           ball.style.height = `${size}px`;
-          // Willekeurige positie binnen de container
+          // Random position
           const xPos =
             Math.random() *
             100;
@@ -2266,7 +2108,7 @@
             100;
           ball.style.left = `${xPos}%`;
           ball.style.top = `${yPos}%`;
-          // Willekeurige pastel kleur
+          // Random pastel color
           const colorIndex =
             Math.floor(
               Math.random() *
@@ -2276,7 +2118,7 @@
             pastelColors[
               colorIndex
             ];
-          // Willekeurige animatieduur en vertraging
+          // Random animation timing
           const duration =
             5 +
             Math.random() *
@@ -2324,7 +2166,6 @@
         }
       }
 
-      // Muisinteractie voor de floating balls in de hero
       function initializeFloatingBallInteraction() {
         const heroContainer =
           document.getElementById(
@@ -2426,6 +2267,7 @@
                     dy,
                     dx,
                   );
+                // Repulsion logic
                 const repulsionForce =
                   Math.min(
                     1,
@@ -2456,6 +2298,7 @@
                   moveY +
                   turbulence
                 }px)`;
+                // Additional scale & rotate based on proximity
                 if (
                   distance <
                   300
@@ -2471,6 +2314,7 @@
                     15;
                   ball.style.transform += ` scale(${proximityScale}) rotate(${rotationAmount}deg)`;
                 }
+                // Enhanced shadow if close
                 if (
                   distance <
                   200
