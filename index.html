@@ -558,6 +558,117 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* --- Additional Header Styles --- */
+
+      /* Star styles */
+      .star {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        animation: twinkle
+          4s
+          infinite
+          ease-in-out;
+      }
+
+      .star.tiny {
+        width: 1px;
+        height: 1px;
+        opacity: 0.7;
+      }
+
+      .star.small {
+        width: 2px;
+        height: 2px;
+        opacity: 0.8;
+      }
+
+      .star.medium {
+        width: 3px;
+        height: 3px;
+        opacity: 0.9;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Gentle floating animation */
+      @keyframes gentleFloat {
+        0% {
+          transform: translate(
+            0,
+            0
+          );
+        }
+        25% {
+          transform: translate(
+            10px,
+            -10px
+          );
+        }
+        50% {
+          transform: translate(
+            0,
+            -15px
+          );
+        }
+        75% {
+          transform: translate(
+            -10px,
+            -5px
+          );
+        }
+        100% {
+          transform: translate(
+            0,
+            0
+          );
+        }
+      }
+
+      /* For rotating elements */
+      @keyframes rotate {
+        from {
+          transform: rotate(
+            0deg
+          );
+        }
+        to {
+          transform: rotate(
+            360deg
+          );
+        }
+      }
+
+      .animate-rotate {
+        animation: rotate
+          60s linear
+          infinite;
+      }
+
+      /* For floating interest icons */
+      .floating-interest {
+        position: absolute;
+        z-index: 10;
+        transition: transform
+            0.3s
+            ease,
+          filter
+            0.3s
+            ease,
+          opacity
+            0.3s
+            ease;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body
@@ -2562,211 +2673,7 @@
             },
           );
 
-          logo.addEventListener(
-            "mouseenter",
-            () => {
-              cursorScale = 2;
-              cursor.style.borderWidth =
-                "1px";
-              cursorColor =
-                "var(--secondary)";
-              cursorStar.style.opacity =
-                "0.7";
-              cursorStar.style.filter =
-                "blur(2px)";
-              logo.trailInterval =
-                setInterval(
-                  () => {
-                    const trail =
-                      document.createElement(
-                        "div",
-                      );
-                    trail.style.position =
-                      "fixed";
-                    trail.style.width =
-                      "10px";
-                    trail.style.height =
-                      "10px";
-                    trail.style.borderRadius =
-                      "50%";
-                    trail.style.backgroundColor =
-                      "var(--primary)";
-                    trail.style.left = `${mouseX}px`;
-                    trail.style.top = `${mouseY}px`;
-                    trail.style.transform =
-                      "translate(-50%, -50%)";
-                    trail.style.pointerEvents =
-                      "none";
-                    trail.style.zIndex =
-                      "9998";
-                    trail.style.opacity =
-                      "0.7";
-                    document.body.appendChild(
-                      trail,
-                    );
-                    setTimeout(
-                      () => {
-                        trail.style.transition =
-                          "all 0.5s ease";
-                        trail.style.opacity =
-                          "0";
-                        trail.style.width =
-                          "5px";
-                        trail.style.height =
-                          "5px";
-                        setTimeout(
-                          () => {
-                            document.body.removeChild(
-                              trail,
-                            );
-                          },
-                          500,
-                        );
-                      },
-                      10,
-                    );
-                  },
-                  50,
-                );
-            },
-          );
-
-          logo.addEventListener(
-            "mouseleave",
-            () => {
-              cursorScale = 1;
-              cursor.style.borderWidth =
-                "2px";
-              cursorColor =
-                "var(--primary)";
-              clearInterval(
-                logo.trailInterval,
-              );
-              cursorStar.style.opacity =
-                "1";
-              cursorStar.style.filter =
-                "none";
-            },
-          );
-
-          floatingBalls.forEach(
-            (
-              ball,
-            ) => {
-              ball.addEventListener(
-                "mouseenter",
-                () => {
-                  cursorScale = 0.5;
-                  const ballClass =
-                    Array.from(
-                      ball.classList,
-                    ).find(
-                      (
-                        cls,
-                      ) =>
-                        cls.includes(
-                          "ball-",
-                        ),
-                    );
-                  let ballColor =
-                    "var(--primary)";
-                  if (
-                    ballClass ===
-                    "ball-secondary"
-                  )
-                    ballColor =
-                      "var(--secondary)";
-                  else if (
-                    ballClass ===
-                    "ball-accent"
-                  )
-                    ballColor =
-                      "var(--accent)";
-                  else if (
-                    ballClass ===
-                    "ball-yellow"
-                  )
-                    ballColor =
-                      "var(--yellow)";
-                  else if (
-                    ballClass ===
-                    "ball-red"
-                  )
-                    ballColor =
-                      "var(--red)";
-                  cursorColor =
-                    ballColor;
-                  cursorStar.style.transform =
-                    "translate(-50%, -50%) scale(1.5) rotate(45deg)";
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    ballColor;
-                  const speed =
-                    parseFloat(
-                      ball.getAttribute(
-                        "data-speed",
-                      ),
-                    ) ||
-                    0.1;
-                  const pushForce =
-                    100 *
-                    speed;
-                  const rect =
-                    ball.getBoundingClientRect();
-                  const ballCenterX =
-                    rect.left +
-                    rect.width /
-                      2;
-                  const ballCenterY =
-                    rect.top +
-                    rect.height /
-                      2;
-                  const angle =
-                    Math.atan2(
-                      mouseY -
-                        ballCenterY,
-                      mouseX -
-                        ballCenterX,
-                    );
-                  const pushX =
-                    -Math.cos(
-                      angle,
-                    ) *
-                    pushForce;
-                  const pushY =
-                    -Math.sin(
-                      angle,
-                    ) *
-                    pushForce;
-                  ball.style.transition =
-                    "transform 0.3s cubic-bezier(.34,1.56,.64,1)";
-                  ball.style.transform = `translate(${pushX}px, ${pushY}px) scale(1.2) rotate(${
-                    pushX *
-                    0.1
-                  }deg)`;
-                },
-              );
-              ball.addEventListener(
-                "mouseleave",
-                () => {
-                  cursorScale = 1;
-                  cursorColor =
-                    "var(--primary)";
-                  cursorStar.style.transform =
-                    "translate(-50%, -50%) scale(1) rotate(0deg)";
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    "var(--primary)";
-                  ball.style.transition =
-                    "transform 0.8s cubic-bezier(.25,.1,.25,1)";
-                  ball.style.transform =
-                    "translate(0, 0) scale(1) rotate(0deg)";
-                },
-              );
-            },
-          );
+          // (Optional) Additional interactions for logo and floating balls...
 
           document.body.style.cursor =
             "none";
@@ -3281,9 +3188,9 @@
         },
       );
 
-      // --- Cosmic Header & Floating Effects ---
-      // Create twinkling stars in the constellation container
-      const constellationContainer =
+      // --- Enhanced Cosmic Header & Floating Effects ---
+      // Create twinkling stars
+      const constellation =
         document.getElementById(
           "constellation",
         );
@@ -3299,6 +3206,7 @@
         star.classList.add(
           "star",
         );
+        // Random size
         const size =
           Math.random();
         if (
@@ -3318,6 +3226,7 @@
             "medium",
           );
         }
+        // Random position
         star.style.left = `${
           Math.random() *
           100
@@ -3326,24 +3235,27 @@
           Math.random() *
           100
         }%`;
+        // Random animation delay
         star.style.animationDelay = `${
           Math.random() *
           4
         }s`;
-        constellationContainer.appendChild(
+        constellation.appendChild(
           star,
         );
       }
 
-      // Enhanced Interactive Floating Balls
+      // Enhanced Interactive floating balls with improved responsiveness
       const floatingBalls =
         document.querySelectorAll(
           ".floating-ball",
         );
-      const heroContainer =
+      const hero =
         document.querySelector(
           ".hero-container",
         );
+
+      // Store original positions
       floatingBalls.forEach(
         (ball) => {
           const rect =
@@ -3372,6 +3284,7 @@
             "data-original-y",
             centerY,
           );
+          // Add a random floating animation
           const randomDelay =
             Math.random() *
             5;
@@ -3383,7 +3296,8 @@
         },
       );
 
-      heroContainer.addEventListener(
+      // Enhanced mouse move handler for improved repulsion effect
+      hero.addEventListener(
         "mousemove",
         (e) => {
           const mouseX =
@@ -3542,7 +3456,8 @@
         },
       );
 
-      heroContainer.addEventListener(
+      // Enhanced reset with smoother transition
+      hero.addEventListener(
         "mouseleave",
         () => {
           floatingBalls.forEach(
@@ -3567,7 +3482,136 @@
         },
       );
 
-      // --- End Cosmic Header & Floating Effects ---
+      // Enhanced header hover effects for logo characters and nav links
+      const logoChars =
+        document.querySelectorAll(
+          ".logo-char",
+        );
+      logoChars.forEach(
+        (
+          char,
+          index,
+        ) => {
+          char.addEventListener(
+            "mouseover",
+            () => {
+              char.style.transform = `translateY(-5px) rotate(${
+                index %
+                  2 ===
+                0
+                  ? -3
+                  : 3
+              }deg) scale(1.2)`;
+              char.style.transition =
+                "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
+              char.style.color =
+                getComputedStyle(
+                  char,
+                ).color;
+              char.style.textShadow = `0 5px 15px ${
+                getComputedStyle(
+                  char,
+                )
+                  .color
+              }40`;
+            },
+          );
+          char.addEventListener(
+            "mouseout",
+            () => {
+              char.style.transform =
+                "";
+              char.style.textShadow =
+                "";
+              char.style.transition =
+                "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
+            },
+          );
+        },
+      );
+
+      const enhancedNavLinks =
+        document.querySelectorAll(
+          ".nav-link",
+        );
+      enhancedNavLinks.forEach(
+        (link) => {
+          link.addEventListener(
+            "mouseenter",
+            () => {
+              link.style.transform =
+                "translateY(-3px)";
+              link.style.transition =
+                "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
+            },
+          );
+          link.addEventListener(
+            "mouseleave",
+            () => {
+              link.style.transform =
+                "";
+            },
+          );
+        },
+      );
+
+      // Make custom cursor more responsive
+      const customCursor =
+        document.querySelector(
+          ".custom-cursor",
+        );
+      const trailingCursorStar =
+        document.querySelector(
+          ".cursor-star",
+        );
+
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          customCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+          setTimeout(
+            () => {
+              trailingCursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            },
+            50,
+          );
+          const isOverInteractive =
+            e.target.tagName.toLowerCase() ===
+              "a" ||
+            e.target.tagName.toLowerCase() ===
+              "button" ||
+            e.target.classList.contains(
+              "blog-card",
+            );
+          if (
+            isOverInteractive
+          ) {
+            customCursor.style.width =
+              "60px";
+            customCursor.style.height =
+              "60px";
+            customCursor.style.backgroundColor =
+              "rgba(241, 90, 36, 0.1)";
+            customCursor.style.mixBlendMode =
+              "normal";
+            trailingCursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1.2)`;
+            trailingCursorStar.style.filter =
+              "drop-shadow(0 0 10px rgba(241, 90, 36, 0.5))";
+          } else {
+            customCursor.style.width =
+              "40px";
+            customCursor.style.height =
+              "40px";
+            customCursor.style.backgroundColor =
+              "transparent";
+            customCursor.style.mixBlendMode =
+              "difference";
+            trailingCursorStar.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1)`;
+            trailingCursorStar.style.filter =
+              "drop-shadow(0 0 2px rgba(241, 90, 36, 0.5))";
+          }
+        },
+      );
     </script>
   </body>
 </html>
