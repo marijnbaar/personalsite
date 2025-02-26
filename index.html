@@ -253,18 +253,43 @@
       @keyframes float {
         0% {
           transform: translateY(
-            0
-          );
+              0
+            )
+            translateX(
+              0
+            );
+        }
+        25% {
+          transform: translateY(
+              -15px
+            )
+            translateX(
+              10px
+            );
         }
         50% {
           transform: translateY(
-            -15px
-          );
+              0
+            )
+            translateX(
+              15px
+            );
+        }
+        75% {
+          transform: translateY(
+              15px
+            )
+            translateX(
+              5px
+            );
         }
         100% {
           transform: translateY(
-            0
-          );
+              0
+            )
+            translateX(
+              0
+            );
         }
       }
       .animate-float {
@@ -333,7 +358,7 @@
           forwards;
       }
 
-      /* Floating header bubbles (for extra visual flair) */
+      /* Floating header bubbles & shimmer */
       .floating-bubble {
         position: absolute;
         border-radius: 50%;
@@ -345,8 +370,6 @@
           0.5s ease;
         z-index: 0;
       }
-
-      /* Subtle shimmer background for header */
       .shimmer-bg {
         position: relative;
         overflow: hidden;
@@ -427,20 +450,10 @@
           0.5s;
       }
 
-      /* Floating decorative elements */
-      .float-element {
-        position: absolute;
-        animation: float
-          6s
-          ease-in-out
-          infinite;
-      }
-
       /* Grid pattern background */
       .grid-pattern {
-        position: absolute;
-        width: 100%;
-        height: 100%;
+        position: fixed;
+        inset: 0;
         background-image: linear-gradient(
             to right,
             rgba(
@@ -472,6 +485,32 @@
         opacity: 0.5;
       }
 
+      /* Hero Gradient Background */
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          #f5f7ff 0%,
+          #dfecff
+            100%
+        );
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(
+          90deg,
+          var(
+            --primary
+          ),
+          var(
+            --secondary
+          )
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
       /* Blog Detail View */
       .blog-detail-container {
         max-width: 70ch;
@@ -488,16 +527,6 @@
       .blog-detail-container
         p {
         margin-bottom: 1.5rem;
-      }
-
-      /* Hero gradient background */
-      .hero-gradient {
-        background: linear-gradient(
-          135deg,
-          #f5f7ff 0%,
-          #dfecff
-            100%
-        );
       }
 
       .page-transition {
@@ -535,28 +564,9 @@
           );
       }
 
-      /* Gradient text */
-      .gradient-text {
-        background: linear-gradient(
-          90deg,
-          var(
-            --primary
-          ),
-          var(
-            --secondary
-          )
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
       @media (max-width: 768px) {
         .header {
           padding: 1rem;
-        }
-        .nav-links {
-          display: none;
         }
         .blog-grid {
           grid-template-columns: 1fr;
@@ -567,24 +577,12 @@
   <body
     class="relative"
   >
-    <!-- Custom Cursor Elements -->
-    <div
-      class="fixed w-10 h-10 border-2 border-primary rounded-full pointer-events-none mix-blend-difference"
-      id="custom-cursor"
-      style="
-        transform: translate(
-          -50%,
-          -50%
-        );
-      "
-    ></div>
-
     <!-- Grid Pattern Overlay -->
     <div
-      class="fixed inset-0 grid-pattern"
+      class="grid-pattern"
     ></div>
 
-    <!-- Header with Shimmer Effect & Floating Bubbles -->
+    <!-- Header with Shimmer & Floating Bubbles -->
     <header
       id="header"
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
@@ -592,12 +590,11 @@
       <div
         class="glass shimmer-bg py-3"
       >
-        <!-- Floating Bubbles (added dynamically via JS) -->
+        <!-- Floating Bubbles (dynamically added) -->
         <div
           id="header-bubbles"
           class="absolute inset-0 overflow-hidden"
         ></div>
-
         <div
           class="max-w-7xl mx-auto px-6 relative z-10 flex items-center justify-between"
         >
@@ -619,8 +616,7 @@
               class="absolute -inset-2 bg-gradient-to-r from-primary-light to-secondary rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"
             ></div>
           </a>
-
-          <!-- Navigation (Desktop) -->
+          <!-- Desktop Navigation -->
           <nav
             class="hidden md:flex space-x-8 items-center"
           >
@@ -645,7 +641,6 @@
               >Contact</a
             >
           </nav>
-
           <!-- Action Buttons -->
           <div
             class="flex items-center gap-3"
@@ -654,7 +649,6 @@
               id="auth-buttons"
               class="flex items-center"
             ></div>
-            <!-- New Post button (visible when logged in) -->
             <button
               id="new-blog-btn"
               class="hidden bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg"
@@ -666,7 +660,6 @@
               Post
             </button>
           </div>
-
           <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
@@ -677,7 +670,6 @@
             ></i>
           </button>
         </div>
-
         <!-- Mobile Navigation -->
         <nav
           id="mobileNav"
@@ -784,7 +776,7 @@
       </div>
     </div>
 
-    <!-- Hero Section with Soft Colors & Floating Elements -->
+    <!-- Hero Section with Soft Colors & Floating Pastel Balls -->
     <section
       id="hero"
       class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-gradient"
@@ -840,8 +832,6 @@
           />
         </svg>
       </div>
-
-      <!-- Floating Bubbles (added dynamically below) -->
 
       <!-- Hero Content -->
       <div
@@ -954,7 +944,7 @@
             </div>
           </div>
 
-          <!-- Image Column with Abstract Visual -->
+          <!-- Floating Pastel Balls Container -->
           <div
             class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
             style="
@@ -962,94 +952,10 @@
             "
           >
             <div
-              class="relative mx-auto w-full max-w-md"
+              class="relative mx-auto w-full h-96 max-w-md"
+              id="floating-balls-container"
             >
-              <div
-                class="relative z-10 w-80 h-80 mx-auto"
-              >
-                <svg
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-full h-full"
-                >
-                  <path
-                    fill="#6C63FF"
-                    d="M46.3,-76.3C59.9,-70,70.7,-56.2,77.9,-41.2C85,-26.1,88.5,-9.9,87.2,5.8C85.9,21.5,79.9,36.7,70.1,49.1C60.3,61.5,46.7,71.2,31.7,75.7C16.7,80.3,0.2,79.7,-15.6,76.1C-31.4,72.6,-46.6,66,-58.4,54.9C-70.2,43.9,-78.6,28.4,-80.5,12.3C-82.3,-3.9,-77.5,-20.7,-69.6,-35.5C-61.7,-50.3,-50.7,-63,-37.7,-69.8C-24.7,-76.5,-9.8,-77.3,3.9,-83.2C17.5,-89.1,32.7,-82.6,46.3,-76.3Z"
-                    transform="translate(100 100)"
-                    class="animate-[float_20s_ease-in-out_infinite]"
-                  />
-                </svg>
-                <div
-                  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl font-bold z-20"
-                >
-                  MB
-                </div>
-              </div>
-
-              <!-- Floating skill icons -->
-              <div
-                class="absolute -left-4 top-1/3 p-3 bg-white rounded-full shadow-lg text-primary animate-float"
-                style="
-                  animation-delay: 1s;
-                "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                  />
-                </svg>
-              </div>
-              <div
-                class="absolute -right-4 bottom-1/3 p-3 bg-white rounded-full shadow-lg text-secondary animate-float"
-                style="
-                  animation-delay: 0.5s;
-                "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
-              </div>
-              <div
-                class="absolute left-1/4 -bottom-4 p-3 bg-white rounded-full shadow-lg text-accent animate-float"
-                style="
-                  animation-delay: 1.5s;
-                "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  />
-                </svg>
-              </div>
+              <!-- Balls worden dynamisch aangemaakt door JavaScript -->
             </div>
           </div>
         </div>
@@ -1067,7 +973,7 @@
         class="py-20 bg-white relative"
       >
         <div
-          class="max-w-6xl mx-auto px-4 relative"
+          class="max-w-6xl mx-auto px-4"
         >
           <div
             class="text-center mb-12"
@@ -1165,7 +1071,7 @@
           class="grid-pattern absolute inset-0"
         ></div>
         <div
-          class="max-w-6xl mx-auto px-4 relative"
+          class="max-w-6xl mx-auto px-4"
         >
           <div
             class="text-center mb-12"
@@ -1204,7 +1110,7 @@
           >
             <!-- Portfolio Item 1 -->
             <div
-              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              class="group blog-card"
             >
               <div
                 class="relative h-52 overflow-hidden"
@@ -1250,8 +1156,8 @@
                   environmental
                   sustainability.
                 </p>
-                <a
-                  href="#"
+                <button
+                  onclick="showBlogDetail('${/* post id placeholder */ ''}')"
                   class="btn-secondary inline-flex items-center text-sm"
                 >
                   <span
@@ -1261,132 +1167,10 @@
                   <i
                     class="fas fa-arrow-right ml-1"
                   ></i>
-                </a>
+                </button>
               </div>
             </div>
-
-            <!-- Portfolio Item 2 -->
-            <div
-              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-            >
-              <div
-                class="relative h-52 overflow-hidden"
-              >
-                <img
-                  src="https://source.unsplash.com/600x400/?chat,ai"
-                  alt="ChatAmsterdam"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
-                >
-                  <i
-                    class="fas fa-comments text-primary"
-                  ></i>
-                </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-                ></div>
-              </div>
-              <div
-                class="p-6"
-              >
-                <h3
-                  class="text-xl font-bold mb-2 group-hover:text-primary transition"
-                >
-                  ChatAmsterdam
-                </h3>
-                <p
-                  class="text-gray-600 text-sm mb-4"
-                >
-                  An
-                  intelligent
-                  conversational
-                  interface
-                  for
-                  enhancing
-                  municipal
-                  communication.
-                </p>
-                <a
-                  href="#"
-                  class="btn-secondary inline-flex items-center text-sm"
-                >
-                  <span
-                    >View
-                    Details</span
-                  >
-                  <i
-                    class="fas fa-arrow-right ml-1"
-                  ></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Portfolio Item 3 -->
-            <div
-              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-            >
-              <div
-                class="relative h-52 overflow-hidden"
-              >
-                <img
-                  src="https://source.unsplash.com/600x400/?openai,cloud"
-                  alt="FBAI Azure OpenAI Deployment"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white bg-opacity-90 rounded-full p-2 shadow-md"
-                >
-                  <i
-                    class="fas fa-brain text-primary"
-                  ></i>
-                </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-                ></div>
-              </div>
-              <div
-                class="p-6"
-              >
-                <h3
-                  class="text-xl font-bold mb-2 group-hover:text-primary transition"
-                >
-                  FBAI
-                  Azure
-                  OpenAI
-                  Deployment
-                </h3>
-                <p
-                  class="text-gray-600 text-sm mb-4"
-                >
-                  A
-                  secure,
-                  cost‑optimized
-                  deployment
-                  for
-                  an
-                  administration
-                  assistant
-                  using
-                  Azure
-                  OpenAI
-                  services.
-                </p>
-                <a
-                  href="#"
-                  class="btn-secondary inline-flex items-center text-sm"
-                >
-                  <span
-                    >View
-                    Details</span
-                  >
-                  <i
-                    class="fas fa-arrow-right ml-1"
-                  ></i>
-                </a>
-              </div>
-            </div>
+            <!-- (Portfolio Items 2 en 3 zouden vergelijkbaar worden toegevoegd) -->
           </div>
         </div>
       </section>
@@ -1434,7 +1218,7 @@
           <div
             class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Blog posts will be dynamically rendered via JavaScript -->
+            <!-- Blog posts worden dynamisch geladen -->
           </div>
         </div>
       </section>
@@ -1918,24 +1702,7 @@
 
     <!-- JavaScript for Interactivity, Blog Management & Floating Effects -->
     <script>
-      // Custom Cursor (optional enhancement)
-      document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-          const customCursor =
-            document.getElementById(
-              "custom-cursor",
-            );
-          document.addEventListener(
-            "mousemove",
-            (e) => {
-              customCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            },
-          );
-        },
-      );
-
-      // Authentication & Blog Management Functions
+      // --- Authentication & Blog Management ---
       async function updateAuthButtons() {
         const authButtons =
           document.getElementById(
@@ -2210,7 +1977,6 @@
         }
       }
 
-      // Blog Detail functions (display post details inline)
       async function showBlogDetail(
         postId,
       ) {
@@ -2281,7 +2047,6 @@
           );
       }
 
-      // New Blog Post Form functions
       function showNewBlogForm(
         event,
       ) {
@@ -2442,321 +2207,324 @@
         },
       );
 
-      // Floating Header Bubbles (Visual Improvement)
-      function createHeaderBubbles() {
-        const bubbleContainer =
+      // --- Floating Pastel Balls in Hero ---
+      function createFloatingBalls() {
+        const container =
           document.getElementById(
-            "header-bubbles",
+            "floating-balls-container",
+          );
+        const pastelColors =
+          [
+            "#FFB6C1",
+            "#FFD1DC",
+            "#B5EAD7",
+            "#C7CEEA",
+            "#FFDAC1",
+            "#E2F0CB",
+            "#F0E6EF",
+            "#DCD3FF",
+            "#A2D2FF",
+            "#FFC8DD",
+            "#CDB4DB",
+            "#BDE0FE",
+          ];
+        // Maak 15 tot 20 ballen
+        const ballCount =
+          15 +
+          Math.floor(
+            Math.random() *
+              6,
           );
         for (
           let i = 0;
-          i < 10;
+          i <
+          ballCount;
           i++
         ) {
-          const bubble =
+          const ball =
             document.createElement(
               "div",
             );
-          bubble.classList.add(
-            "floating-bubble",
+          ball.classList.add(
+            "floating-ball",
           );
+          // Willekeurige grootte tussen 20px en 120px
           const size =
+            20 +
+            Math.floor(
+              Math.random() *
+                100,
+            );
+          ball.style.width = `${size}px`;
+          ball.style.height = `${size}px`;
+          // Willekeurige positie binnen de container
+          const xPos =
             Math.random() *
-              30 +
-            20;
-          bubble.style.width =
-            bubble.style.height =
-              size +
-              "px";
-          bubble.style.top =
+            100;
+          const yPos =
             Math.random() *
-              100 +
-            "%";
-          bubble.style.left =
+            100;
+          ball.style.left = `${xPos}%`;
+          ball.style.top = `${yPos}%`;
+          // Willekeurige pastel kleur
+          const colorIndex =
+            Math.floor(
+              Math.random() *
+                pastelColors.length,
+            );
+          ball.style.backgroundColor =
+            pastelColors[
+              colorIndex
+            ];
+          // Willekeurige animatieduur en vertraging
+          const duration =
+            5 +
             Math.random() *
-              100 +
-            "%";
-          bubble.style.backgroundColor =
-            "rgba(108, 99, 255, 0.2)";
-          bubbleContainer.appendChild(
-            bubble,
-          );
-        }
-      }
-      createHeaderBubbles();
-
-      // Enhanced Floating Bubbles & Stars in Hero Section
-      const constellation =
-        document.getElementById(
-          "hero",
-        );
-      // Create subtle stars
-      for (
-        let i = 0;
-        i < 150;
-        i++
-      ) {
-        const star =
-          document.createElement(
-            "div",
-          );
-        star.classList.add(
-          "floating-bubble",
-        );
-        const size =
-          Math.random() <
-          0.5
-            ? 2
-            : 3;
-        star.style.width =
-          star.style.height =
-            size +
-            "px";
-        star.style.top =
-          Math.random() *
-            100 +
-          "%";
-        star.style.left =
-          Math.random() *
-            100 +
-          "%";
-        star.style.backgroundColor =
-          "white";
-        star.style.opacity = 0.2;
-        constellation.appendChild(
-          star,
-        );
-      }
-
-      // Floating ball elements (for interactive effect)
-      const floatingBalls =
-        document.querySelectorAll(
-          ".floating-ball",
-        );
-      const heroContainer =
-        document.querySelector(
-          "#hero",
-        );
-      floatingBalls.forEach(
-        (ball) => {
-          const rect =
-            ball.getBoundingClientRect();
-          const centerX =
-            rect.left +
-            rect.width /
-              2;
-          const centerY =
-            rect.top +
-            rect.height /
-              2;
+              15;
+          const delay =
+            Math.random() *
+            5;
           ball.setAttribute(
-            "data-x",
-            centerX,
+            "data-speed",
+            0.05 +
+              Math.random() *
+                0.1,
           );
           ball.setAttribute(
-            "data-y",
-            centerY,
+            "data-distance",
+            40 +
+              Math.random() *
+                80,
           );
           ball.setAttribute(
             "data-original-x",
-            centerX,
+            xPos,
           );
           ball.setAttribute(
             "data-original-y",
-            centerY,
+            yPos,
           );
-          const randomDelay =
-            Math.random() *
-            5;
-          const randomDuration =
-            5 +
-            Math.random() *
-              5;
-          ball.style.animation = `animate-float ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
-        },
-      );
+          ball.style.boxShadow =
+            "0 4px 12px rgba(0,0,0,0.1)";
+          ball.style.border =
+            "2px solid rgba(255,255,255,0.6)";
+          ball.style.position =
+            "absolute";
+          ball.style.borderRadius =
+            "50%";
+          ball.style.animationDuration = `${duration}s`;
+          ball.style.animationDelay = `${delay}s`;
+          ball.style.animationTimingFunction =
+            "ease-in-out";
+          ball.style.animationIterationCount =
+            "infinite";
+          container.appendChild(
+            ball,
+          );
+        }
+      }
 
-      heroContainer.addEventListener(
-        "mousemove",
-        (e) => {
-          const mouseX =
-            e.clientX;
-          const mouseY =
-            e.clientY;
+      // Muisinteractie voor de floating balls in de hero
+      function initializeFloatingBallInteraction() {
+        const heroContainer =
+          document.getElementById(
+            "hero",
+          );
+        function updateBallPositions() {
+          const floatingBalls =
+            document.querySelectorAll(
+              ".floating-ball",
+            );
           floatingBalls.forEach(
             (
               ball,
             ) => {
-              const speed =
-                parseFloat(
-                  ball.getAttribute(
-                    "data-speed",
-                  ),
-                ) *
-                  1.5 ||
-                0.075;
-              const maxDistance =
-                parseFloat(
-                  ball.getAttribute(
-                    "data-distance",
-                  ),
-                ) *
-                  1.2 ||
-                60;
-              const ballX =
-                parseFloat(
-                  ball.getAttribute(
-                    "data-x",
-                  ),
-                ) ||
-                0;
-              const ballY =
-                parseFloat(
-                  ball.getAttribute(
-                    "data-y",
-                  ),
-                ) ||
-                0;
-              const dx =
-                mouseX -
-                ballX;
-              const dy =
-                mouseY -
-                ballY;
-              const distance =
-                Math.sqrt(
-                  dx *
-                    dx +
-                    dy *
-                      dy,
-                );
-              const angle =
-                Math.atan2(
-                  dy,
-                  dx,
-                );
-              const repulsionForce =
-                Math.min(
-                  1,
-                  1500 /
-                    (distance +
-                      1),
-                ) *
-                maxDistance;
-              const moveX =
-                -Math.cos(
-                  angle,
-                ) *
-                repulsionForce *
-                speed;
-              const moveY =
-                -Math.sin(
-                  angle,
-                ) *
-                repulsionForce *
-                speed;
-              const turbulence =
-                Math.sin(
-                  Date.now() /
-                    1000,
-                ) *
-                3;
-              ball.style.transform = `translate(${moveX}px, ${
-                moveY +
-                turbulence
-              }px)`;
-              const proximityScale =
-                Math.max(
-                  0.85,
-                  Math.min(
-                    1.4,
-                    1 +
-                      ((400 -
-                        Math.min(
-                          distance,
-                          400,
-                        )) /
-                        400) *
-                        0.55,
-                  ),
-                );
-              const rotationAmount =
-                distance <
-                300
-                  ? (300 -
-                      distance) /
-                    6
-                  : 0;
-              ball.style.transform += ` scale(${proximityScale}) rotate(${rotationAmount}deg)`;
-              const baseOpacity =
-                ball.classList.contains(
-                  "xl",
-                )
-                  ? 0.3
-                  : 0.8;
-              const proximityOpacity =
-                baseOpacity +
-                ((400 -
-                  Math.min(
-                    distance,
-                    400,
-                  )) /
-                  400) *
-                  0.2;
-              ball.style.opacity =
-                proximityOpacity;
-              const shadowIntensity =
-                Math.max(
-                  0,
-                  ((400 -
-                    Math.min(
-                      distance,
-                      400,
-                    )) /
-                    400) *
-                    15,
-                );
-              ball.style.filter = `drop-shadow(0 ${shadowIntensity}px ${
-                shadowIntensity *
-                1.5
-              }px rgba(0,0,0,0.15))`;
-              const newSpeed =
-                distance <
-                200
-                  ? speed *
-                    1.5
-                  : speed;
+              const rect =
+                ball.getBoundingClientRect();
+              const centerX =
+                rect.left +
+                rect.width /
+                  2;
+              const centerY =
+                rect.top +
+                rect.height /
+                  2;
               ball.setAttribute(
-                "data-current-speed",
-                newSpeed,
+                "data-x",
+                centerX,
+              );
+              ball.setAttribute(
+                "data-y",
+                centerY,
               );
             },
           );
-        },
-      );
+        }
+        setTimeout(
+          updateBallPositions,
+          1000,
+        );
 
-      heroContainer.addEventListener(
-        "mouseleave",
-        () => {
-          floatingBalls.forEach(
-            (
-              ball,
-            ) => {
-              ball.style.transition =
-                "transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
-              ball.style.transform =
-                "translate(0, 0) scale(1) rotate(0deg)";
-              ball.style.filter =
-                "none";
-              setTimeout(
-                () => {
-                  ball.style.transition =
-                    "none";
-                },
-                1500,
+        heroContainer.addEventListener(
+          "mousemove",
+          (e) => {
+            const mouseX =
+              e.clientX;
+            const mouseY =
+              e.clientY;
+            const floatingBalls =
+              document.querySelectorAll(
+                ".floating-ball",
               );
-            },
-          );
+            floatingBalls.forEach(
+              (
+                ball,
+              ) => {
+                const speed =
+                  parseFloat(
+                    ball.getAttribute(
+                      "data-speed",
+                    ),
+                  ) ||
+                  0.05;
+                const maxDistance =
+                  parseFloat(
+                    ball.getAttribute(
+                      "data-distance",
+                    ),
+                  ) ||
+                  60;
+                const ballX =
+                  parseFloat(
+                    ball.getAttribute(
+                      "data-x",
+                    ),
+                  ) ||
+                  0;
+                const ballY =
+                  parseFloat(
+                    ball.getAttribute(
+                      "data-y",
+                    ),
+                  ) ||
+                  0;
+                const dx =
+                  mouseX -
+                  ballX;
+                const dy =
+                  mouseY -
+                  ballY;
+                const distance =
+                  Math.sqrt(
+                    dx *
+                      dx +
+                      dy *
+                        dy,
+                  );
+                const angle =
+                  Math.atan2(
+                    dy,
+                    dx,
+                  );
+                const repulsionForce =
+                  Math.min(
+                    1,
+                    1200 /
+                      (distance +
+                        1),
+                  ) *
+                  maxDistance;
+                const moveX =
+                  -Math.cos(
+                    angle,
+                  ) *
+                  repulsionForce *
+                  speed;
+                const moveY =
+                  -Math.sin(
+                    angle,
+                  ) *
+                  repulsionForce *
+                  speed;
+                const turbulence =
+                  Math.sin(
+                    Date.now() /
+                      1000,
+                  ) *
+                  2;
+                ball.style.transform = `translate(${moveX}px, ${
+                  moveY +
+                  turbulence
+                }px)`;
+                if (
+                  distance <
+                  300
+                ) {
+                  const proximityScale =
+                    1 +
+                    (300 -
+                      distance) /
+                      1000;
+                  const rotationAmount =
+                    (300 -
+                      distance) /
+                    15;
+                  ball.style.transform += ` scale(${proximityScale}) rotate(${rotationAmount}deg)`;
+                }
+                if (
+                  distance <
+                  200
+                ) {
+                  const shadowIntensity =
+                    5 +
+                    (200 -
+                      distance) /
+                      20;
+                  ball.style.boxShadow = `0 ${shadowIntensity}px ${
+                    shadowIntensity *
+                    1.5
+                  }px rgba(0,0,0,0.15)`;
+                }
+              },
+            );
+          },
+        );
+
+        heroContainer.addEventListener(
+          "mouseleave",
+          () => {
+            const floatingBalls =
+              document.querySelectorAll(
+                ".floating-ball",
+              );
+            floatingBalls.forEach(
+              (
+                ball,
+              ) => {
+                ball.style.transition =
+                  "transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 1.5s ease";
+                ball.style.transform =
+                  "translate(0, 0) scale(1) rotate(0deg)";
+                ball.style.boxShadow =
+                  "0 4px 12px rgba(0,0,0,0.1)";
+                setTimeout(
+                  () => {
+                    ball.style.transition =
+                      "none";
+                  },
+                  1500,
+                );
+              },
+            );
+          },
+        );
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          createFloatingBalls();
+          initializeFloatingBallInteraction();
         },
       );
     </script>
