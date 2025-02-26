@@ -26,19 +26,23 @@
                 colors:
                   {
                     primary:
-                      "#F15A24",
+                      "#6C63FF",
+                    "primary-light":
+                      "#A5A0FF",
                     "primary-dark":
-                      "#E04D13",
+                      "#4A42E3",
                     secondary:
-                      "#3E9BC5",
+                      "#63C6FF",
                     accent:
-                      "#41A62A",
+                      "#63FFB1",
+                    background:
+                      "#F7F9FC",
                     cream:
-                      "#FFF6DC",
+                      "#FFF6F2",
                     yellow:
-                      "#FFD15C",
-                    red: "#E74C3C",
-                    pink: "#F8A7C3",
+                      "#FFD166",
+                    pink: "#FF90B3",
+                    teal: "#63E5FF",
                   },
               },
           },
@@ -62,46 +66,44 @@
       crossorigin
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <!-- Custom Styling -->
     <style>
       :root {
-        --primary: #f15a24;
-        --primary-dark: #e04d13;
-        --secondary: #3e9bc5;
-        --accent: #41a62a;
-        --dark: #333333;
-        --light: #fff6dc;
-        --yellow: #ffd15c;
-        --red: #e74c3c;
-        --pink: #f8a7c3;
+        --primary: #6c63ff;
+        --primary-light: #a5a0ff;
+        --primary-dark: #4a42e3;
+        --secondary: #63c6ff;
+        --accent: #63ffb1;
+        --background: #f7f9fc;
+        --cream: #fff6f2;
+        --yellow: #ffd166;
+        --pink: #ff90b3;
+        --teal: #63e5ff;
       }
 
       body {
-        font-family: "Space Grotesk",
+        font-family: "Poppins",
           sans-serif;
-        line-height: 1.5;
-        color: var(
-          --dark
-        );
+        line-height: 1.6;
+        color: #333;
         background-color: var(
-          --light
+          --background
         );
         overflow-x: hidden;
         scroll-behavior: smooth;
-        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23F15A24' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
       }
 
       h1,
       h2,
       h3,
       .serif {
-        font-family: "DM Serif Display",
+        font-family: "Playfair Display",
           serif;
-        font-weight: normal;
+        font-weight: 600;
       }
 
       /* Navigation link underline effect */
@@ -163,9 +165,9 @@
         box-shadow: 0
           4px 12px
           rgba(
-            241,
-            90,
-            36,
+            108,
+            99,
+            255,
             0.3
           );
         background-color: var(
@@ -200,16 +202,16 @@
         box-shadow: 0
           4px 12px
           rgba(
-            62,
-            155,
-            197,
+            99,
+            198,
+            255,
             0.3
           );
       }
       .btn-outline {
         background-color: transparent;
         color: var(
-          --accent
+          --primary
         );
         padding: 0.75rem
           1.5rem;
@@ -224,7 +226,7 @@
         border: 2px
           solid
           var(
-            --accent
+            --primary
           );
       }
       .btn-outline:hover {
@@ -232,17 +234,17 @@
           -2px
         );
         background-color: rgba(
-          65,
-          166,
-          42,
+          108,
+          99,
+          255,
           0.1
         );
         box-shadow: 0
           4px 12px
           rgba(
-            65,
-            166,
-            42,
+            108,
+            99,
+            255,
             0.2
           );
       }
@@ -331,13 +333,72 @@
           forwards;
       }
 
+      /* Floating header bubbles (for extra visual flair) */
+      .floating-bubble {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.6;
+        filter: blur(
+          3px
+        );
+        transition: all
+          0.5s ease;
+        z-index: 0;
+      }
+
+      /* Subtle shimmer background for header */
+      .shimmer-bg {
+        position: relative;
+        overflow: hidden;
+      }
+      .shimmer-bg::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(
+              255,
+              255,
+              255,
+              0.2
+            )
+            0%,
+          rgba(
+              255,
+              255,
+              255,
+              0
+            )
+            60%
+        );
+        animation: shimmer
+          15s linear
+          infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          transform: rotate(
+            0deg
+          );
+        }
+        100% {
+          transform: rotate(
+            360deg
+          );
+        }
+      }
+
       /* Glass effect for header */
       .glass {
         background: rgba(
           255,
           255,
           255,
-          0.7
+          0.8
         );
         backdrop-filter: blur(
           10px
@@ -345,7 +406,7 @@
         -webkit-backdrop-filter: blur(
           10px
         );
-        border: 1px
+        border-bottom: 1px
           solid
           rgba(
             255,
@@ -353,64 +414,6 @@
             255,
             0.2
           );
-      }
-
-      /* Cosmic background for header & hero */
-      .space-bg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 0;
-      }
-      .constellation-background {
-        background-image: radial-gradient(
-            circle
-              at
-              25px
-              25px,
-            rgba(
-                241,
-                90,
-                36,
-                0.15
-              )
-              2px,
-            transparent
-              0
-          ),
-          radial-gradient(
-            circle
-              at
-              75px
-              75px,
-            rgba(
-                62,
-                155,
-                197,
-                0.15
-              )
-              2px,
-            transparent
-              0
-          );
-        background-size: 150px
-          150px;
-      }
-
-      .gradient-text {
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        background-image: linear-gradient(
-          90deg,
-          var(
-            --primary
-          ),
-          var(
-            --accent
-          )
-        );
       }
 
       /* Header styles */
@@ -441,9 +444,9 @@
         background-image: linear-gradient(
             to right,
             rgba(
-                241,
-                90,
-                36,
+                108,
+                99,
+                255,
                 0.05
               )
               1px,
@@ -454,9 +457,9 @@
             to
               bottom,
             rgba(
-                241,
-                90,
-                36,
+                108,
+                99,
+                255,
                 0.05
               )
               1px,
@@ -465,13 +468,15 @@
           );
         background-size: 40px
           40px;
-        z-index: 1;
+        z-index: 0;
         opacity: 0.5;
       }
 
       /* Blog Detail View */
       .blog-detail-container {
-        max-width: 65ch;
+        max-width: 70ch;
+        margin: 0
+          auto;
         line-height: 1.7;
       }
       .blog-detail-container
@@ -485,186 +490,73 @@
         margin-bottom: 1.5rem;
       }
 
+      /* Hero gradient background */
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          #f5f7ff 0%,
+          #dfecff
+            100%
+        );
+      }
+
       .page-transition {
         transition: opacity
           0.4s ease;
       }
 
-      /* Custom Cursor */
-      .custom-cursor {
-        position: fixed;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 2px
-          solid
+      /* Blog card styles */
+      .blog-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0
+          5px 15px
+          rgba(
+            0,
+            0,
+            0,
+            0.05
+          );
+        transition: all
+          0.3s ease;
+      }
+      .blog-card:hover {
+        transform: translateY(
+          -5px
+        );
+        box-shadow: 0
+          10px 25px
+          rgba(
+            0,
+            0,
+            0,
+            0.1
+          );
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(
+          90deg,
           var(
             --primary
-          );
-        pointer-events: none;
-        transform: translate(
-          -50%,
-          -50%
+          ),
+          var(
+            --secondary
+          )
         );
-        z-index: 9999;
-        transition: width
-            0.3s,
-          height
-            0.3s,
-          transform
-            0.1s;
-        mix-blend-mode: difference;
-      }
-      .cursor-star {
-        position: fixed;
-        pointer-events: none;
-        transform: translate(
-          -50%,
-          -50%
-        );
-        z-index: 10000;
-        width: 20px;
-        height: 20px;
-      }
-      .cursor-star
-        svg {
-        width: 100%;
-        height: 100%;
-        filter: drop-shadow(
-          0 0 2px
-            rgba(
-              241,
-              90,
-              36,
-              0.5
-            )
-        );
-      }
-
-      /* --- Additional Header & Floating Balls Styles --- */
-
-      /* Star styles */
-      .star {
-        position: absolute;
-        background-color: white;
-        border-radius: 50%;
-        animation: twinkle
-          4s
-          infinite
-          ease-in-out;
-      }
-      .star.tiny {
-        width: 1px;
-        height: 1px;
-        opacity: 0.7;
-      }
-      .star.small {
-        width: 2px;
-        height: 2px;
-        opacity: 0.8;
-      }
-      .star.medium {
-        width: 3px;
-        height: 3px;
-        opacity: 0.9;
-      }
-      @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.2;
-        }
-        50% {
-          opacity: 1;
-        }
-      }
-
-      /* Gentle floating animation */
-      @keyframes gentleFloat {
-        0% {
-          transform: translate(
-            0,
-            0
-          );
-        }
-        25% {
-          transform: translate(
-            10px,
-            -10px
-          );
-        }
-        50% {
-          transform: translate(
-            0,
-            -15px
-          );
-        }
-        75% {
-          transform: translate(
-            -10px,
-            -5px
-          );
-        }
-        100% {
-          transform: translate(
-            0,
-            0
-          );
-        }
-      }
-
-      /* For rotating elements */
-      @keyframes rotate {
-        from {
-          transform: rotate(
-            0deg
-          );
-        }
-        to {
-          transform: rotate(
-            360deg
-          );
-        }
-      }
-      .animate-rotate {
-        animation: rotate
-          60s linear
-          infinite;
-      }
-
-      /* For floating interest icons */
-      .floating-interest {
-        position: absolute;
-        z-index: 10;
-        transition: transform
-            0.3s
-            ease,
-          filter
-            0.3s
-            ease,
-          opacity
-            0.3s
-            ease;
-        cursor: pointer;
-      }
-
-      /* Floating ball elements */
-      .floating-ball {
-        position: absolute;
-        border-radius: 50%;
-        background-color: var(
-          --primary
-        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       @media (max-width: 768px) {
         .header {
-          padding: 1.5rem;
+          padding: 1rem;
         }
         .nav-links {
           display: none;
-        }
-        .title {
-          font-size: 4rem;
         }
         .blog-grid {
           grid-template-columns: 1fr;
@@ -677,46 +569,37 @@
   >
     <!-- Custom Cursor Elements -->
     <div
-      class="custom-cursor"
+      class="fixed w-10 h-10 border-2 border-primary rounded-full pointer-events-none mix-blend-difference"
+      id="custom-cursor"
+      style="
+        transform: translate(
+          -50%,
+          -50%
+        );
+      "
     ></div>
-    <div
-      class="cursor-star"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="var(--primary)"
-      >
-        <path
-          d="M12,1L9,9H1L7,13.5L5,21L12,17L19,21L17,13.5L23,9H15L12,1Z"
-        />
-      </svg>
-    </div>
 
-    <!-- Decorative Grid Overlay -->
+    <!-- Grid Pattern Overlay -->
     <div
       class="fixed inset-0 grid-pattern"
     ></div>
 
-    <!-- Header with Cosmic Theme -->
+    <!-- Header with Shimmer Effect & Floating Bubbles -->
     <header
       id="header"
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     >
       <div
-        class="glass"
+        class="glass shimmer-bg py-3"
       >
-        <!-- Optional Space Background for Header -->
+        <!-- Floating Bubbles (added dynamically via JS) -->
         <div
-          class="space-bg h-16 overflow-hidden"
-        >
-          <div
-            id="earth-container"
-            class="relative h-full w-full"
-          ></div>
-        </div>
+          id="header-bubbles"
+          class="absolute inset-0 overflow-hidden"
+        ></div>
+
         <div
-          class="max-w-7xl mx-auto px-6 py-4 relative z-10 flex items-center justify-between"
+          class="max-w-7xl mx-auto px-6 relative z-10 flex items-center justify-between"
         >
           <!-- Logo -->
           <a
@@ -733,9 +616,10 @@
               >
             </h1>
             <div
-              class="absolute -inset-2 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"
+              class="absolute -inset-2 bg-gradient-to-r from-primary-light to-secondary rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"
             ></div>
           </a>
+
           <!-- Navigation (Desktop) -->
           <nav
             class="hidden md:flex space-x-8 items-center"
@@ -755,7 +639,13 @@
               class="nav-link text-accent"
               >Blog</a
             >
+            <a
+              href="#contact"
+              class="nav-link text-pink"
+              >Contact</a
+            >
           </nav>
+
           <!-- Action Buttons -->
           <div
             class="flex items-center gap-3"
@@ -767,8 +657,7 @@
             <!-- New Post button (visible when logged in) -->
             <button
               id="new-blog-btn"
-              class="hidden bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg"
-              onclick="showNewBlogForm(event)"
+              class="hidden bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full transition transform hover:-translate-y-1 hover:shadow-lg"
             >
               <i
                 class="fas fa-plus mr-2"
@@ -777,6 +666,7 @@
               Post
             </button>
           </div>
+
           <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
@@ -787,6 +677,7 @@
             ></i>
           </button>
         </div>
+
         <!-- Mobile Navigation -->
         <nav
           id="mobileNav"
@@ -814,6 +705,13 @@
                 href="#blog"
                 class="hover:text-accent transition block"
                 >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover:text-pink transition block"
+                >Contact</a
               >
             </li>
           </ul>
@@ -854,7 +752,7 @@
               type="text"
               id="loginUsername"
               placeholder="Enter your username"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary transition"
             />
           </div>
           <div>
@@ -867,11 +765,11 @@
               type="password"
               id="loginPassword"
               placeholder="Enter your password"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary transition"
             />
           </div>
           <button
-            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 font-medium"
+            class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition transform hover:scale-105 font-medium"
             onclick="loginUser()"
           >
             Sign In
@@ -886,83 +784,40 @@
       </div>
     </div>
 
-    <!-- Hero Section with Cosmic Theme -->
+    <!-- Hero Section with Soft Colors & Floating Elements -->
     <section
       id="hero"
-      class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-container"
+      class="relative min-h-screen pt-32 pb-20 overflow-hidden hero-gradient"
     >
-      <!-- Background gradient and constellation overlay -->
+      <!-- Soft gradient background -->
       <div
-        class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50"
-      >
-        <div
-          class="constellation-background absolute inset-0 opacity-20"
-        ></div>
-      </div>
+        class="absolute inset-0 bg-gradient-to-br from-cream to-background"
+      ></div>
 
-      <!-- Floating geometric shapes -->
+      <!-- Floating shapes & geometric patterns -->
       <div
         class="absolute inset-0 overflow-hidden pointer-events-none"
       >
         <div
-          class="floating-circle absolute w-64 h-64 rounded-full bg-gradient-to-r from-purple-300 to-indigo-300 blur-2xl opacity-20 -right-20 top-1/4 animate-float"
+          class="absolute w-64 h-64 rounded-full bg-primary opacity-5 blur-3xl -right-20 top-1/4 animate-float"
           style="
             animation-duration: 15s;
           "
         ></div>
         <div
-          class="floating-circle absolute w-96 h-96 rounded-full bg-gradient-to-l from-blue-300 to-cyan-300 blur-3xl opacity-20 -left-32 top-1/2 animate-float"
+          class="absolute w-96 h-96 rounded-full bg-secondary opacity-5 blur-3xl -left-32 top-1/2 animate-float"
           style="
             animation-duration: 20s;
           "
         ></div>
-        <!-- Two rotating SVG shapes -->
-        <svg
-          class="absolute right-10 top-40 w-24 h-24 text-indigo-300 opacity-40 animate-rotate"
+        <div
+          class="absolute w-48 h-48 rounded-full bg-accent opacity-5 blur-3xl right-1/4 bottom-1/4 animate-float"
           style="
-            animation-duration: 30s;
+            animation-duration: 18s;
           "
-          viewBox="0 0 100 100"
-          fill="none"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="30"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M50 10L94.3 90H5.7L50 10Z"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M50 90L5.7 10H94.3L50 90Z"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-          <path
-            d="M10 50H90M50 10V90"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
-        </svg>
+        ></div>
         <svg
-          class="absolute left-20 bottom-40 w-32 h-32 text-blue-300 opacity-30 animate-rotate"
-          style="
-            animation-duration: 40s;
-            transform: rotate(
-              -360deg
-            );
-          "
+          class="absolute right-10 top-40 w-24 h-24 text-primary opacity-10"
           viewBox="0 0 100 100"
           fill="none"
         >
@@ -983,54 +838,10 @@
             stroke="currentColor"
             stroke-width="0.5"
           />
-          <path
-            d="M1 25H99M1 75H99M25 1V99M75 1V99"
-            stroke="currentColor"
-            stroke-width="0.5"
-          />
         </svg>
       </div>
 
-      <!-- Constellation Stars -->
-      <div
-        id="constellation"
-        class="absolute inset-0"
-      ></div>
-
-      <!-- Add a few floating ball elements for interactivity -->
-      <div
-        class="floating-ball"
-        data-speed="0.1"
-        data-distance="60"
-        style="
-          top: 30%;
-          left: 20%;
-          width: 20px;
-          height: 20px;
-        "
-      ></div>
-      <div
-        class="floating-ball"
-        data-speed="0.08"
-        data-distance="60"
-        style="
-          top: 50%;
-          left: 70%;
-          width: 25px;
-          height: 25px;
-        "
-      ></div>
-      <div
-        class="floating-ball"
-        data-speed="0.12"
-        data-distance="60"
-        style="
-          top: 70%;
-          left: 40%;
-          width: 15px;
-          height: 15px;
-        "
-      ></div>
+      <!-- Floating Bubbles (added dynamically below) -->
 
       <!-- Hero Content -->
       <div
@@ -1119,30 +930,31 @@
               "
             >
               <span
-                class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium"
+                class="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium"
                 >AI</span
               >
               <span
-                class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium"
+                class="px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-sm font-medium"
                 >Cloud
                 Architecture</span
               >
               <span
-                class="px-4 py-1.5 bg-green-100 text-accent rounded-full text-sm font-medium"
+                class="px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium"
                 >Python</span
               >
               <span
-                class="px-4 py-1.5 bg-orange-100 text-primary rounded-full text-sm font-medium"
+                class="px-4 py-1.5 bg-pink/10 text-pink rounded-full text-sm font-medium"
                 >DevSecOps</span
               >
               <span
-                class="px-4 py-1.5 bg-blue-100 text-secondary rounded-full text-sm font-medium"
+                class="px-4 py-1.5 bg-teal/10 text-teal rounded-full text-sm font-medium"
                 >Web
                 Development</span
               >
             </div>
           </div>
-          <!-- Image Column -->
+
+          <!-- Image Column with Abstract Visual -->
           <div
             class="w-full lg:w-1/2 relative opacity-0 animate-fadeIn"
             style="
@@ -1150,43 +962,36 @@
             "
           >
             <div
-              class="relative mx-auto w-full max-w-md aspect-square"
+              class="relative mx-auto w-full max-w-md"
             >
               <div
-                id="profile-container"
-                class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl transition hover:scale-105 duration-500 bg-white"
+                class="relative z-10 w-80 h-80 mx-auto"
               >
+                <svg
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-full h-full"
+                >
+                  <path
+                    fill="#6C63FF"
+                    d="M46.3,-76.3C59.9,-70,70.7,-56.2,77.9,-41.2C85,-26.1,88.5,-9.9,87.2,5.8C85.9,21.5,79.9,36.7,70.1,49.1C60.3,61.5,46.7,71.2,31.7,75.7C16.7,80.3,0.2,79.7,-15.6,76.1C-31.4,72.6,-46.6,66,-58.4,54.9C-70.2,43.9,-78.6,28.4,-80.5,12.3C-82.3,-3.9,-77.5,-20.7,-69.6,-35.5C-61.7,-50.3,-50.7,-63,-37.7,-69.8C-24.7,-76.5,-9.8,-77.3,3.9,-83.2C17.5,-89.1,32.7,-82.6,46.3,-76.3Z"
+                    transform="translate(100 100)"
+                    class="animate-[float_20s_ease-in-out_infinite]"
+                  />
+                </svg>
                 <div
-                  class="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-90"
-                ></div>
-                <div
-                  class="absolute inset-0 flex items-center justify-center text-white text-7xl font-bold serif"
+                  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl font-bold z-20"
                 >
                   MB
                 </div>
               </div>
+
+              <!-- Floating skill icons -->
               <div
-                class="absolute inset-0 -z-10"
-              >
-                <div
-                  class="absolute inset-0 rounded-full border border-blue-300 opacity-50"
-                ></div>
-                <div
-                  class="absolute inset-[-20px] rounded-full border border-blue-300 opacity-30 animate-pulse"
-                  style="
-                    animation-duration: 4s;
-                  "
-                ></div>
-                <div
-                  class="absolute inset-[-40px] rounded-full border border-indigo-300 opacity-20 animate-pulse"
-                  style="
-                    animation-duration: 6s;
-                  "
-                ></div>
-              </div>
-              <div
-                class="floating-interest absolute -left-4 top-1/4 p-3 bg-white rounded-full shadow-lg text-primary transition hover:scale-110 hover:rotate-12"
-                id="icon1"
+                class="absolute -left-4 top-1/3 p-3 bg-white rounded-full shadow-lg text-primary animate-float"
+                style="
+                  animation-delay: 1s;
+                "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1204,8 +1009,10 @@
                 </svg>
               </div>
               <div
-                class="floating-interest absolute -right-4 bottom-1/3 p-3 bg-white rounded-full shadow-lg text-secondary transition hover:scale-110 hover:-rotate-12"
-                id="icon2"
+                class="absolute -right-4 bottom-1/3 p-3 bg-white rounded-full shadow-lg text-secondary animate-float"
+                style="
+                  animation-delay: 0.5s;
+                "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1223,8 +1030,10 @@
                 </svg>
               </div>
               <div
-                class="floating-interest absolute left-1/4 -bottom-4 p-3 bg-white rounded-full shadow-lg text-accent transition hover:scale-110 hover:rotate-45"
-                id="icon3"
+                class="absolute left-1/4 -bottom-4 p-3 bg-white rounded-full shadow-lg text-accent animate-float"
+                style="
+                  animation-delay: 1.5s;
+                "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1247,7 +1056,7 @@
       </div>
     </section>
 
-    <!-- Main Content Container (About, Portfolio, Blog List, Contact, Footer) -->
+    <!-- Main Content Container -->
     <div
       id="main-content"
       class="pt-12 page-transition"
@@ -1264,7 +1073,7 @@
             class="text-center mb-12"
           >
             <span
-              class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3"
+              class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3"
               >About
               Me</span
             >
@@ -1362,7 +1171,7 @@
             class="text-center mb-12"
           >
             <span
-              class="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-3"
+              class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-3"
               >Projects</span
             >
             <h2
@@ -1395,7 +1204,7 @@
           >
             <!-- Portfolio Item 1 -->
             <div
-              class="card group"
+              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               <div
                 class="relative h-52 overflow-hidden"
@@ -1458,7 +1267,7 @@
 
             <!-- Portfolio Item 2 -->
             <div
-              class="card group"
+              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               <div
                 class="relative h-52 overflow-hidden"
@@ -1516,7 +1325,7 @@
 
             <!-- Portfolio Item 3 -->
             <div
-              class="card group"
+              class="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               <div
                 class="relative h-52 overflow-hidden"
@@ -1594,7 +1403,7 @@
             class="text-center mb-12"
           >
             <span
-              class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-3"
+              class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-3"
               >Blog</span
             >
             <h2
@@ -2054,7 +1863,7 @@
       >
         <a
           href="#"
-          class="text-blue-700 font-semibold mb-4 block"
+          class="text-primary font-semibold mb-4 block"
           onclick="backToMain(event)"
           >&larr;
           Back to
@@ -2098,7 +1907,7 @@
           </div>
           <button
             type="submit"
-            class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded transition"
+            class="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded transition"
           >
             Publish
             Post
@@ -2107,201 +1916,26 @@
       </div>
     </div>
 
-    <!-- JavaScript for Interactivity & Animations -->
+    <!-- JavaScript for Interactivity, Blog Management & Floating Effects -->
     <script>
-      // Custom Cursor & Interactive Elements
+      // Custom Cursor (optional enhancement)
       document.addEventListener(
         "DOMContentLoaded",
         function () {
-          const cursor =
-            document.querySelector(
-              ".custom-cursor",
+          const customCursor =
+            document.getElementById(
+              "custom-cursor",
             );
-          const cursorStar =
-            document.querySelector(
-              ".cursor-star",
-            );
-          const navLinks =
-            document.querySelectorAll(
-              ".nav-link",
-            );
-          const buttons =
-            document.querySelectorAll(
-              ".btn, .btn-primary, .btn-secondary, .btn-outline",
-            );
-
-          let mouseX = 0,
-            mouseY = 0,
-            cursorX = 0,
-            cursorY = 0,
-            cursorScale = 1,
-            cursorColor =
-              "var(--primary)";
-
           document.addEventListener(
             "mousemove",
             (e) => {
-              mouseX =
-                e.clientX;
-              mouseY =
-                e.clientY;
-              cursorStar.style.left = `${mouseX}px`;
-              cursorStar.style.top = `${mouseY}px`;
-            },
-          );
-
-          function animateCursor() {
-            const dx =
-                mouseX -
-                cursorX,
-              dy =
-                mouseY -
-                cursorY;
-            cursorX +=
-              dx *
-              0.2;
-            cursorY +=
-              dy *
-              0.2;
-            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(${cursorScale})`;
-            cursor.style.borderColor =
-              cursorColor;
-            cursorStar.style.transform = `translate(-50%, -50%) rotate(${
-              cursorX /
-              20
-            }deg)`;
-            requestAnimationFrame(
-              animateCursor,
-            );
-          }
-          animateCursor();
-
-          navLinks.forEach(
-            (
-              link,
-            ) => {
-              link.addEventListener(
-                "mouseenter",
-                () => {
-                  cursorScale = 1.5;
-                  cursorColor =
-                    getComputedStyle(
-                      link,
-                    ).color;
-                  cursor.style.mixBlendMode =
-                    "normal";
-                  cursor.style.opacity =
-                    "0.5";
-                  cursor.style.backdropFilter =
-                    "blur(4px)";
-                  cursorStar.style.transform =
-                    "translate(-50%, -50%) scale(1.5) rotate(45deg)";
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    getComputedStyle(
-                      link,
-                    ).color;
-                },
-              );
-              link.addEventListener(
-                "mouseleave",
-                () => {
-                  cursorScale = 1;
-                  cursorColor =
-                    "var(--primary)";
-                  cursor.style.mixBlendMode =
-                    "difference";
-                  cursor.style.opacity =
-                    "1";
-                  cursor.style.backdropFilter =
-                    "none";
-                  cursorStar.style.transform =
-                    "translate(-50%, -50%) scale(1) rotate(0deg)";
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    "var(--primary)";
-                },
-              );
-            },
-          );
-
-          buttons.forEach(
-            (
-              button,
-            ) => {
-              button.addEventListener(
-                "mouseenter",
-                () => {
-                  cursorScale = 0.5;
-                  cursorColor =
-                    getComputedStyle(
-                      button,
-                    ).color;
-                  cursor.style.mixBlendMode =
-                    "overlay";
-                  cursorStar.style.animation =
-                    "rotateStar 2s linear infinite";
-                  const isFilled =
-                    button.classList.contains(
-                      "btn-primary",
-                    );
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    isFilled
-                      ? "white"
-                      : button
-                          .style
-                          .borderColor;
-                },
-              );
-              button.addEventListener(
-                "mouseleave",
-                () => {
-                  cursorScale = 1;
-                  cursorColor =
-                    "var(--primary)";
-                  cursor.style.mixBlendMode =
-                    "difference";
-                  cursorStar.style.animation =
-                    "none";
-                  cursorStar.querySelector(
-                    "svg",
-                  ).style.fill =
-                    "var(--primary)";
-                },
-              );
-            },
-          );
-
-          document.body.style.cursor =
-            "none";
-
-          document.addEventListener(
-            "mouseenter",
-            () => {
-              cursor.style.opacity =
-                "1";
-              cursorStar.style.opacity =
-                "1";
-            },
-          );
-
-          document.addEventListener(
-            "mouseleave",
-            () => {
-              cursor.style.opacity =
-                "0";
-              cursorStar.style.opacity =
-                "0";
+              customCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
             },
           );
         },
       );
 
-      // Authentication & Blog Management
+      // Authentication & Blog Management Functions
       async function updateAuthButtons() {
         const authButtons =
           document.getElementById(
@@ -2313,14 +1947,14 @@
           );
         if (token) {
           authButtons.innerHTML =
-            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="logoutUser()">Logout</button>';
+            '<button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition" onclick="logoutUser()">Logout</button>';
           document.getElementById(
             "new-blog-btn",
           ).style.display =
             "inline-block";
         } else {
           authButtons.innerHTML =
-            '<button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="openLoginModal()">Login</button>';
+            '<button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition" onclick="openLoginModal()">Login</button>';
           document.getElementById(
             "new-blog-btn",
           ).style.display =
@@ -2457,14 +2091,14 @@
                 "div",
               );
             blogCard.className =
-              "blog-card card flex flex-col transition duration-300 hover:-translate-y-2";
+              "blog-card flex flex-col transition duration-300 hover:-translate-y-2";
             blogCard.setAttribute(
               "data-id",
               post._id,
             );
             blogCard.innerHTML = `
             <div class="blog-image relative h-48 overflow-hidden">
-              <div class="absolute inset-0 bg-blue-700 opacity-80"></div>
+              <div class="absolute inset-0 bg-primary opacity-80"></div>
               <div class="absolute inset-0 flex items-center justify-center text-white text-5xl z-10">
                 ${post.title.charAt(
                   0,
@@ -2485,7 +2119,7 @@
               )}...</p>
               <button onclick="showBlogDetail('${
                 post._id
-              }')" class="bg-blue-700 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition mt-4">
+              }')" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition mt-4">
                 Read More
               </button>
             </div>
@@ -2576,7 +2210,7 @@
         }
       }
 
-      // Blog Detail functions (load within same page)
+      // Blog Detail functions (display post details inline)
       async function showBlogDetail(
         postId,
       ) {
@@ -2647,7 +2281,7 @@
           );
       }
 
-      // New Blog Post Form
+      // New Blog Post Form functions
       function showNewBlogForm(
         event,
       ) {
@@ -2808,11 +2442,55 @@
         },
       );
 
-      // Enhanced Floating Balls & Stars in Hero
+      // Floating Header Bubbles (Visual Improvement)
+      function createHeaderBubbles() {
+        const bubbleContainer =
+          document.getElementById(
+            "header-bubbles",
+          );
+        for (
+          let i = 0;
+          i < 10;
+          i++
+        ) {
+          const bubble =
+            document.createElement(
+              "div",
+            );
+          bubble.classList.add(
+            "floating-bubble",
+          );
+          const size =
+            Math.random() *
+              30 +
+            20;
+          bubble.style.width =
+            bubble.style.height =
+              size +
+              "px";
+          bubble.style.top =
+            Math.random() *
+              100 +
+            "%";
+          bubble.style.left =
+            Math.random() *
+              100 +
+            "%";
+          bubble.style.backgroundColor =
+            "rgba(108, 99, 255, 0.2)";
+          bubbleContainer.appendChild(
+            bubble,
+          );
+        }
+      }
+      createHeaderBubbles();
+
+      // Enhanced Floating Bubbles & Stars in Hero Section
       const constellation =
         document.getElementById(
-          "constellation",
+          "hero",
         );
+      // Create subtle stars
       for (
         let i = 0;
         i < 150;
@@ -2823,50 +2501,41 @@
             "div",
           );
         star.classList.add(
-          "star",
+          "floating-bubble",
         );
         const size =
-          Math.random();
-        if (
-          size < 0.6
-        )
-          star.classList.add(
-            "tiny",
-          );
-        else if (
-          size < 0.9
-        )
-          star.classList.add(
-            "small",
-          );
-        else
-          star.classList.add(
-            "medium",
-          );
-        star.style.left = `${
+          Math.random() <
+          0.5
+            ? 2
+            : 3;
+        star.style.width =
+          star.style.height =
+            size +
+            "px";
+        star.style.top =
           Math.random() *
-          100
-        }%`;
-        star.style.top = `${
+            100 +
+          "%";
+        star.style.left =
           Math.random() *
-          100
-        }%`;
-        star.style.animationDelay = `${
-          Math.random() *
-          4
-        }s`;
+            100 +
+          "%";
+        star.style.backgroundColor =
+          "white";
+        star.style.opacity = 0.2;
         constellation.appendChild(
           star,
         );
       }
 
+      // Floating ball elements (for interactive effect)
       const floatingBalls =
         document.querySelectorAll(
           ".floating-ball",
         );
-      const hero =
+      const heroContainer =
         document.querySelector(
-          ".hero-container",
+          "#hero",
         );
       floatingBalls.forEach(
         (ball) => {
@@ -2903,11 +2572,11 @@
             5 +
             Math.random() *
               5;
-          ball.style.animation = `gentleFloat ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
+          ball.style.animation = `animate-float ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
         },
       );
 
-      hero.addEventListener(
+      heroContainer.addEventListener(
         "mousemove",
         (e) => {
           const mouseX =
@@ -3066,7 +2735,7 @@
         },
       );
 
-      hero.addEventListener(
+      heroContainer.addEventListener(
         "mouseleave",
         () => {
           floatingBalls.forEach(
